@@ -1,0 +1,24 @@
+.city{
+    width: 45.7%;
+    height: 100%;
+    border: black solid 2px;
+    float: left;
+    padding: 2%;
+    text-align: center;
+}
+
+.cityname{
+    font: bold 40px roboto;
+}
+
+.temp{
+    font: normal 20px roboto;
+}
+
+.windspeed{
+    font: normal 20px roboto;
+}
+
+.link{
+    font: normal 20px roboto;
+}
