@@ -1,6 +1,6 @@
 .city{
-    width: 45.7%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     border: black solid 2px;
     float: left;
     padding: 2%;
@@ -21,4 +21,18 @@
 
 .link{
     font: normal 20px roboto;
+}
+
+.map {
+    height: 45%;
+    width: 100%;
+}
+
+.marker {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #088;
+    border-radius: 10px;
+    background-color: #0FF;
+    opacity: 0.5;
 }
