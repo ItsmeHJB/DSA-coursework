@@ -1,26 +1,40 @@
 .city{
-    width: 50%;
-    height: 50%;
-    border: black solid 2px;
+    width: 42%;
+    height: 100%;
     float: left;
     padding: 2%;
     text-align: center;
+    margin: 0.5%;
 }
 
 .cityname{
-    font: bold 40px roboto;
+    font: bold 40px "Lucida Sans Unicode";
+    font-variant: small-caps;
 }
 
 .temp{
-    font: normal 20px roboto;
+    font: normal 20px "Lucida Sans Unicode";
+    font-variant: small-caps;
 }
 
 .windspeed{
-    font: normal 20px roboto;
+    font: normal 20px "Lucida Sans Unicode";
+    font-variant: small-caps;
 }
 
 .link{
-    font: normal 20px roboto;
+    font: normal 20px "Lucida Sans Unicode";
+    font-variant: small-caps;
+    padding-top: 100%;
+}
+
+.icon{
+    height: 25%;
+    width: 40%;
+}
+
+html{
+    background-color: #e1e1e1;
 }
 
 .map {
