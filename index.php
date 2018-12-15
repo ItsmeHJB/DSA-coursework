@@ -7,8 +7,8 @@
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
         <style type="text/css">
             #map{
-                width:100%;
-                height:45%;
+                width:70%;
+                height:20%;
             }
         </style>
     </head>
@@ -144,7 +144,7 @@
         <br/>
         <span class = "link"><a href = "hull/">More Info</a></span>
     </div>
-    <hr style="width: 1px; height: 100%; display: inline-block; float: left; color: black;">
+    <hr style="width: 1px; height: 50%; display: inline-block; float: left;">
     <div class = "city">
         <span class = "cityname">Rotterdam</span>
         <br/>
