@@ -287,11 +287,27 @@
                 ),  // Cordinates of Hull's city centre
             });
 
+            marker1.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                    color: '#ff0000',
+                    crossOrigin: 'anonymous',
+                    src: '/imageresources/dot.png'
+                }))
+            }));
+
             var marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(
                     ol.proj.fromLonLat([4.469634, 51.923936])
                 ),  // Cordinates of Rotterdam's city centre
             });
+
+            marker2.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                    color: '#ff0000',
+                    crossOrigin: 'anonymous',
+                    src: '/imageresources/dot.png'
+                }))
+            }));
 
             var vectorSource = new ol.source.Vector({
                 features: [marker1, marker2]
