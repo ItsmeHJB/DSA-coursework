@@ -1,27 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <style>
-            #marker {
-                width: 20px;
-                height: 20px;
-                border: 1px solid #088;
-                border-radius: 10px;
-                background-color: #0FF;
-                opacity: 0.5;
-            }
-            #hull {
-                text-decoration: none;
-                color: white;
-                font-size: 11pt;
-                font-weight: bold;
-                text-shadow: black 0.1em 0.1em 0.2em;
+        <style type="text/css">
+            #map{
+                width:100%;
+                height:45%;
             }
         </style>
     </head>
@@ -281,56 +268,38 @@
 
         <script type="text/javascript">
 
+            var baseMapLayer = new ol.layer.Tile({
+                source: new ol.source.OSM()
+            });
             var map = new ol.Map({
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
                 target: 'map',
+                layers: [ baseMapLayer],
                 view: new ol.View({
                     center: ol.proj.fromLonLat([2.397168, 52.75]),
                     zoom: 6
                 })
             });
 
-            var pos = ol.proj.fromLonLat([-0.3367413, 53.7456709]);
-
-            var marker = new ol.Overlay({
-                position: pos,
-                positioning: 'center-center',
-                element: document.getElementById('marker'),
-                stopEvent: false
+            //Adding markers on the map
+            var marker1 = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([-0.339206, 53.743749])
+                ),  // Cordinates of Hull's city centre
             });
-            map.addOverlay(marker);
 
-            // Vienna label
-            var hull = new Overlay({
-                position: pos,
-                element: document.getElementById('hull')
+            var marker2 = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([4.469634, 51.923936])
+                ),  // Cordinates of Rotterdam's city centre
             });
-            map.addOverlay(hull);
 
-            var popup = new ol.Overlay({
-                element: document.getElementById('popup')
+            var vectorSource = new ol.source.Vector({
+                features: [marker1, marker2]
             });
-            map.addOverlay(popup);
-
-            map.on('click', function(evt) {
-                var element = popup.getElement();
-                var coordinate = evt.coordinate;
-                var hdms = toStringHDMS(toLonLat(coordinate));
-
-                $(element).popover('destroy');
-                popup.setPosition(coordinate);
-                $(element).popover({
-                    placement: 'top',
-                    animation: false,
-                    html: true,
-                    content: '<p>The location you clicked was:</p><code>' + hdms + '</code>'
-                });
-                $(element).popover('show');
+            var markerVectorLayer = new ol.layer.Vector({
+                source: vectorSource,
             });
+            map.addLayer(markerVectorLayer);
 
         </script>
     </body>
