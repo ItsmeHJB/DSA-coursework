@@ -1,5 +1,5 @@
 .city{
-    width: 42%;
+    width: 43%;
     height: 100%;
     float: left;
     padding: 2%;
@@ -33,13 +33,10 @@
     width: 40%;
 }
 
-html{
-    background-color: #e1e1e1;
-}
-
 .map {
     height: 45%;
     width: 100%;
+    float: top;
 }
 
 .marker {

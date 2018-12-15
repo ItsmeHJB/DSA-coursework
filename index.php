@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Hull - Rotterdam Information</title>
-        <link rel = "stylesheet" href = "mainstyle.css"/>
+        <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
@@ -33,15 +33,15 @@
         $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
         $rotterdam_info_array = explode(" ", $rotterdam_info_string);
 
-    $hull_temp = $hull_info_array[4];
-    $hull_windspeed = $hull_info_array[1] * 1.151;
-    $hull_icon = $hull_info_array[48];
+        $hull_temp = $hull_info_array[4];
+        $hull_windspeed = $hull_info_array[1] * 1.151;
+        $hull_icon = $hull_info_array[48];
         $hull_temp = $hull_info_array[4];
         $hull_windspeed = $hull_info_array[1] * 1.151;
 
-    $rotterdam_temp = $rotterdam_info_array[4];
-    $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
-    $rotterdam_icon = $rotterdam_info_array[48];
+        $rotterdam_temp = $rotterdam_info_array[4];
+        $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
+        $rotterdam_icon = $rotterdam_info_array[48];
     ?>
     <div class = "city">
         <span class = "cityname">Kingston-Upon Hull</span>
@@ -104,7 +104,7 @@
                 break;
             case 18:
             case 19:
-                echo "overcase.png";
+                echo "overcast.png";
                 break;
             case 20:
                 echo "rain.png";
@@ -219,7 +219,7 @@
                 break;
             case 18:
             case 19:
-                echo "overcase.png";
+                echo "overcast.png";
                 break;
             case 20:
                 echo "rain.png";
@@ -271,29 +271,11 @@
         ?>"/>
         <br/>
         <span class = "link"><a href = "rotterdam/">More Info</a></span>
-    </div>
-</body>
+        </div>
+        <?php
         $rotterdam_temp = $rotterdam_info_array[4];
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
         ?>
-        <div class = "city">
-            <span class = "cityname">Kingston-Upon Hull</span>
-            <br/>
-            <span class = "temp"><?php echo $hull_temp;?>°C</span>
-            <br/>
-            <span class = "windspeed"><?php echo $hull_windspeed;?>mph</span>
-            <br/>
-            <span class = "link"><a href = "/hull/">More Info</a></span>
-        </div>
-        <div class = "city">
-            <span class = "cityname">Rotterdam</span>
-            <br/>
-            <span class = "temp"><?php echo $rotterdam_temp;?>°C</span>
-            <br/>
-            <span class = "windspeed"><?php echo $rotterdam_windspeed;?>mph</span>
-            <br/>
-            <span class = "link"><a href = "/rotterdam/">More Info</a></span>
-        </div>
 
         <div id="map" class="map"></div>
 
