@@ -291,7 +291,7 @@
                 image: new ol.style.Icon(({
                     color: '#ff0000',
                     crossOrigin: 'anonymous',
-                    src: 'dot.png'
+                    src: '/imageresources/dot.png'
                 }))
             }));
 
@@ -305,7 +305,7 @@
                 image: new ol.style.Icon(({
                     color: '#ff0000',
                     crossOrigin: 'anonymous',
-                    src: 'dot.png'
+                    src: '/imageresources/dot.png'
                 }))
             }));
 
