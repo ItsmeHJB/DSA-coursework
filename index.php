@@ -263,6 +263,7 @@
         $rotterdam_temp = $rotterdam_info_array[4];
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
         ?>
+        <br/>
 
         <div id="map" class="map"></div>
 

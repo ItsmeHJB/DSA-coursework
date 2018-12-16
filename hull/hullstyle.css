@@ -1,4 +1,4 @@
-.cityname{
+.title{
     font: bold 40px "Lucida Sans Unicode";
     font-variant: small-caps;
     text-align: center;
@@ -6,11 +6,18 @@
     margin-right: auto;
 }
 
-.map {
-    height: 45%;
-    width: 100%;
+.content{
+    font: bold 20px "Lucida Sans Unicode";
+    font-variant: small-caps;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+    width: 25%;
 }
 
-html{
-    background-color: #e1e1e1;
+.map {
+    height: 90%;
+    width: 70%;
+    float: left;
 }
