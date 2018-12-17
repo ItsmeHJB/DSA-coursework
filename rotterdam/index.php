@@ -18,15 +18,39 @@
     </div>
     <div class = "content">
     <br/>
-    <span class = "temp"><?php echo $temp;?>°C</span>
-    <br/>
-    <span class = "rain"><?php echo $rain_amount;?>mm</span>
-    <br/>
-    <span class = "windspeed"><?php echo $windspeed;?>mph</span>
-    <br/>
-    <span class = "winddir"><?php echo $wind_direction;?>°</span>
-    <br/>
-    <span class = "humidity"><?php echo $humidity;?>%</span>
+        <span class = "temp">Temperature: <?php echo $temp;?>°C</span>
+        <br/>
+        <span class = "rain">Rain Today: <?php echo $rain_amount;?>mm</span>
+        <br/>
+        <span class = "windspeed">Wind Speed: <?php echo $windspeed;?>mph</span>
+        <br/>
+        <span class = "winddir">Wind Direction: <?php echo $wind_direction."°";
+            if($wind_direction >= 337.5 || $wind_direction < 22.5){
+                echo " (N)";
+            }
+            elseif($wind_direction >= 22.5 && $wind_direction < 67.5){
+                echo " (NE)";
+            }
+            elseif($wind_direction >= 67.5 && $wind_direction < 112.5){
+                echo " (E)";
+            }
+            elseif($wind_direction >= 112.5 && $wind_direction < 157.5){
+                echo " (SE)";
+            }
+            elseif($wind_direction >= 157.5 && $wind_direction < 202.5){
+                echo " (S)";
+            }
+            elseif($wind_direction >= 202.5 && $wind_direction < 247.5){
+                echo " (SW)";
+            }
+            elseif($wind_direction >= 247.5 && $wind_direction < 292.5){
+                echo " (W)";
+            }
+            elseif($wind_direction >= 292.5 && $wind_direction < 337.5){
+                echo " (NW)";
+            }
+            ?></span>        <br/>
+        <span class = "humidity">Outside Humidity: <?php echo $humidity;?>%</span>
     <br/>
     </div>
     <div id="map1" class="map"></div>
