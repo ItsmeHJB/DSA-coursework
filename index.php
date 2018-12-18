@@ -5,12 +5,6 @@
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-        <style type="text/css">
-            #map{
-                width:70%;
-                height:20%;
-            }
-        </style>
     </head>
     <body>
         <?php
@@ -266,21 +260,46 @@
         <br/>
 
         <div id="map" class="map"></div>
-
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+        
         <script type="text/javascript">
-
-            var baseMapLayer = new ol.layer.Tile({
-                source: new ol.source.OSM()
-            });
+            
+            // Elements used in the popup
+            var container = document.getElementById('popup');
+            var content = document.getElementById('popup-content');
+            var closer = document.getElementById('popup-closer');
+            
+            // Create overlay too attach popup to map
+            var overlay = new ol.Overlay({
+                element: container,
+                autoPan: false
+            });       
+            
+            // Click handler to hide popups
+            closer.onclick = function() {
+                overlay.setPosition(undefined);
+                closer.blur();
+                return false;
+            };
+            
+            // Create the map 
             var map = new ol.Map({
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                overlays: [overlay],
                 target: 'map',
-                layers: [ baseMapLayer],
                 view: new ol.View({
                     center: ol.proj.fromLonLat([2.397168, 52.75]),
                     zoom: 6
                 })
             });
-
+            
             //Adding markers on the map
             var marker1 = new ol.Feature({
                 geometry: new ol.geom.Point(
@@ -292,7 +311,7 @@
                 image: new ol.style.Icon(({
                     color: '#ff0000',
                     crossOrigin: 'anonymous',
-                    src: '/imageresources/dot.png'
+                    src: 'imageresources/dot.png'
                 }))
             }));
 
@@ -306,7 +325,7 @@
                 image: new ol.style.Icon(({
                     color: '#ff0000',
                     crossOrigin: 'anonymous',
-                    src: '/imageresources/dot.png'
+                    src: 'imageresources/dot.png'
                 }))
             }));
 
@@ -317,7 +336,16 @@
                 source: vectorSource,
             });
             map.addLayer(markerVectorLayer);
+            
+            // Click handler for map to create the popup
+            map.on('singleclick', function(evt) {
+                var coordinate = evt.coordinate;
 
+                content.innerHTML = '<p>You clicked here:</p><code>' + ol.proj.toLonLat(coordinate) +
+                    '</code>';
+                overlay.setPosition(coordinate);
+            });
+            
         </script>
     </body>
 </html>
