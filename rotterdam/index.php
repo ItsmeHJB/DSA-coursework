@@ -5,7 +5,30 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
-    <?php
+    <?php $mysqli = new mysqli("127.0.0.1", "root", "", "db_twincities");
+    if ($mysqli->connect_errno)
+    {
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $mysqli->real_query("SELECT * FROM `tb_city` WHERE `name` = 'Rotterdam'");
+    $res = $mysqli->use_result();
+    $row = $res->fetch_assoc();
+    $woeid_city = $row['woeid_city'];
+    $name = $row['name'];
+    $lat = $row['latitude'];
+    $long = $row['longitude'];
+    $country = $row['country'];
+    $population = $row['population'];
+    $currency = $row['currency'];
+    $province = $row['province'];
+    $area = $row['area'];
+    $time_zone = $row['time_zone'];
+    $website = $row['website'];
+
+    echo "This is the city of {$name} ({$lat}, {$long}). ";
+    echo "It is in {$province} ({$country}). There is a ";
+    echo "population of {$population}. It has an area of {$area}km2.";
+
     $weather_info_array = explode(" ", file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt"));
     $temp = $weather_info_array[4];
     $rain_amount = $weather_info_array[7];
