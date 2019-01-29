@@ -5,7 +5,7 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
-    <?php $mysqli = new mysqli("127.0.0.1", "root", "", "db_twincities");
+    <?php $mysqli = new mysqli("51.75.162.4", "username", "password", "db_twincities");
     if ($mysqli->connect_errno)
     {
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
