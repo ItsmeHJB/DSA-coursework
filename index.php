@@ -264,28 +264,37 @@
             <a href="#" id="popup-closer" class="ol-popup-closer"></a>
             <div id="popup-content"></div>
         </div>
-        
+
         <script type="text/javascript">
-            
+            import Feature from 'node_modules/ol/Feature.js';
+            import Map from 'ol/Map.js';
+            import Overlay from 'ol/Overlay.js';
+            import View from 'ol/View.js';
+            import Point from 'ol/geom/Point.js';
+            import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
+            import TileJSON from 'ol/source/TileJSON.js';
+            import VectorSource from 'ol/source/Vector.js';
+            import {Icon, Style} from 'ol/style.js';
+
             // Elements used in the popup
             var container = document.getElementById('popup');
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
-            
+
             // Create overlay too attach popup to map
             var overlay = new ol.Overlay({
                 element: container,
                 autoPan: false
-            });       
-            
+            });
+
             // Click handler to hide popups
             closer.onclick = function() {
                 overlay.setPosition(undefined);
                 closer.blur();
                 return false;
             };
-            
-            // Create the map 
+
+            // Create the map
             var map = new ol.Map({
                 layers: [
                     new ol.layer.Tile({
@@ -299,7 +308,7 @@
                     zoom: 6
                 })
             });
-            
+
             //Adding markers on the map
             var marker1 = new ol.Feature({
                 geometry: new ol.geom.Point(
@@ -314,6 +323,7 @@
                     src: 'imageresources/dot.png'
                 }))
             }));
+            {{<?php echo "</a>";?>}}
 
             var marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(
@@ -321,6 +331,7 @@
                 ),  // Cordinates of Rotterdam's city centre
             });
 
+            {{<?php echo "<a>";?>}}
             marker2.setStyle(new ol.style.Style({
                 image: new ol.style.Icon(({
                     color: '#ff0000',
@@ -328,6 +339,7 @@
                     src: 'imageresources/dot.png'
                 }))
             }));
+            {{<?php echo "</a>";?>}}
 
             var vectorSource = new ol.source.Vector({
                 features: [marker1, marker2]
@@ -336,16 +348,15 @@
                 source: vectorSource,
             });
             map.addLayer(markerVectorLayer);
-            
+
             // Click handler for map to create the popup
             map.on('singleclick', function(evt) {
                 var coordinate = evt.coordinate;
-
                 content.innerHTML = '<p>You clicked here:</p><code>' + ol.proj.toLonLat(coordinate) +
                     '</code>';
                 overlay.setPosition(coordinate);
             });
-            
+
         </script>
     </body>
 </html>
