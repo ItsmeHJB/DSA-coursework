@@ -340,22 +340,19 @@
             map.on('pointermove', function(evt) {
                 var coordinate = evt.coordinate;
                 var string_coor = ol.proj.toLonLat(coordinate);
-                string_coor = string_coor.replace(" ", "");
-                string_coor = string_coor.split(",");
-                //console.log(string_coor[0]);
-                //console.log(string_coor[1]);
-                string_coor[0] = parseFloat(string_coor[0]);
-                string_coor[1] = parseFloat(string_coor[1]);
-                console.log(string_coor[0] + " " + string_coor[1]);
-                //if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
-                  //console.log("Between -0.6 and -0.01");
-                  //if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
-                    //console.log("Between 53.6 and 53.9");
-                    content.innerHTML = '<p>You hovered here:</p><code>' + ol.proj.toLonLat(coordinate) +
-                        '</code>';
+                console.log(string_coor);
+                if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
+                  if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
+                    content.innerHTML = '<p>HULL</p>';
                     overlay.setPosition(coordinate);
-                  //}
-                //}
+                  }
+                }
+                else if(string_coor[0] > 4.2 && string_coor[0] < 4.6){
+                  if(string_coor[1] > 51.7 && string_coor[1] < 52.09){
+                    content.innerHTML = '<p>ROTTERDAM</p>';
+                    overlay.setPosition(coordinate);
+                  }
+                }
             });
 
         </script>
