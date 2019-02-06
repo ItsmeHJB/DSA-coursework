@@ -266,16 +266,6 @@
         </div>
 
         <script type="text/javascript">
-            import Feature from 'node_modules/ol/Feature.js';
-            import Map from 'ol/Map.js';
-            import Overlay from 'ol/Overlay.js';
-            import View from 'ol/View.js';
-            import Point from 'ol/geom/Point.js';
-            import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
-            import TileJSON from 'ol/source/TileJSON.js';
-            import VectorSource from 'ol/source/Vector.js';
-            import {Icon, Style} from 'ol/style.js';
-
             // Elements used in the popup
             var container = document.getElementById('popup');
             var content = document.getElementById('popup-content');
@@ -323,7 +313,6 @@
                     src: 'imageresources/dot.png'
                 }))
             }));
-            {{<?php echo "</a>";?>}}
 
             var marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(
@@ -331,7 +320,6 @@
                 ),  // Cordinates of Rotterdam's city centre
             });
 
-            {{<?php echo "<a>";?>}}
             marker2.setStyle(new ol.style.Style({
                 image: new ol.style.Icon(({
                     color: '#ff0000',
@@ -339,7 +327,6 @@
                     src: 'imageresources/dot.png'
                 }))
             }));
-            {{<?php echo "</a>";?>}}
 
             var vectorSource = new ol.source.Vector({
                 features: [marker1, marker2]
@@ -350,11 +337,25 @@
             map.addLayer(markerVectorLayer);
 
             // Click handler for map to create the popup
-            map.on('singleclick', function(evt) {
+            map.on('pointermove', function(evt) {
                 var coordinate = evt.coordinate;
-                content.innerHTML = '<p>You clicked here:</p><code>' + ol.proj.toLonLat(coordinate) +
-                    '</code>';
-                overlay.setPosition(coordinate);
+                var string_coor = ol.proj.toLonLat(coordinate);
+                string_coor = string_coor.replace(" ", "");
+                string_coor = string_coor.split(",");
+                //console.log(string_coor[0]);
+                //console.log(string_coor[1]);
+                string_coor[0] = parseFloat(string_coor[0]);
+                string_coor[1] = parseFloat(string_coor[1]);
+                console.log(string_coor[0] + " " + string_coor[1]);
+                //if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
+                  //console.log("Between -0.6 and -0.01");
+                  //if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
+                    //console.log("Between 53.6 and 53.9");
+                    content.innerHTML = '<p>You hovered here:</p><code>' + ol.proj.toLonLat(coordinate) +
+                        '</code>';
+                    overlay.setPosition(coordinate);
+                  //}
+                //}
             });
 
         </script>
