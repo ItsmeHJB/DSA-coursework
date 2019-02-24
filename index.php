@@ -8,6 +8,7 @@
     </head>
     <body>
         <?php
+
         $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
         $hull_info_array = explode(" ", $hull_info_string);
 
@@ -23,12 +24,71 @@
         $rotterdam_temp = $rotterdam_info_array[4];
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
         $rotterdam_icon = $rotterdam_info_array[48];
+
+        try{
+          $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+          $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+          $row = $dbq->fetch(PDO::FETCH_ASSOC);
+          $hull_lat = $row['latitude'];
+          $hull_long = $row['longitude'];
+
+          $db = null;
+          $dbq = null;
+        }
+        catch (PDOException $e){
+          echo "Error!: " . $e->getMessage() . "<br/>";
+          die();
+        }
+
+        try{
+          $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+          $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
+          $row = $dbq->fetch(PDO::FETCH_ASSOC);
+          $rotterdam_lat = $row['latitude'];
+          $rotterdam_long = $row['longitude'];
+
+          $db = null;
+          $dbq = null;
+        }
+        catch (PDOException $e){
+          echo "Error!: " . $e->getMessage() . "<br/>";
+          die();
+        }
+
+        $dark_sky_api_key = 'f5d3e696f6c590a25f1de6811d30d390';
+
+        $hull_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$hull_lat.','.$hull_long;
+        $rotterdam_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$rotterdam_lat.','.$rotterdam_long;
+
+        $hull_response = json_decode(file_get_contents($hull_url));
+        $rotterdam_response = json_decode(file_get_contents($rotterdam_url));
+
+        // for($i = 0; $i < 5; $i++){
+        //   echo $hull_response->daily->data[$i]->temperature . "<br/>";
+        // }
     ?>
     <div class = "city">
         <span class = "cityname">Kingston-Upon Hull</span>
         <br/>
-        <span class = "temp"><?php echo $hull_temp;?>°C</span>
+        <span class = "temp"><?php echo "Now: " . $hull_temp;?>°C</span>
         <br/>
+        <span class = "temp">
+          <?php
+          for($i = 0; $i < 5; $i++){
+            switch($i){
+              case 0:
+                continue;
+                break;
+              case 1:
+                echo "Tomorrow: Hi: " . (string)substr(((($hull_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                break;
+              default:
+                echo date('D', $hull_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($hull_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                break;
+            }
+          }
+          ?></span>
+          <br/>
         <span class = "windspeed"><?php echo substr($hull_windspeed, 0, 4);?>mph</span>
         <br/>
         <img class = "icon" src = "imageresources/<?php
@@ -142,12 +202,29 @@
     <div class = "city">
         <span class = "cityname">Rotterdam</span>
         <br/>
-        <span class = "temp"><?php echo $rotterdam_temp;?>°C</span>
+        <span class = "temp"><?php echo "Now: " . $rotterdam_temp;?>°C</span>
         <br/>
+        <span class = "temp">
+          <?php
+          for($i = 0; $i < 5; $i++){
+            switch($i){
+              case 0:
+                continue;
+                break;
+              case 1:
+                echo "Tomorrow: Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                break;
+              default:
+                echo date('D', $rotterdam_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                break;
+            }
+          }
+          ?></span>
+          <br/>
         <span class = "windspeed"><?php echo substr($rotterdam_windspeed, 0, 4);?>mph</span>
         <br/>
         <img class = "icon" src = "imageresources/<?php
-        switch($hull_icon) {
+        switch($rotterdam_icon) {
             case 0:
                 echo "sunny.png";
                 break;
@@ -344,14 +421,17 @@
                 if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
                   if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
                     content.innerHTML = '<p>HULL</p>';
-                    overlay.setPosition(coordinate);
+                    overlay.setPosition(ol.proj.fromLonLat([-0.339206, 53.743749]));
                   }
                 }
                 else if(string_coor[0] > 4.2 && string_coor[0] < 4.6){
                   if(string_coor[1] > 51.7 && string_coor[1] < 52.09){
                     content.innerHTML = '<p>ROTTERDAM</p>';
-                    overlay.setPosition(coordinate);
+                    overlay.setPosition(ol.proj.fromLonLat([4.469634, 51.923936]));
                   }
+                }
+                else{
+                  overlay.setPosition(undefined);
                 }
             });
 

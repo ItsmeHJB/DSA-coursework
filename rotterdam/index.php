@@ -5,29 +5,35 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
-    <?php $mysqli = new mysqli("51.75.162.4:8090", "username", "password", "db_twincities");
-    if ($mysqli->connect_errno)
-    {
-        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-    $mysqli->real_query("SELECT * FROM `tb_city` WHERE `name` = 'Rotterdam'");
-    $res = $mysqli->use_result();
-    $row = $res->fetch_assoc();
-    $woeid_city = $row['woeid_city'];
-    $name = $row['name'];
-    $lat = $row['latitude'];
-    $long = $row['longitude'];
-    $country = $row['country'];
-    $population = $row['population'];
-    $currency = $row['currency'];
-    $province = $row['province'];
-    $area = $row['area'];
-    $time_zone = $row['time_zone'];
-    $website = $row['website'];
+    <?php
+    try{
+      $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+      $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
+      $row = $dbq->fetch(PDO::FETCH_ASSOC);
+      $woeid_city = $row['woeid_city'];
+      $name = $row['name'];
+      $lat = $row['latitude'];
+      $long = $row['longitude'];
+      $country = $row['country'];
+      $population = $row['population'];
+      $currency = $row['currency'];
+      $province = $row['province'];
+      $area = $row['area'];
+      $time_zone = $row['time_zone'];
+      $website = $row['website'];
 
-    echo "This is the city of {$name} ({$lat}, {$long}). ";
-    echo "It is in {$province} ({$country}). There is a ";
-    echo "population of {$population}. It has an area of {$area}km2.";
+      $db = null;
+      $dbq = null;
+
+      echo "This is the city of {$name} ({$lat}, {$long}). ";
+      echo "It is in {$province} ({$country}). There is a ";
+      echo "population of {$population}. It has an area of {$area}km2.";
+
+    }
+    catch (PDOException $e){
+      echo "Error!: " . $e->getMessage() . "<br/>";
+      die();
+    }
 
     $weather_info_array = explode(" ", file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt"));
     $temp = $weather_info_array[4];
