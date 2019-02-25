@@ -1,0 +1,56 @@
+.flickr{
+  width: 400px;
+  height: 500px;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.title{
+  background-color: #ababab;
+  color: #f3f3f3;
+  height: 30px;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  font-family: "Istok Web", sans-serif;
+}
+
+.flickrcontent{
+  height: 100%;
+  overflow: scroll;
+  display: block;
+}
+
+.flickrimage{
+  padding: 2px;
+  margin: 2px;
+}
+
+.flick{
+  color: #0063DC;
+}
+
+.r{
+  color: #FF0084;
+}
+
+a{
+  text-decoration: none;
+}
+
+#photos{
+  line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 2px;
+  -moz-column-count: 3;
+  -mox-column-gap: 2px;
+  column-count: 3;
+  column-gap: 4px;
+}
+
+#photos img{
+  width: 100%;
+  height: auto;
+}
