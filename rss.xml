@@ -4,38 +4,39 @@
   DEFINE ('DB_HOST', 'localhost');
   DEFINE ('DB_NAME', 'db_twincities.sql');
 
-  $rssfeed = '<?xml version="1.0" encoding="ISO-8859-1"?>';
-  $rssfeed .= '<rss version="2.0">';
-  $rssfeed .= '<language>en-us</language>';
+  $rssfeed = '<?xml version="1.0" encoding+"ISO-8859-1"?>';
+  $rssfeed = '<rss version="2.0">';
+  $rssfeed = '<channel>';
+  $rssfeed = '<title>RSS feed</title>';
+  $rssfeed = '<link>http://www.website.com</link>';
+  $rssfeed = '<description>This is the thing</description>';
+  $rssfeed = '<language>en-us</language>';
 
-  try{
-    $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
-    $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
-    $row = $dbq->fetch(PDO::FETCH_ASSOC);
+  $mysqli = new mysqli("51.75.162.4:8090", "username", "password", "db_twincities");
 
-    $name = $row['name'];
-    $province = $row['province'];
-    $website = $row['website'];
+  $connection = @mysql_connect(DB_HOST, DB_USER, DB_PASSWORD)
+        or die('Could not connect to database');
+    mysql_select_db(DB_NAME)
+        or die ('Could not select database');
 
-    $db = null;
-    $dbq = null;
-  }
-  catch (PDOException $e){
-    echo "Error!: " . $e->getMessage() . "<br/>";
-    die();
-  }
+    $query = "SELECT * FROM tb_city ORDER BY date DESC";
+    $result = mysql_query($query) or die ("Could not execute query");
 
-  $rssfeed .= '<channel>';
-  $rssfeed .= '<item>';
-  $rssfeed .= '<name>' . $name . '</name>';
-  $rssfeed .= '<province>' . $province . '</province>';
-  $rssfeed .= '<website>' . $website . '</website>';
-  $rssfeed .= '</item>';
+    while($row = mysql_fetch_array($result)) {
+        extract($row);
 
-  $rssfeed .= '</channel>';
-  $rssfeed .= '</rss>';
+        $rssfeed .= '<item>';
+        $rssfeed .= '<title>' . $title . '</title>';
+        $rssfeed .= '<description>' . $description . '</description>';
+        $rssfeed .= '<link>' . $link . '</link>';
+        $rssfeed .= '<pubDate>' . date("D, d M Y H:i:s O", strtotime($date)) . '</pubDate>';
+        $rssfeed .= '</item>';
+    }
 
-  echo $rssfeed;
+    $rssfeed .= '</channel>';
+    $rssfeed .= '</rss>';
+
+    echo $rssfeed;
 ?>
 
 <!-- <link rel="alternate" href="/feed/" title="My RSS feed" type="application/rss+xml"/>
