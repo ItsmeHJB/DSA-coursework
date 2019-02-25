@@ -24,11 +24,8 @@
 }
 
 .flickrimage{
-  height: 100px;
   padding: 2px;
   margin: 2px;
-  float: left;
-  position: relative;
 }
 
 .flick{
@@ -41,4 +38,19 @@
 
 a{
   text-decoration: none;
+}
+
+#photos{
+  line-height: 0;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 2px;
+  -moz-column-count: 3;
+  -mox-column-gap: 2px;
+  column-count: 3;
+  column-gap: 4px;
+}
+
+#photos img{
+  width: 100%;
+  height: auto;
 }
