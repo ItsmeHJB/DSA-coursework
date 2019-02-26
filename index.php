@@ -4,9 +4,15 @@
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     </head>
     <body>
+        <div class = "navbar">
+          <a href = "/">Home</a>
+          <a href = "/hull">Hull</a>
+          <a href = "/rotterdam">Rotterdam</a>
+        </div>
         <?php
 
         $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");

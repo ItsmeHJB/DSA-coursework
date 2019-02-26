@@ -1,10 +1,16 @@
 <html>
 <head>
     <title>Kingston-Upon Hull Information</title>
-    <link rel = "stylesheet" href = "hullstyle.css?v1.1"/>
+    <link rel = "stylesheet" href = "hullstyle.css?v1.2"/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
+    <div class = "navbar">
+      <a href = "/">Home</a>
+      <a href = "/hull">Hull</a>
+      <a href = "/rotterdam">Rotterdam</a>
+    </div>
     <?php try{
       $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
@@ -24,9 +30,9 @@
       $db = null;
       $dbq = null;
 
-      echo "This is the city of {$name} ({$lat}, {$long}). ";
+      /*echo "This is the city of {$name} ({$lat}, {$long}). ";
       echo "It is in {$province} ({$country}). There is a ";
-      echo "population of {$population}. It has an area of {$area}km2.";
+      echo "population of {$population}. It has an area of {$area}km2.";*/
 
     }
     catch (PDOException $e){
