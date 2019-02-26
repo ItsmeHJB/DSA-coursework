@@ -97,5 +97,7 @@
             })
         });
     </script>
+    <br/>
+    <?php require('../flickr.php'); ?>
 </body>
 </html>

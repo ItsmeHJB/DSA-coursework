@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Kingston-Upon Hull Information</title>
-    <link rel = "stylesheet" href = "hullstyle.css?v1.1"/>
+    <link rel = "stylesheet" href = "hullstyle.css?v1.2"/>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
@@ -98,5 +98,7 @@
             })
         });
     </script>
+    <br/>
+    <?php require('../flickr.php'); ?>
 </body>
 </html>

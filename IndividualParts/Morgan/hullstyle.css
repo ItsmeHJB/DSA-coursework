@@ -1,4 +1,4 @@
-.title{
+.title:not(.flickrtitle){
     font: bold 40px "Lucida Sans Unicode";
     font-variant: small-caps;
     text-align: center;
