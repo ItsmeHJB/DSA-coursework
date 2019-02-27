@@ -382,10 +382,13 @@
                 })
             });
 
+            var hullLon = parseFloat("<?php echo $hull_long ?>");
+            var hullLat = parseFloat("<?php echo $hull_lat ?>");
+
             //Adding markers on the map
             var marker1 = new ol.Feature({
                 geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([-0.339206, 53.743749])
+                    ol.proj.fromLonLat([hullLon, hullLat])
                 ),  // Cordinates of Hull's city centre
             });
 
@@ -397,9 +400,12 @@
                 }))
             }));
 
+            var rottLon = parseFloat("<?php echo $rotterdam_long ?>");
+            var rottLat = parseFloat("<?php echo $rotterdam_lat ?>");
+
             var marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([4.469634, 51.923936])
+                    ol.proj.fromLonLat([rottLon, rottLat])
                 ),  // Cordinates of Rotterdam's city centre
             });
 
