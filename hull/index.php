@@ -1,4 +1,5 @@
 <html>
+<meta charset="UTF-8">
 <head>
     <title>Kingston-Upon Hull Information</title>
     <link rel = "stylesheet" href = "hullstyle.css?v1.2"/>
@@ -7,9 +8,9 @@
 </head>
 <body>
     <div class = "navbar">
-      <a href = "/">Home</a>
-      <a href = "/hull">Hull</a>
-      <a href = "/rotterdam">Rotterdam</a>
+      <a href = "../">Home</a>
+      <a href = "">Hull</a>
+      <a href = "../rotterdam/">Rotterdam</a>
     </div>
     <?php try{
       $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
