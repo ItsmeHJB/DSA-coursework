@@ -426,7 +426,9 @@
                 console.log(string_coor);
                 if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
                   if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
-                    content.innerHTML = '<p>HULL</p>';
+                    content.innerHTML = '<h3>Hull Info</h3><span class = \
+                    "coord">Lat: <?php echo $hull_lat;?> Long: <?php \
+                    echo $hull_long;?></span>';
                     overlay.setPosition(ol.proj.fromLonLat([-0.339206, 53.743749]));
                   }
                 }
