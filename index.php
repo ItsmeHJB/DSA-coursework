@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
     <head>
         <title>Hull - Rotterdam Information</title>
-        <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
+        <link rel = "stylesheet" href = "mainstyle.css?v1.4"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
@@ -38,6 +38,12 @@
           $row = $dbq->fetch(PDO::FETCH_ASSOC);
           $hull_lat = $row['latitude'];
           $hull_long = $row['longitude'];
+          $hull_country = $row['country'];
+          $hull_pop = $row['population'];
+          $hull_curr = $row['currency'];
+          $hull_prov = $row['province'];
+          $hull_area = $row['area'];
+          $hull_web = $row['website'];
 
           $db = null;
           $dbq = null;
@@ -53,6 +59,12 @@
           $row = $dbq->fetch(PDO::FETCH_ASSOC);
           $rotterdam_lat = $row['latitude'];
           $rotterdam_long = $row['longitude'];
+          $rotterdam_country = $row['country'];
+          $rotterdam_pop = $row['population'];
+          $rotterdam_curr = $row['currency'];
+          $rotterdam_prov = $row['province'];
+          $rotterdam_area = $row['area'];
+          $rotterdam_web = $row['website'];
 
           $db = null;
           $dbq = null;
@@ -426,6 +438,22 @@
             });
             map.addLayer(markerVectorLayer);
 
+            var hull_popup = '<h3>Hull Info</h3>\
+            Country: <?php echo $hull_country;?><br/>\
+            Population: <?php echo $hull_pop;?><br/>\
+            Currency: <?php echo $hull_curr;?><br/>\
+            Province: <?php echo $hull_prov;?><br/>\
+            Area: <?php echo $hull_area;?>km\xB2<br/>\
+            Wesbite: <a href="<?php echo $hull_web;?>">hull.gov.uk</a>';
+
+            var rotterdam_popup = '<h3>Rotterdam Info</h3>\
+            Country: <?php echo $rotterdam_country;?><br/>\
+            Population: <?php echo $rotterdam_pop;?><br/>\
+            Currency: <?php echo $rotterdam_curr;?><br/>\
+            Province: <?php echo $rotterdam_prov;?><br/>\
+            Area: <?php echo $rotterdam_area;?>km\xB2<br/>\
+            Wesbite: <a href="<?php echo $rotterdam_web;?>">rotterdam.nl</a>';
+
             // Click handler for map to create the popup
             map.on('pointermove', function(evt) {
                 var coordinate = evt.coordinate;
@@ -433,20 +461,15 @@
                 console.log(string_coor);
                 if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
                   if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
-                    content.innerHTML = '<h3>Hull Info</h3><span class = \
-                    "coord">Lat: <?php echo $hull_lat;?> Long: <?php
-                    echo $hull_long;?></span>';
+                    content.innerHTML = hull_popup;
                     overlay.setPosition(ol.proj.fromLonLat([-0.339206, 53.743749]));
                   }
                 }
                 else if(string_coor[0] > 4.2 && string_coor[0] < 4.6){
                   if(string_coor[1] > 51.7 && string_coor[1] < 52.09){
-                    content.innerHTML = '<p>ROTTERDAM</p>';
+                    content.innerHTML = rotterdam_popup;
                     overlay.setPosition(ol.proj.fromLonLat([4.469634, 51.923936]));
                   }
-                }
-                else{
-                  overlay.setPosition(undefined);
                 }
             });
 
