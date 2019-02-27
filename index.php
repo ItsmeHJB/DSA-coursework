@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8">
     <head>
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
@@ -9,9 +10,9 @@
     </head>
     <body>
         <div class = "navbar">
-          <a href = "/">Home</a>
-          <a href = "/hull">Hull</a>
-          <a href = "/rotterdam">Rotterdam</a>
+          <a href = "">Home</a>
+          <a href = "hull/">Hull</a>
+          <a href = "rotterdam/">Rotterdam</a>
         </div>
         <?php
 
