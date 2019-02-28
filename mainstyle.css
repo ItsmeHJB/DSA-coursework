@@ -108,7 +108,7 @@
   text-align: center;
   padding: 10px;
   text-decoration: none;
-  font-family:
+  font-family: none;
 }
 
 .navbar a:hover{

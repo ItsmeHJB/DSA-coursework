@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
     <head>
         <title>Hull - Rotterdam Information</title>
-        <link rel = "stylesheet" href = "mainstyle.css?v1.4"/>
+        <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
         <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
         <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
@@ -33,45 +33,49 @@
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
-          $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
-          $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
-          $row = $dbq->fetch(PDO::FETCH_ASSOC);
-          $hull_lat = $row['latitude'];
-          $hull_long = $row['longitude'];
-          $hull_country = $row['country'];
-          $hull_pop = $row['population'];
-          $hull_curr = $row['currency'];
-          $hull_prov = $row['province'];
-          $hull_area = $row['area'];
-          $hull_web = $row['website'];
+            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+            $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            $hull_woeid = $row['woeid_city'];
+            $hull_name = $row['name'];
+            $hull_lat = $row['latitude'];
+            $hull_long = $row['longitude'];
+            $hull_country = $row['country'];
+            $hull_pop = $row['population'];
+            $hull_curr = $row['currency'];
+            $hull_prov = $row['province'];
+            $hull_area = $row['area'];
+            $hull_web = $row['website'];
 
-          $db = null;
-          $dbq = null;
+            $db = null;
+            $dbq = null;
         }
         catch (PDOException $e){
-          echo "Error!: " . $e->getMessage() . "<br/>";
-          die();
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
         }
 
         try{
-          $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
-          $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
-          $row = $dbq->fetch(PDO::FETCH_ASSOC);
-          $rotterdam_lat = $row['latitude'];
-          $rotterdam_long = $row['longitude'];
-          $rotterdam_country = $row['country'];
-          $rotterdam_pop = $row['population'];
-          $rotterdam_curr = $row['currency'];
-          $rotterdam_prov = $row['province'];
-          $rotterdam_area = $row['area'];
-          $rotterdam_web = $row['website'];
+            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
+            $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            $rotterdam_woeid = $row['woeid_city'];
+            $rotterdam_name = $row['name'];
+            $rotterdam_lat = $row['latitude'];
+            $rotterdam_long = $row['longitude'];
+            $rotterdam_country = $row['country'];
+            $rotterdam_pop = $row['population'];
+            $rotterdam_curr = $row['currency'];
+            $rotterdam_prov = $row['province'];
+            $rotterdam_area = $row['area'];
+            $rotterdam_web = $row['website'];
 
           $db = null;
           $dbq = null;
         }
         catch (PDOException $e){
-          echo "Error!: " . $e->getMessage() . "<br/>";
-          die();
+            echo "Error!: " . $e->getMessage() . "<br/>";
+            die();
         }
 
         $dark_sky_api_key = 'f5d3e696f6c590a25f1de6811d30d390';
@@ -367,7 +371,7 @@
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
 
-            // Create overlay too attach popup to map
+            // Create overlay to attach popup to map
             var overlay = new ol.Overlay({
                 element: container,
                 autoPan: false
@@ -395,14 +399,19 @@
                 })
             });
 
-            var hullLon = parseFloat("<?php echo $hull_long ?>");
-            var hullLat = parseFloat("<?php echo $hull_lat ?>");
-
             //Adding markers on the map
             var marker1 = new ol.Feature({
                 geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([hullLon, hullLat])
-                ),  // Cordinates of Hull's city centre
+                    ol.proj.fromLonLat([<?php echo $hull_long ?>, <?php echo $hull_lat ?>])
+                ), // Cordinates of Hull's city centre from database
+                name: "<?php echo $hull_name ?>",
+                woeid: <?php echo $hull_woeid ?>,
+                country: "<?php echo $hull_country ?>",
+                population: "<?php echo $hull_pop ?>",
+                currency: "<?php echo $hull_curr ?>",
+                province: "<?php echo $hull_prov ?>",
+                area: "<?php echo $hull_area ?>",
+                website: "<?php echo $hull_web ?>"
             });
 
             marker1.setStyle(new ol.style.Style({
@@ -413,13 +422,18 @@
                 }))
             }));
 
-            var rottLon = parseFloat("<?php echo $rotterdam_long ?>");
-            var rottLat = parseFloat("<?php echo $rotterdam_lat ?>");
-
             var marker2 = new ol.Feature({
                 geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([rottLon, rottLat])
-                ),  // Cordinates of Rotterdam's city centre
+                    ol.proj.fromLonLat([<?php echo $rotterdam_long ?>, <?php echo $rotterdam_lat ?>])
+                ),  // Coordinates of Rotterdam's city centre
+                name: "<?php echo $rotterdam_name ?>",
+                woeid: <?php echo $rotterdam_woeid ?>,
+                country: "<?php echo $rotterdam_country ?>",
+                population: "<?php echo $rotterdam_pop ?>",
+                currency: "<?php echo $rotterdam_curr ?>",
+                province: "<?php echo $rotterdam_prov ?>",
+                area: "<?php echo $rotterdam_area ?>",
+                website: "<?php echo $rotterdam_web ?>"
             });
 
             marker2.setStyle(new ol.style.Style({
@@ -438,36 +452,52 @@
             });
             map.addLayer(markerVectorLayer);
 
-            var hull_popup = '<h3>Hull Info</h3>\
-            Country: <?php echo $hull_country;?><br/>\
-            Population: <?php echo $hull_pop;?><br/>\
-            Currency: <?php echo $hull_curr;?><br/>\
-            Province: <?php echo $hull_prov;?><br/>\
-            Area: <?php echo $hull_area;?>km\xB2<br/>\
-            Wesbite: <a href="<?php echo $hull_web;?>">hull.gov.uk</a>';
-
-            var rotterdam_popup = '<h3>Rotterdam Info</h3>\
-            Country: <?php echo $rotterdam_country;?><br/>\
-            Population: <?php echo $rotterdam_pop;?><br/>\
-            Currency: <?php echo $rotterdam_curr;?><br/>\
-            Province: <?php echo $rotterdam_prov;?><br/>\
-            Area: <?php echo $rotterdam_area;?>km\xB2<br/>\
-            Wesbite: <a href="<?php echo $rotterdam_web;?>">rotterdam.nl</a>';
+            var hitTolerance = 0;
 
             // Click handler for map to create the popup
             map.on('pointermove', function(evt) {
-                var coordinate = evt.coordinate;
+                var hit = false;
+                map.forEachFeatureAtPixel(evt.pixel, function(){
+                  hit = true;
+                }, {
+                  hitTolerance: hitTolerance
+                });
+                if(hit) {
+                    var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
+                        hitTolerance: hitTolerance
+                      });
+                    var featName = featuresArray[0].get('name');
+                    var featCountry = featuresArray[0].get('country');
+                    var featPop = featuresArray[0].get('population');
+                    var featCurr = featuresArray[0].get('currency');
+                    var featProv = featuresArray[0].get('province');
+                    var featArea = featuresArray[0].get('area');
+                    var featWeb = featuresArray[0].get('web');
+
+                    var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                    content.innerHTML = "<h3>" + featName + "</h3>" +
+                    "Country: " + featCountry + "<br/>Population: " + featPop + "<br/>" +
+                    "Currency: " + featCurr + "<br/>Province: " + featProv + "<br/>" +
+                    "Area: " + featArea + "km\xB2<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                    overlay.setPosition(featureCoords);
+                }
+                //marker1.changed();
+
+                /*var coordinate = evt.coordinate;
                 var string_coor = ol.proj.toLonLat(coordinate);
                 console.log(string_coor);
                 if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
                   if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
-                    content.innerHTML = hull_popup;
+                    content.innerHTML = '<h3>Hull Info</h3><span class = \
+                    "coord">Lat: php echo $hull_lat;?> Long: php
+                    echo $hull_long;?></span>';
                     overlay.setPosition(ol.proj.fromLonLat([-0.339206, 53.743749]));
                   }
                 }
                 else if(string_coor[0] > 4.2 && string_coor[0] < 4.6){
                   if(string_coor[1] > 51.7 && string_coor[1] < 52.09){
-                    content.innerHTML = rotterdam_popup;
+                    content.innerHTML = '<p>ROTTERDAM</p>';
                     overlay.setPosition(ol.proj.fromLonLat([4.469634, 51.923936]));
                   }
                 }
