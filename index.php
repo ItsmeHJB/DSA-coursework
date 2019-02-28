@@ -465,7 +465,7 @@
                 if(hit) {
                     var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
                         hitTolerance: hitTolerance
-                      });
+                    });
                     var featName = featuresArray[0].get('name');
                     var featCountry = featuresArray[0].get('country');
                     var featPop = featuresArray[0].get('population');
@@ -477,29 +477,10 @@
                     var featureCoords = featuresArray[0].getGeometry().getCoordinates();
 
                     content.innerHTML = "<h3>" + featName + "</h3>" +
-                    "Country: " + featCountry + "<br/>Population: " + featPop + "<br/>" +
-                    "Currency: " + featCurr + "<br/>Province: " + featProv + "<br/>" +
-                    "Area: " + featArea + "km\xB2<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                        "Country: " + featCountry + "<br/>Population: " + featPop + "<br/>" +
+                        "Currency: " + featCurr + "<br/>Province: " + featProv + "<br/>" +
+                        "Area: " + featArea + "km\xB2<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
                     overlay.setPosition(featureCoords);
-                }
-                //marker1.changed();
-
-                /*var coordinate = evt.coordinate;
-                var string_coor = ol.proj.toLonLat(coordinate);
-                console.log(string_coor);
-                if(string_coor[0] > -0.6 && string_coor[0] < -0.01){
-                  if(string_coor[1] > 53.6 && string_coor[1] < 53.9){
-                    content.innerHTML = '<h3>Hull Info</h3><span class = \
-                    "coord">Lat: php echo $hull_lat;?> Long: php
-                    echo $hull_long;?></span>';
-                    overlay.setPosition(ol.proj.fromLonLat([-0.339206, 53.743749]));
-                  }
-                }
-                else if(string_coor[0] > 4.2 && string_coor[0] < 4.6){
-                  if(string_coor[1] > 51.7 && string_coor[1] < 52.09){
-                    content.innerHTML = '<p>ROTTERDAM</p>';
-                    overlay.setPosition(ol.proj.fromLonLat([4.469634, 51.923936]));
-                  }
                 }
             });
 
