@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <meta charset="UTF-8">
 <head>
     <title>Kingston-Upon Hull Information</title>
@@ -27,6 +27,29 @@
       $area = $row['area'];
       $time_zone = $row['time_zone'];
       $website = $row['website'];
+
+      $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
+      $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
+
+      $poisArray = array();
+
+      for ($i = 0; $i < $poiCount; $i++) {
+          $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
+
+          $tempPoi = array(
+              $pois['longitude'],
+              $pois['latitude'],
+              $pois['name'],
+              $pois['capacity'],
+              $pois['cost'],
+              $pois['launch'],
+              $pois['website'],
+              $pois['opening_time'],
+              $pois['closing_time']
+          );
+
+          $poisArray[] = $tempPoi;
+      }
 
       $db = null;
       $dbq = null;
@@ -90,20 +113,91 @@
     <span class = "humidity">Outside Humidity: <?php echo $humidity;?>%</span>
     <br/>
     </div>
-    <div id="map1" class="map"></div>
+
+    <div id="map" class="map"></div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+
     <script type="text/javascript">
-        var map1 = new ol.Map({
-            target: 'map1',
+        var container = document.getElementById('popup');
+        var content = document.getElementById('popup-content');
+        var closer = document.getElementById('popup-closer');
+
+        // Create overlay to attach popup to map
+        var overlay = new ol.Overlay({
+            element: container,
+            autoPan: false
+        });
+
+        // Click handler to hide popups
+        closer.onclick = function() {
+            overlay.setPosition(undefined);
+            closer.blur();
+            return false;
+        };
+
+        // Create the map
+        var map = new ol.Map({
+            target: 'map',
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
                 })
             ],
+            overlays: [overlay],
             view: new ol.View({
-                center: ol.proj.fromLonLat([-0.3367413, 53.7456709]),
+                center: ol.proj.fromLonLat([<?php echo $long ?>, <?php echo $lat ?>]),
                 zoom: 13
             })
         });
+
+        //convert pois array in php to js
+        var pois = <?php echo json_encode($poisArray); ?>;
+
+        //Adding markers on the map in a for...in loop
+        var x;
+        var markers = [];
+        for (x in pois) {
+            var feature = new ol.Feature({
+                geometry: new ol.geom.Point(
+                    ol.proj.fromLonLat([pois[x][0], pois[x][1]])
+                ),  // Add's point to the coordinates from the database
+                name: pois[x][2],
+                capacity: pois[x][3],
+                cost: pois[x][4],
+                launch: pois[x][5],
+                website: pois[x][6],
+                opening: pois[x][7],
+                closing: pois[x][8]
+            });
+
+            feature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                    color: '#ff0000',
+                    crossOrigin: 'anonymous',
+                    src: 'imageresources/dot.png'
+                }))
+            }));
+
+            markers.push(feature);
+        }
+
+        //console.log(markers[0].get('name'));
+
+        var vectorSource = new ol.source.Vector({
+            features: []
+        });
+        for (i in markers){
+            vectorSource.addFeature(markers[i]);
+        }
+
+        var markerVectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+        });
+        map.addLayer(markerVectorLayer);
+
     </script>
 </body>
 </html>
