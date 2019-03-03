@@ -42,25 +42,46 @@ echo    '<atom:link href="http://www.afterhoursprogramming.com/services/rss/" re
 
 
 $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
-for($i = 0;$i < 2; $i++){
+// for($i = 0;$i < 2; $i++){
 
-  $dbq = $db->query("SELECT * FROM `tb_cities` WHERE 'time_zone' = $i");
+$i = 0;
 
-  $row = $dbq->fetch(PDO::FETCH_ASSOC);
-  $woe = $row['woeid_city'];
-  $name = $row['name'];
-  $lat = $row['latitude'];
-  $long = $row['longitude'];
-  $country = $row['country'];
-  $pop = $row['population'];
-  $cur = $row['currency'];
-  $prov = $row['province'];
-  $area = $row['area'];
-  $tz = $row['time_zone'];
-  $website = $row['website'];
+$dbq = $db->query("SELECT * FROM `tb_cities` WHERE 'time_zone' = $i");
 
-  linkElementCity($woe, $name, $lat, $long, $country, $pop, $cur, $prov, $area, $tz, $website);
-}
+$row = $dbq->fetch(PDO::FETCH_ASSOC);
+$woe = $row['woeid_city'];
+$name = $row['name'];
+$lat = $row['latitude'];
+$long = $row['longitude'];
+$country = $row['country'];
+$pop = $row['population'];
+$cur = $row['currency'];
+$prov = $row['province'];
+$area = $row['area'];
+$tz = $row['time_zone'];
+$website = $row['website'];
+
+linkElementCity($woe, $name, $lat, $long, $country, $pop, $cur, $prov, $area, $tz, $website);
+
+$i = 1;
+
+$dbq = $db->query("SELECT * FROM `tb_cities` WHERE 'time_zone' = $i");
+
+$row = $dbq->fetch(PDO::FETCH_ASSOC);
+$woe = $row['woeid_city'];
+$name = $row['name'];
+$lat = $row['latitude'];
+$long = $row['longitude'];
+$country = $row['country'];
+$pop = $row['population'];
+$cur = $row['currency'];
+$prov = $row['province'];
+$area = $row['area'];
+$tz = $row['time_zone'];
+$website = $row['website'];
+
+linkElementCity($woe, $name, $lat, $long, $country, $pop, $cur, $prov, $area, $tz, $website);
+//}
 
 $db = null;
 $dbq = null;
