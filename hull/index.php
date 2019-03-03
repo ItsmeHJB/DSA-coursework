@@ -149,7 +149,7 @@
             overlays: [overlay],
             view: new ol.View({
                 center: ol.proj.fromLonLat([<?php echo $long ?>, <?php echo $lat ?>]),
-                zoom: 13
+                zoom: 11
             })
         });
 
@@ -160,9 +160,11 @@
         var x;
         var markers = [];
         for (x in pois) {
+            var long = parseFloat(pois[x][0]);
+            var lat = parseFloat(pois[x][1]);
             var feature = new ol.Feature({
                 geometry: new ol.geom.Point(
-                    ol.proj.fromLonLat([pois[x][0], pois[x][1]])
+                    ol.proj.fromLonLat([long, lat])
                 ),  // Add's point to the coordinates from the database
                 name: pois[x][2],
                 capacity: pois[x][3],
@@ -197,6 +199,37 @@
             source: vectorSource,
         });
         map.addLayer(markerVectorLayer);
+
+        var hitTolerance = 0;
+
+        map.on('pointermove', function(evt) {
+            var hit = false;
+            map.forEachFeatureAtPixel(evt.pixel, function(){
+                hit = true;
+            }, {
+                hitTolerance: hitTolerance
+            });
+            if(hit) {
+                var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
+                    hitTolerance: hitTolerance
+                });
+                var featName = featuresArray[0].get('name');
+                var featCapacity = featuresArray[0].get('capacity');
+                var featCost = featuresArray[0].get('cost');
+                var featLaunch = featuresArray[0].get('launch');
+                var featOpening = featuresArray[0].get('opening');
+                var featClosing = featuresArray[0].get('closing');
+                var featWeb = featuresArray[0].get('website');
+
+                var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                content.innerHTML = "<h3>" + featName + "</h3>" +
+                    "Capacity: " + featCapacity + "<br/>Entry cost: £" + featCost + "<br/>" +
+                    "Launch date: " + featLaunch + "<br/>Opening time: " + featOpening + "<br/>" +
+                    "Closing time: " + featClosing + "<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                overlay.setPosition(featureCoords);
+            }
+        });
 
     </script>
 </body>
