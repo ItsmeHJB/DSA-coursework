@@ -4,6 +4,7 @@
   background-color: #f3f3f3;
   border-radius: 5px;
   overflow: hidden;
+  float: left;
 }
 
 .flickrtitle{
@@ -54,3 +55,4 @@ a{
   width: 100%;
   height: auto;
 }
+

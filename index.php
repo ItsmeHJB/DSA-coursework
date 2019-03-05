@@ -16,7 +16,7 @@
         </div>
         <?php
 
-        $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
+        $hull_info_string = file_get_contents("http://www.theoldschool.info/clientraw.txt");
         $hull_info_array = explode(" ", $hull_info_string);
 
         $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");

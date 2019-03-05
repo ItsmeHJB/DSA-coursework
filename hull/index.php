@@ -69,7 +69,7 @@
     </div>
     <div class = "content">
     <?php
-    $weather_info_array = explode( " ", file_get_contents("http://www.ewwa.net/wx/clientraw.txt"));
+    $weather_info_array = explode( " ", file_get_contents("http://www.theoldschool.info/clientraw.txt"));
     $temp = $weather_info_array[4];
     $rain_amount = $weather_info_array[7];
     $windspeed = $weather_info_array[1] * 1.151;
