@@ -34,6 +34,7 @@ for($i = 0; $i < 50; $i++){
   array_push($images, $picture_url);
   echo "<img crossorigin='anonymous' id ='flickrImage{$name}{$i}' class = 'flickrimage' src='{$picture_url}'/>";
 }
+echo "</section>";
 echo "</div>";
 echo "</div>";
 
@@ -51,7 +52,7 @@ print <<<EOT
           images.push(document.getElementById(thisID));
           console.log(images[i]);
           var storageFile = localStorage.getItem(thisID) || {},
-            thisIDdate = "dateStored" + thisID,
+            thisIDdate = "dateStored{$name}",
             storageFileDate = localStorage.getItem(thisIDdate),
             date = new Date(),
             todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
@@ -74,6 +75,7 @@ print <<<EOT
                   var imgAsDataURL = imgCanvas.toDataURL("image/jpeg");
                   
                   try{
+                      //console.log(imgAsDataURL);
                       localStorage.setItem(thisID, imgAsDataURL);
                       localStorage.setItem(thisIDdate, todaysDate);
                   }
@@ -81,12 +83,13 @@ print <<<EOT
                       console.log("Storage failed: " + e);
                   }
               
-              images[i].setAttribute("src", imageURLs[i]);
               console.log("Saved image: " + (i + 1));
+              console.log("imageURL: " + imageURLs[i]);
+              //images[i].setAttribute("src", imageURLs[i]);
           }
           else{
-              images[i].setAttribute("src", storageFile);
               console.log("Loaded image: " + (i + 1));
+              //images[i].setAttribute("src", storageFile);
           }
       }
       
