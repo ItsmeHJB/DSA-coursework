@@ -15,10 +15,20 @@
         </div>
         <?php
 
-        $hull_info_string = file_get_contents("http://www.theoldschool.info/clientraw.txt");
+        $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
+
+        if($hull_info_string == ""){
+            $hull_info_string = file_get_contents("StaticData/hull.txt");
+        }
+
         $hull_info_array = explode(" ", $hull_info_string);
 
         $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
+
+        if($rotterdam_info_string == ""){
+            $rotterdam_info_string = file_get_contents("StaticData/rotterdam.txt");
+        }
+
         $rotterdam_info_array = explode(" ", $rotterdam_info_string);
 
         $hull_temp = $hull_info_array[4];

@@ -65,7 +65,13 @@
       die();
     }
 
-    $weather_info_array = explode(" ", file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt"));
+    $weather_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
+
+    if($weather_info_string == ""){
+        $weather_info_string = file_get_contents("StaticData/rotterdam.txt");
+    }
+
+    $weather_info_array = explode(" ", $weather_info_string);
     $temp = $weather_info_array[4];
     $rain_amount = $weather_info_array[7];
     $windspeed = $weather_info_array[1] * 1.151;
