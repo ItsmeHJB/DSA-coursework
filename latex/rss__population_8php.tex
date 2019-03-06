@@ -1,0 +1,142 @@
+\hypertarget{rss__population_8php}{}\section{rss\+\_\+population.\+php File Reference}
+\label{rss__population_8php}\index{rss\_population.php@{rss\_population.php}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{rss__population_8php_a80f568297246ccd95f4a6a4a2f7d94f8}{link\+Element\+City}} (\$woeid\+\_\+city, \$name, \$latitude, \$longitude, \$\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}}, \$\mbox{\hyperlink{index_8php_aa78fa356925cd3f67d485c4d6846202b}{population}}, \$\mbox{\hyperlink{index_8php_abd84e0698c321abdbf211d5b8425d0b5}{currency}}, \$\mbox{\hyperlink{index_8php_a38d70414c65575df5643ad4296c9db2e}{province}}, \$\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}}, \$time\+\_\+zone, \$\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{rss__population_8php_a1fa3127fc82f96b1436d871ef02be319}{\$db}} = new P\+DO(\textquotesingle{}mysql\+:host=51.\+75.\+162.\+4;port=3306;dbname=db\+\_\+twincities\textquotesingle{}, \char`\"{}username\char`\"{}, \char`\"{}password\char`\"{})
+\item 
+\mbox{\hyperlink{rss__population_8php_a83018d9153d17d91fbcf3bc10158d34f}{\$i}} = 0
+\item 
+\mbox{\hyperlink{rss__population_8php_ab76933014035168a37e7e525ca8fbabe}{\$dbq}} = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT $\ast$ F\+R\+OM \`{}tb\+\_\+cities\`{} W\+H\+E\+RE \textquotesingle{}time\+\_\+zone\textquotesingle{} = \$i\char`\"{})
+\item 
+\mbox{\hyperlink{rss__population_8php_aa1d731aa570613e5bcff831bb10e9b87}{\$row}} = \$dbq-\/$>$fetch(P\+D\+O\+::\+F\+E\+T\+C\+H\+\_\+\+A\+S\+S\+OC)
+\item 
+\mbox{\hyperlink{rss__population_8php_a9c60c35ed0a350bd70ae19e37d4e8e40}{\$woe}} = \$row\mbox{[}\textquotesingle{}woeid\+\_\+city\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}{\$name}} = \$row\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_af498b42b83afed4dfe0af05fd802776c}{\$lat}} = \$row\mbox{[}\textquotesingle{}latitude\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a30223182013e2964ccbd7c134b3c52c1}{\$long}} = \$row\mbox{[}\textquotesingle{}longitude\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a1437a5f6eb157f0eb267a26e0ad4f1ba}{\$country}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}}\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a7ea9fc9a2200e371338829cd01e0c33e}{\$pop}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_aa78fa356925cd3f67d485c4d6846202b}{population}}\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a4ce296bba5f9b13816a1ef3e303f2efd}{\$cur}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_abd84e0698c321abdbf211d5b8425d0b5}{currency}}\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a02807a8d679a843a0e105217f5570c6f}{\$prov}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a38d70414c65575df5643ad4296c9db2e}{province}}\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a460a08379d150f8c151a07ad9a3251cd}{\$area}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}}\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a6cdebd78b0146538e96a994de1c736d6}{\$tz}} = \$row\mbox{[}\textquotesingle{}time\+\_\+zone\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{rss__population_8php_a2887d41d3bb2498db735eeb87efa2d73}{\$website}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}}\textquotesingle{}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rss__population_8php_a80f568297246ccd95f4a6a4a2f7d94f8}\label{rss__population_8php_a80f568297246ccd95f4a6a4a2f7d94f8}} 
+\index{rss\_population.php@{rss\_population.php}!linkElementCity@{linkElementCity}}
+\index{linkElementCity@{linkElementCity}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{linkElementCity()}{linkElementCity()}}
+{\footnotesize\ttfamily link\+Element\+City (\begin{DoxyParamCaption}\item[{}]{\$woeid\+\_\+city,  }\item[{}]{\$name,  }\item[{}]{\$latitude,  }\item[{}]{\$longitude,  }\item[{}]{\$country,  }\item[{}]{\$population,  }\item[{}]{\$currency,  }\item[{}]{\$province,  }\item[{}]{\$area,  }\item[{}]{\$time\+\_\+zone,  }\item[{}]{\$website }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{rss__population_8php_a460a08379d150f8c151a07ad9a3251cd}\label{rss__population_8php_a460a08379d150f8c151a07ad9a3251cd}} 
+\index{rss\_population.php@{rss\_population.php}!\$area@{\$area}}
+\index{\$area@{\$area}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$area}{$area}}
+{\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a1437a5f6eb157f0eb267a26e0ad4f1ba}\label{rss__population_8php_a1437a5f6eb157f0eb267a26e0ad4f1ba}} 
+\index{rss\_population.php@{rss\_population.php}!\$country@{\$country}}
+\index{\$country@{\$country}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$country}{$country}}
+{\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a4ce296bba5f9b13816a1ef3e303f2efd}\label{rss__population_8php_a4ce296bba5f9b13816a1ef3e303f2efd}} 
+\index{rss\_population.php@{rss\_population.php}!\$cur@{\$cur}}
+\index{\$cur@{\$cur}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$cur}{$cur}}
+{\footnotesize\ttfamily \$cur = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_abd84e0698c321abdbf211d5b8425d0b5}{currency}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a1fa3127fc82f96b1436d871ef02be319}\label{rss__population_8php_a1fa3127fc82f96b1436d871ef02be319}} 
+\index{rss\_population.php@{rss\_population.php}!\$db@{\$db}}
+\index{\$db@{\$db}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$db}{$db}}
+{\footnotesize\ttfamily \$db = new P\+DO(\textquotesingle{}mysql\+:host=51.\+75.\+162.\+4;port=3306;dbname=db\+\_\+twincities\textquotesingle{}, \char`\"{}username\char`\"{}, \char`\"{}password\char`\"{})}
+
+\mbox{\Hypertarget{rss__population_8php_ab76933014035168a37e7e525ca8fbabe}\label{rss__population_8php_ab76933014035168a37e7e525ca8fbabe}} 
+\index{rss\_population.php@{rss\_population.php}!\$dbq@{\$dbq}}
+\index{\$dbq@{\$dbq}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$dbq}{$dbq}}
+{\footnotesize\ttfamily \$dbq = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT $\ast$ F\+R\+OM \`{}tb\+\_\+cities\`{} W\+H\+E\+RE \textquotesingle{}time\+\_\+zone\textquotesingle{} = \$i\char`\"{})}
+
+\mbox{\Hypertarget{rss__population_8php_a83018d9153d17d91fbcf3bc10158d34f}\label{rss__population_8php_a83018d9153d17d91fbcf3bc10158d34f}} 
+\index{rss\_population.php@{rss\_population.php}!\$i@{\$i}}
+\index{\$i@{\$i}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$i}{$i}}
+{\footnotesize\ttfamily \$i = 0}
+
+\mbox{\Hypertarget{rss__population_8php_af498b42b83afed4dfe0af05fd802776c}\label{rss__population_8php_af498b42b83afed4dfe0af05fd802776c}} 
+\index{rss\_population.php@{rss\_population.php}!\$lat@{\$lat}}
+\index{\$lat@{\$lat}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$lat}{$lat}}
+{\footnotesize\ttfamily \$lat = \$row\mbox{[}\textquotesingle{}latitude\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a30223182013e2964ccbd7c134b3c52c1}\label{rss__population_8php_a30223182013e2964ccbd7c134b3c52c1}} 
+\index{rss\_population.php@{rss\_population.php}!\$long@{\$long}}
+\index{\$long@{\$long}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$long}{$long}}
+{\footnotesize\ttfamily \$long = \$row\mbox{[}\textquotesingle{}longitude\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}\label{rss__population_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}} 
+\index{rss\_population.php@{rss\_population.php}!\$name@{\$name}}
+\index{\$name@{\$name}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$name}{$name}}
+{\footnotesize\ttfamily \$name = \$row\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a7ea9fc9a2200e371338829cd01e0c33e}\label{rss__population_8php_a7ea9fc9a2200e371338829cd01e0c33e}} 
+\index{rss\_population.php@{rss\_population.php}!\$pop@{\$pop}}
+\index{\$pop@{\$pop}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$pop}{$pop}}
+{\footnotesize\ttfamily \$pop = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_aa78fa356925cd3f67d485c4d6846202b}{population}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a02807a8d679a843a0e105217f5570c6f}\label{rss__population_8php_a02807a8d679a843a0e105217f5570c6f}} 
+\index{rss\_population.php@{rss\_population.php}!\$prov@{\$prov}}
+\index{\$prov@{\$prov}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$prov}{$prov}}
+{\footnotesize\ttfamily \$prov = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a38d70414c65575df5643ad4296c9db2e}{province}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_aa1d731aa570613e5bcff831bb10e9b87}\label{rss__population_8php_aa1d731aa570613e5bcff831bb10e9b87}} 
+\index{rss\_population.php@{rss\_population.php}!\$row@{\$row}}
+\index{\$row@{\$row}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$row}{$row}}
+{\footnotesize\ttfamily \$row = \$dbq-\/$>$fetch(P\+D\+O\+::\+F\+E\+T\+C\+H\+\_\+\+A\+S\+S\+OC)}
+
+\mbox{\Hypertarget{rss__population_8php_a6cdebd78b0146538e96a994de1c736d6}\label{rss__population_8php_a6cdebd78b0146538e96a994de1c736d6}} 
+\index{rss\_population.php@{rss\_population.php}!\$tz@{\$tz}}
+\index{\$tz@{\$tz}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$tz}{$tz}}
+{\footnotesize\ttfamily \$tz = \$row\mbox{[}\textquotesingle{}time\+\_\+zone\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a2887d41d3bb2498db735eeb87efa2d73}\label{rss__population_8php_a2887d41d3bb2498db735eeb87efa2d73}} 
+\index{rss\_population.php@{rss\_population.php}!\$website@{\$website}}
+\index{\$website@{\$website}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$website}{$website}}
+{\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}}\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{rss__population_8php_a9c60c35ed0a350bd70ae19e37d4e8e40}\label{rss__population_8php_a9c60c35ed0a350bd70ae19e37d4e8e40}} 
+\index{rss\_population.php@{rss\_population.php}!\$woe@{\$woe}}
+\index{\$woe@{\$woe}!rss\_population.php@{rss\_population.php}}
+\subsubsection{\texorpdfstring{\$woe}{$woe}}
+{\footnotesize\ttfamily \$woe = \$row\mbox{[}\textquotesingle{}woeid\+\_\+city\textquotesingle{}\mbox{]}}
+
