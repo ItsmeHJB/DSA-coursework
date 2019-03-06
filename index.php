@@ -16,7 +16,7 @@
         </div>
         <?php
 
-        $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
+        $hull_info_string = file_get_contents("http://www.theoldschool.info/clientraw.txt");
         $hull_info_array = explode(" ", $hull_info_string);
 
         $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
@@ -370,6 +370,8 @@
             var container = document.getElementById('popup');
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
+            var clicked = false;
+            var clickedName;
 
             // Create overlay to attach popup to map
             var overlay = new ol.Overlay({
@@ -381,6 +383,8 @@
             closer.onclick = function() {
                 overlay.setPosition(undefined);
                 closer.blur();
+                clicked = false;
+                clickedName = null;
                 return false;
             };
 
@@ -466,15 +470,57 @@
                     var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
                         hitTolerance: hitTolerance
                     });
+
+                    var featName = featuresArray[0].get('name');
+
+                    if (featName != clickedName) {
+                        clicked = false;
+                        clickedName = null;
+
+                        var featCountry = featuresArray[0].get('country');
+                        var featPop = featuresArray[0].get('population');
+                        var featCurr = featuresArray[0].get('currency');
+                        var featProv = featuresArray[0].get('province');
+                        var featArea = featuresArray[0].get('area');
+                        var featWeb = featuresArray[0].get('website');
+
+                        var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                        content.innerHTML = "<h3>" + featName + "</h3>" +
+                            "Country: " + featCountry + "<br/>Population: " + featPop + "<br/>" +
+                            "Currency: " + featCurr + "<br/>Province: " + featProv + "<br/>" +
+                            "Area: " + featArea + "km\xB2<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                        overlay.setPosition(featureCoords);
+                    }
+                }
+                else if (clicked == false) {
+                    overlay.setPosition(null);
+                }
+            });
+
+            map.on('singleclick', function(evt) {
+                var hit = false;
+                map.forEachFeatureAtPixel(evt.pixel, function(){
+                    hit = true;
+                }, {
+                    hitTolerance: hitTolerance
+                });
+                if(hit) {
+                    clicked = true;
+                    var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
+                        hitTolerance: hitTolerance
+                    });
                     var featName = featuresArray[0].get('name');
                     var featCountry = featuresArray[0].get('country');
                     var featPop = featuresArray[0].get('population');
                     var featCurr = featuresArray[0].get('currency');
                     var featProv = featuresArray[0].get('province');
                     var featArea = featuresArray[0].get('area');
-                    var featWeb = featuresArray[0].get('web');
+                    var featWeb = featuresArray[0].get('website');
 
                     var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                    clickedName = featName;
 
                     content.innerHTML = "<h3>" + featName + "</h3>" +
                         "Country: " + featCountry + "<br/>Population: " + featPop + "<br/>" +

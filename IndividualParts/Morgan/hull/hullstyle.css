@@ -1,5 +1,5 @@
 .title{
-    font: bold 40px "Lucida Sans Unicode";
+    font: bold 40px "Istok Web";
     font-variant: small-caps;
     text-align: center;
     margin-left: auto;
@@ -7,7 +7,7 @@
 }
 
 .content{
-    font: bold 20px "Lucida Sans Unicode";
+    font: bold 20px "Istok Web";
     font-variant: small-caps;
     text-align: center;
     margin-left: auto;
@@ -19,6 +19,86 @@
 
 .map {
     height: 90%;
-    width: 70%;
+    width: 50%;
     float: left;
+}
+
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font: normal 15px "Istok Web";
+    color: #3e3e3e;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 250px;
+}
+.ol-popup-content {
+    position: relative;
+    min-width: 200px;
+    min-height: 150px;
+    height: 100%;
+    max-height: 250px;
+    padding:2px;
+    white-space: normal;
+}
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+.ol-popup-closer:after {
+    content: "X";
+}
+
+.navbar{
+    overflow: hidden;
+    background-color: #e3e3e3;
+    min-height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.navbar a{
+    font: normal 30px "Istok Web";
+    float: left;
+    display: block;
+    color: #3e3e3e;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    background-color: #3e3e3e;
+    color: #e3e3e3;
+}
+
+html:not(.navbar){
+    padding-top: 60px;
 }

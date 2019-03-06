@@ -25,7 +25,7 @@
 
 .ol-popup {
     position: absolute;
-    background-color: #e3e3e3;
+    background-color: white;
     padding: 15px;
     border-radius: 10px;
     font: normal 15px "Istok Web";
@@ -92,7 +92,6 @@
   text-align: center;
   padding: 10px;
   text-decoration: none;
-  font-family: none;
 }
 
 .navbar a:hover{

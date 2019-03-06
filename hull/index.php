@@ -124,6 +124,8 @@
         var container = document.getElementById('popup');
         var content = document.getElementById('popup-content');
         var closer = document.getElementById('popup-closer');
+        var clicked = false;
+        var clickedName;
 
         // Create overlay to attach popup to map
         var overlay = new ol.Overlay({
@@ -135,6 +137,8 @@
         closer.onclick = function() {
             overlay.setPosition(undefined);
             closer.blur();
+            clicked = false;
+            clickedName = null;
             return false;
         };
 
@@ -214,6 +218,44 @@
                     hitTolerance: hitTolerance
                 });
                 var featName = featuresArray[0].get('name');
+
+                if (featName != clickedName) {
+                    clicked = false;
+                    clickedName = null;
+                    var featCapacity = featuresArray[0].get('capacity');
+                    var featCost = featuresArray[0].get('cost');
+                    var featLaunch = featuresArray[0].get('launch');
+                    var featOpening = featuresArray[0].get('opening');
+                    var featClosing = featuresArray[0].get('closing');
+                    var featWeb = featuresArray[0].get('website');
+
+                    var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                    content.innerHTML = "<h3>" + featName + "</h3>" +
+                        "Capacity: " + featCapacity + "<br/>Entry cost: £" + featCost + "<br/>" +
+                        "Launch date: " + featLaunch + "<br/>Opening time: " + featOpening + "<br/>" +
+                        "Closing time: " + featClosing + "<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                    overlay.setPosition(featureCoords);
+                }
+            }
+            else if (clicked == false){
+                overlay.setPosition(null);
+            }
+        });
+
+        map.on('singleclick', function(evt) {
+            var hit = false;
+            map.forEachFeatureAtPixel(evt.pixel, function () {
+                hit = true;
+            }, {
+                hitTolerance: hitTolerance
+            });
+            if (hit) {
+                clicked = true;
+                var featuresArray = map.getFeaturesAtPixel(evt.pixel, {
+                    hitTolerance: hitTolerance
+                });
+                var featName = featuresArray[0].get('name');
                 var featCapacity = featuresArray[0].get('capacity');
                 var featCost = featuresArray[0].get('cost');
                 var featLaunch = featuresArray[0].get('launch');
@@ -222,6 +264,8 @@
                 var featWeb = featuresArray[0].get('website');
 
                 var featureCoords = featuresArray[0].getGeometry().getCoordinates();
+
+                clickedName = featName;
 
                 content.innerHTML = "<h3>" + featName + "</h3>" +
                     "Capacity: " + featCapacity + "<br/>Entry cost: £" + featCost + "<br/>" +
