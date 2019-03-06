@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <meta charset="UTF-8">
 <head>
     <title>Kingston-Upon Hull Information</title>
@@ -63,12 +63,7 @@
       echo "Error!: " . $e->getMessage() . "<br/>";
       die();
     }
-    ?>
-    <div class = "title">
-    <span class = "cityname">Kingston-Upon Hull Information</span>
-    </div>
-    <div class = "content">
-    <?php
+
     $weather_info_array = explode( " ", file_get_contents("http://www.ewwa.net/wx/clientraw.txt"));
     $temp = $weather_info_array[4];
     $rain_amount = $weather_info_array[7];
@@ -76,6 +71,10 @@
     $wind_direction = $weather_info_array[3];
     $humidity = $weather_info_array[5];
     ?>
+    <div class = "title">
+        <span class = "cityname">Kingston-Upon Hull Information</span>
+    </div>
+    <div class = "content">
     <br/>
     <span class = "temp">Temperature: <?php echo $temp;?>°C</span>
     <br/>

@@ -73,7 +73,7 @@
     $humidity = $weather_info_array[5];
     ?>
     <div class = "title">
-    <span class = "cityname">Rotterdam Information</span>
+        <span class = "cityname">Rotterdam Information</span>
     </div>
     <div class = "content">
     <br/>

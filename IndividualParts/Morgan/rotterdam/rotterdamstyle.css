@@ -19,7 +19,7 @@
 
 .map {
     height: 90%;
-    width: 70%;
+    width: 50%;
     float: left;
 }
 
@@ -76,29 +76,29 @@
 }
 
 .navbar{
-  overflow: hidden;
-  background-color: #e3e3e3;
-  min-height: 40px;
-  width: 100%;
-  position: fixed;
-  top: 0;
+    overflow: hidden;
+    background-color: #e3e3e3;
+    min-height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 .navbar a{
-  font: normal 30px "Istok Web";
-  float: left;
-  display: block;
-  color: #3e3e3e;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
+    font: normal 30px "Istok Web";
+    float: left;
+    display: block;
+    color: #3e3e3e;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
 }
 
 .navbar a:hover{
-  background-color: #3e3e3e;
-  color: #e3e3e3;
+    background-color: #3e3e3e;
+    color: #e3e3e3;
 }
 
 html:not(.navbar){
-  padding-top: 60px;
+    padding-top: 60px;
 }

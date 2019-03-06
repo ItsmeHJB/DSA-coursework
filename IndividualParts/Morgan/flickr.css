@@ -5,6 +5,7 @@
   border-radius: 5px;
   overflow: hidden;
   float: left;
+  margin-left: 40px;
 }
 
 .flickrtitle{
@@ -46,7 +47,7 @@ a{
   -webkit-column-count: 3;
   -webkit-column-gap: 2px;
   -moz-column-count: 3;
-  -mox-column-gap: 2px;
+  -moz-column-gap: 2px;
   column-count: 3;
   column-gap: 4px;
 }

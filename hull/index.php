@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <meta charset="UTF-8">
 <head>
     <title>Kingston-Upon Hull Information</title>

@@ -32,6 +32,7 @@ for($i = 0; $i < 50; $i++){
   $secret = $response->photos->photo[$i]->secret;
   $picture_url = "https://farm{$farmid}.staticflickr.com/{$serverid}/{$id}_{$secret}.jpg";
   array_push($images, $picture_url);
+  $name = str_replace(" ", "_", $name);
   echo "<img crossorigin='anonymous' id ='flickrImage{$name}{$i}' class = 'flickrimage' src='{$picture_url}'/>";
 }
 echo "</section>";
@@ -48,7 +49,8 @@ print <<<EOT
       str = "flickrImage";
       
       for(i = 0; i < 50; i++){
-          thisID = str.concat("{$name}", i.toString());
+          var name = "{$name}".replace(" ", "_");
+          thisID = str.concat(name, i.toString());
           images.push(document.getElementById(thisID));
           console.log(images[i]);
           var storageFile = localStorage.getItem(thisID) || {},
@@ -77,7 +79,9 @@ print <<<EOT
                   try{
                       //console.log(imgAsDataURL);
                       localStorage.setItem(thisID, imgAsDataURL);
-                      localStorage.setItem(thisIDdate, todaysDate);
+                      if(i == 49){
+                        localStorage.setItem(thisIDdate, todaysDate);
+                      }
                   }
                   catch(e){
                       console.log("Storage failed: " + e);
