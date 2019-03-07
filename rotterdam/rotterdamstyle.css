@@ -102,3 +102,18 @@
 html:not(.navbar){
   padding-top: 60px;
 }
+
+#photos{
+    line-height: 2px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 2px;
+    -moz-column-count: 2;
+    -moz-column-gap: 2px;
+    column-count: 2;
+    column-gap: 4px;
+}
+
+#photos img{
+    width: 100%;
+    height: auto;
+}

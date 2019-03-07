@@ -31,8 +31,6 @@
       $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
       $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
 
-
-
       $poisArray = array();
       $bigPhotoArray = array();
 

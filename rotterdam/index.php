@@ -33,6 +33,7 @@
       $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
 
       $poisArray = array();
+      $bigPhotoArray = array();
 
       for ($i = 0; $i < $poiCount; $i++) {
           $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
@@ -46,11 +47,32 @@
                 $pois['launch'],
                 $pois['website'],
                 $pois['opening_time'],
-                $pois['closing_time']
+                $pois['closing_time'],
+                $pois['woeid_city']
             );
 
           $poisArray[] = $tempPoi;
-        }
+          $poi_woeid = $pois['woeid_poi'];
+
+          $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
+          $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
+
+
+          for ($c = 0; $c < $photosCount; $c++) {
+              $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
+              $tempPhoto = null;
+
+              $tempPhoto = array(
+                  $photos['photo_id'],
+                  $photos['name'],
+                  $photos['link']
+
+              );
+              $photosArray[] = $tempPhoto;
+          }
+          array_push($bigPhotoArray, $photosArray);
+          $photosArray = array();
+      }
 
       $db = null;
       $dbq = null;
@@ -164,6 +186,7 @@
 
         //convert pois array in php to js
         var pois = <?php echo json_encode($poisArray); ?>;
+        var photos = <?php echo json_encode($bigPhotoArray); ?>;
 
         //Adding markers on the map in a for...in loop
         var x;
@@ -181,7 +204,23 @@
                 launch: pois[x][5],
                 website: pois[x][6],
                 opening: pois[x][7],
-                closing: pois[x][8]
+                closing: pois[x][8],
+                woeid: pois[x][9],
+                photo1id: photos[x][0][0],
+                photo1name: photos[x][0][1],
+                photo1link: photos[x][0][2],
+                photo2id: photos[x][1][0],
+                photo2name: photos[x][1][1],
+                photo2link: photos[x][0][2],
+                photo3id: photos[x][2][0],
+                photo3name: photos[x][2][1],
+                photo3link: photos[x][0][2],
+                photo4id: photos[x][3][0],
+                photo4name: photos[x][3][1],
+                photo4link: photos[x][0][2],
+                photo5id: photos[x][4][0],
+                photo5name: photos[x][4][1],
+                photo5link: photos[x][0][2]
             });
 
             feature.setStyle(new ol.style.Style({
@@ -267,6 +306,21 @@
                 var featOpening = featuresArray[0].get('opening');
                 var featClosing = featuresArray[0].get('closing');
                 var featWeb = featuresArray[0].get('website');
+                var photo1id = featuresArray[0].get('photo1id');
+                var photo1name = featuresArray[0].get('photo1name');
+                var photo1link = featuresArray[0].get('photo1link');
+                var photo2id = featuresArray[0].get('photo2id');
+                var photo2name = featuresArray[0].get('photo2name');
+                var photo2link = featuresArray[0].get('photo2link');
+                var photo3id = featuresArray[0].get('photo3id');
+                var photo3name = featuresArray[0].get('photo3name');
+                var photo3link = featuresArray[0].get('photo3link');
+                var photo4id = featuresArray[0].get('photo4id');
+                var photo4name = featuresArray[0].get('photo4name');
+                var photo4link = featuresArray[0].get('photo4link');
+                var photo5id = featuresArray[0].get('photo5id');
+                var photo5name = featuresArray[0].get('photo5name');
+                var photo5link = featuresArray[0].get('photo5link');
 
                 var featureCoords = featuresArray[0].getGeometry().getCoordinates();
 
@@ -275,7 +329,14 @@
                 content.innerHTML = "<h3>" + featName + "</h3>" +
                     "Capacity: " + featCapacity + "<br/>Entry cost: £" + featCost + "<br/>" +
                     "Launch date: " + featLaunch + "<br/>Opening time: " + featOpening + "<br/>" +
-                    "Closing time: " + featClosing + "<br/>Website: <a href=" + featWeb + ">" + featWeb + "</a>";
+                    "Closing time: " + featClosing + "<br/>Website: <a target ='_blank' href=" + featWeb + ">" + featWeb + "</a><br/>" +
+                    "Images: <div class='popupphotos'><section id='photos'>" +
+                    "<a target='_blank' href='" + photo1link + "'><img alt='" + photo1name + "' src='../imageresources/" + photo1id + ".jpg'/></a><br/>" +
+                    "<a target='_blank' href='" + photo2link + "'><img alt='" + photo2name + "' src='../imageresources/" + photo2id + ".jpg'/></a><br/>" +
+                    "<a target='_blank' href='" + photo3link + "'><img alt='" + photo3name + "' src='../imageresources/" + photo3id + ".jpg'/></a><br/>" +
+                    "<a target='_blank' href='" + photo4link + "'><img alt='" + photo4name + "' src='../imageresources/" + photo4id + ".jpg'/></a><br/>" +
+                    "<a target='_blank' href='" + photo5link + "'><img alt='" + photo5name + "' src='../imageresources/" + photo5id + ".jpg'/></a><br/>" +
+                    "</section></div>";
                 overlay.setPosition(featureCoords);
             }
         });
