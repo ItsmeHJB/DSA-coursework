@@ -106,7 +106,7 @@
         <br/>
         <span class = "temp">
           <?php
-          for($i = 0; $i < 5; $i++){
+          for($i = 0; $i < 4; $i++){
             switch($i){
               case 0:
                 continue;
@@ -238,18 +238,18 @@
         <br/>
         <span class = "temp">
           <?php
-          for($i = 0; $i < 5; $i++){
-            switch($i){
-              case 0:
-                continue;
-                break;
-              case 1:
-                echo "Tomorrow: Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
-                break;
-              default:
-                echo date('D', $rotterdam_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
-                break;
-            }
+          for($i = 0; $i < 4; $i++){
+              switch($i){
+                  case 0:
+                      continue;
+                      break;
+                  case 1:
+                      echo "Tomorrow: Hi: " . (string)substr(((($rottedam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                      break;
+                  default:
+                      echo date('D', $rotterdam_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                      break;
+              }
           }
           ?></span>
           <br/>
