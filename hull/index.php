@@ -50,102 +50,92 @@
               $pois['woeid_city']
           );
 
-
           $poisArray[] = $tempPoi;
           $poi_woeid = $pois['woeid_poi'];
 
           $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
           $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
 
-
           for ($c = 0; $c < $photosCount; $c++) {
               $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
 
               $tempPhoto = null;
-
               $tempPhoto = array(
                   $photos['photo_id'],
                   $photos['name'],
                   $photos['link']
-
               );
-
               $photosArray[] = $tempPhoto;
-
           }
-
           array_push($bigPhotoArray, $photosArray);
           $photosArray = array();
       }
-
       $db = null;
       $dbq = null;
-
-      /*echo "This is the city of {$name} ({$lat}, {$long}). ";
-      echo "It is in {$province} ({$country}). There is a ";
-      echo "population of {$population}. It has an area of {$area}km2.";*/
-
     }
     catch (PDOException $e){
       echo "Error!: " . $e->getMessage() . "<br/>";
       die();
     }
     ?>
+
     <div class = "title">
     <span class = "cityname">Kingston-Upon Hull Information</span>
     </div>
     <div class = "content">
-    <?php
-    $weather_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
 
-    if($weather_info_string == ""){
-        $weather_info_string = file_get_contents("StaticData/hull.txt");
-    }
+        <?php
+        $weather_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
 
-    $weather_info_array = explode( " ", $weather_info_string);
-    $temp = $weather_info_array[4];
-    $rain_amount = $weather_info_array[7];
-    $windspeed = $weather_info_array[1] * 1.151;
-    $wind_direction = $weather_info_array[3];
-    $humidity = $weather_info_array[5];
-    ?>
-    <br/>
-    <span class = "temp">Temperature: <?php echo $temp;?>°C</span>
-    <br/>
-    <span class = "rain">Rain Today: <?php echo $rain_amount;?>mm</span>
-    <br/>
-    <span class = "windspeed">Wind Speed: <?php echo $windspeed;?>mph</span>
-    <br/>
-    <span class = "winddir">Wind Direction: <?php echo $wind_direction."°";
-    if($wind_direction >= 337.5 || $wind_direction < 22.5){
-        echo " (N)";
-    }
-    elseif($wind_direction >= 22.5 && $wind_direction < 67.5){
-        echo " (NE)";
-    }
-    elseif($wind_direction >= 67.5 && $wind_direction < 112.5){
-        echo " (E)";
-    }
-    elseif($wind_direction >= 112.5 && $wind_direction < 157.5){
-        echo " (SE)";
-    }
-    elseif($wind_direction >= 157.5 && $wind_direction < 202.5){
-        echo " (S)";
-    }
-    elseif($wind_direction >= 202.5 && $wind_direction < 247.5){
-        echo " (SW)";
-    }
-    elseif($wind_direction >= 247.5 && $wind_direction < 292.5){
-        echo " (W)";
-    }
-    elseif($wind_direction >= 292.5 && $wind_direction < 337.5) {
-        echo " (NW)";
-    }
+        if($weather_info_string == ""){
+            $weather_info_string = file_get_contents("StaticData/hull.txt");
+        }
 
-    ?></span>
-    <br/>
-    <span class = "humidity">Outside Humidity: <?php echo $humidity;?>%</span>
-    <br/>
+        $weather_info_array = explode( " ", $weather_info_string);
+        $temp = $weather_info_array[4];
+        $rain_amount = $weather_info_array[7];
+        $windspeed = $weather_info_array[1] * 1.151;
+        $wind_direction = $weather_info_array[3];
+        $humidity = $weather_info_array[5];
+        ?>
+
+        <br/>
+        <span class = "temp">Temperature: <?php echo $temp;?>°C</span>
+        <br/>
+        <span class = "rain">Rain Today: <?php echo $rain_amount;?>mm</span>
+        <br/>
+        <span class = "windspeed">Wind Speed: <?php echo $windspeed;?>mph</span>
+        <br/>
+        <span class = "winddir">Wind Direction: <?php echo $wind_direction."°";
+        if($wind_direction >= 337.5 || $wind_direction < 22.5){
+            echo " (N)";
+        }
+        elseif($wind_direction >= 22.5 && $wind_direction < 67.5){
+            echo " (NE)";
+        }
+        elseif($wind_direction >= 67.5 && $wind_direction < 112.5){
+            echo " (E)";
+        }
+        elseif($wind_direction >= 112.5 && $wind_direction < 157.5){
+            echo " (SE)";
+        }
+        elseif($wind_direction >= 157.5 && $wind_direction < 202.5){
+            echo " (S)";
+        }
+        elseif($wind_direction >= 202.5 && $wind_direction < 247.5){
+            echo " (SW)";
+        }
+        elseif($wind_direction >= 247.5 && $wind_direction < 292.5){
+            echo " (W)";
+        }
+        elseif($wind_direction >= 292.5 && $wind_direction < 337.5) {
+            echo " (NW)";
+        }
+
+        ?></span>
+        <br/>
+        <span class = "humidity">Outside Humidity: <?php echo $humidity;?>%</span>
+        <br/>
     </div>
 
     <div id="map" class="map"></div>
@@ -215,7 +205,6 @@
                 website: pois[x][6],
                 opening: pois[x][7],
                 closing: pois[x][8],
-                woeid: pois[x][9],
                 photo1id: photos[x][0][0],
                 photo1name: photos[x][0][1],
                 photo1link: photos[x][0][2],
@@ -282,7 +271,6 @@
                     var featOpening = featuresArray[0].get('opening');
                     var featClosing = featuresArray[0].get('closing');
                     var featWeb = featuresArray[0].get('website');
-
 
                     var featureCoords = featuresArray[0].getGeometry().getCoordinates();
 

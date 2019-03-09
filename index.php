@@ -34,8 +34,6 @@
         $hull_temp = $hull_info_array[4];
         $hull_windspeed = $hull_info_array[1] * 1.151;
         $hull_icon = $hull_info_array[48];
-        $hull_temp = $hull_info_array[4];
-        $hull_windspeed = $hull_info_array[1] * 1.151;
 
         $rotterdam_temp = $rotterdam_info_array[4];
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
@@ -94,10 +92,6 @@
 
         $hull_response = json_decode(file_get_contents($hull_url));
         $rotterdam_response = json_decode(file_get_contents($rotterdam_url));
-
-        // for($i = 0; $i < 5; $i++){
-        //   echo $hull_response->daily->data[$i]->temperature . "<br/>";
-        // }
     ?>
     <div class = "city">
         <span class = "cityname">Kingston-Upon Hull</span>
@@ -362,10 +356,6 @@
         <br/>
         <span class = "link"><a href = "rotterdam/">More Info</a></span>
         </div>
-        <?php
-        $rotterdam_temp = $rotterdam_info_array[4];
-        $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
-        ?>
         <br/>
 
         <div id="map" class="map"></div>
@@ -538,7 +528,6 @@
                     overlay.setPosition(featureCoords);
                 }
             });
-
         </script>
     </body>
 </html>
