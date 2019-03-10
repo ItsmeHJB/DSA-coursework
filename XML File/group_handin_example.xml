@@ -27,7 +27,7 @@
             <contributor id="17012546"/>
             <contributor id="17006647"/>
             <contributor id="17009191"/>
-            <contributor id="10022080"/>
+            <contributor id="17022080"/>
             <!-- the following text fields allow for between 80 and 5000 characters -->
             <description> Starting with a simple design on MySQLWorkbench, we tried to keep the design 
                 as simple as possible in order to reduce the stress on any php or javascript we used. </description>
