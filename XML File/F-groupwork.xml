@@ -28,19 +28,25 @@
             <contributor id="17006647"/>
             <contributor id="17009191"/>
             <contributor id="17022080"/>
-            <description> Starting with a simple design on MySQLWorkbench, we tried to keep the design 
+            <description> 
+                Starting with a simple design on MySQLWorkbench, we tried to keep the design 
                 as simple as possible in order to reduce the stress on any php or javascript we used. In
                 order to decide what we needed to implement and store, we looked at the specification 
-                provided to us and broke it down into keys parts. </description>
-            <problems> Some of the initial issues we faced included trying to decide what exactly we needed
+                provided to us and broke it down into keys parts. 
+            </description>
+            <problems> 
+                Some of the initial issues we faced included trying to decide what exactly we needed
                 to include on our page to reach the functionality required, without making the database 
                 overly large or complex and hard to manage. Another issue we had was that we needed a primary
-                key for each of the cities and their places of interest. </problems>
-            <solutions> By the end of our design process, we had devided that quite simple having 3 tables was
+                key for each of the cities and their places of interest. 
+            </problems>
+            <solutions> 
+                By the end of our design process, we had devided that quite simple having 3 tables was
                 our solution to the issues. One dedicated to the city information, another to the places of 
                 interest (POI) and another to the photos associated with each POI. In order to solve the primary
                 key issue, we simply used the 'Wear On Earth ID' (WOEID) number to identify places as this was
-                a natural solution to our issue. </solutions>
+                a natural solution to our issue. 
+            </solutions>
             <hours_effort>2</hours_effort>
         </component>
         <component type="Database Implementation">
@@ -48,77 +54,139 @@
             <contributor id="17006647"/>
             <contributor id="17009191"/>
             <contributor id="17022080"/>
-            <description> When we came round to implemnting our database, we used phpmyadmin and a privately
+            <description> 
+                When we came round to implemnting our database, we used phpmyadmin and a privately
                 owned server to host the database on. We created our 3 seperate tables as manetioned in the 
                 implementation area above. As we populated the database, we researched both Hull and Rotterdam 
-                and what is available to do in each of these locations. </description>
-            <problems> One of the issues we faced was that a lot of the POI's didn't have a lot of in common
+                and what is available to do in each of these locations. 
+            </description>
+            <problems> 
+                One of the issues we faced was that a lot of the POI's didn't have a lot of in common
                 features like a capacity or entry fee like we originally proposed. Furthermore, we found that
-                the images couldn't actually be stored directly on the database. </problems>
-            <solutions> In order to overcome the first issue, we had to simply display null for a few values 
+                the images couldn't actually be stored directly on the database. 
+            </problems>
+            <solutions> 
+                In order to overcome the first issue, we had to simply display null for a few values 
                 in the table such as the capacity of Hull City Centre. As for the second issue, we decided 
-                to store the images locally and assign each photo an ID to be pulled instead. </solutions>
+                to store the images locally and assign each photo an ID to be pulled instead. 
+            </solutions>
             <hours_effort>6</hours_effort>
         </component>
         <component type="HTML Design &amp; Markup">
             <contributor id="17012546"/>
             <contributor id="17006647"/>
             <contributor id="17009191"/>
-            <description> First off, we identified that we were going to have 3 pages. The main page which 
+            <description> 
+                First off, we identified that we were going to have 3 pages. The main page which 
                 displayed the weather and location of each city with the weather at the top and the map at 
                 the bottom. Then for each of the subpages decicated to each city, we were going to use 
                 the same format of having the map on the left with all of the POI's displayed on it
-                followed by the weather on the left. </description>
-            <problems>  </problems>
-            <solutions>  </solutions>
+                followed by the weather on the left. When creating the site, we made sure to close
+                all of our tags in order to be proper HTML5.
+            </description>
+            <problems> Some of the main issues we had with the HTML was deciding what was the best 
+                layout we required, and what parts would be necessary to get a simple but customisbale
+                webpage
+            </problems>
+            <solutions>
+                One of the easier ways of doing this was to use simple div's which can each be designated
+                classes and names in order to specialise each piece of the webpage using the CSS as 
+                discussed later on in this file.
+            </solutions>
             <hours_effort>6</hours_effort>
         </component>
         <component type="PHP Coding">
             <contributor id="17012546"/>
             <contributor id="17006647"/>
             <contributor id="17009191"/>
-            <description> Sed eu nunc ipsum, nec suscipit lectus. Quisque quis nibh at sem dictum
-                pretium. Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor
-                felis. .... </description>
-            <problems> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis
-                lacinia porttitor. Pellentesque augue mauris, lobortis vel elementum quis, consequat
-                tempor felis. ... </problems>
-            <solutions> Integer dictum diam id ligula aliquet sed dapibus nibh elementum.
-                Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor felis..... </solutions>
-            <hours_effort>12</hours_effort>
+            <description> 
+                In order to have variables and values which can dynamically change, we used PHP to
+                do just this. For example after loading in the database using an SQL query, we 
+                then load the necessary parts into PHP variables to be used later, thus allowing
+                for values to change with each load of the page as the weather updates over time
+            </description>
+            <problems> 
+                As always with programming languages, one of the main tasks was based around
+                deciding which data structures we were going to use in this format to make sure
+                it ran smoothly with a little error management. However we also found additional
+                issues due to the fact that the PHP was interacting with HTML, JSON and JavaScript in 
+                the application.
+            </problems>
+            <solutions> 
+                In order to overcome the issues of data structure decision, we found that simple vars
+                are dynamic and can therefore be reused and can have any value assigned to it. Thus 
+                when we need to use variables around the code, translating them was very often not
+                required except in the JavaScript as some float point numbers were being stored as
+                strings instead. As for the PHP -> JS interaction, we found that JSON was a great 
+                help with the use of JSON_encode and decode to help translate most things we needed.
+            </solutions>
+            <hours_effort>20</hours_effort>
         </component>
         <component type="Javascript / JSON Coding">
             <contributor id="17012546"/>
             <contributor id="17006647"/>
-            <description> Sed eu nunc ipsum, nec suscipit lectus. Quisque quis nibh at sem dictum
-                pretium. Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor
-                felis. .... </description>
-            <problems> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis
-                lacinia porttitor. Pellentesque augue mauris, lobortis vel elementum quis, consequat
-                tempor felis.... </problems>
-            <solutions> Integer dictum diam id ligula aliquet sed dapibus nibh elementum.
-                Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor felis..... </solutions>
-            <hours_effort>8</hours_effort>
+            <description>
+                The JavaScript within the web application is entirely based around the map implementation.
+                This was an ideal use, as it allowed for an active item to be added to the page, without
+                requiring too much extra input as the API handelled most of the requests for displaying
+                items on it.
+            </description>
+            <problems> 
+                Some of the issues faced with implementing said JavaScript was figuring out how it was
+                going to interact with the SQL loaded database in order to add POI's to the map and 
+                learning to use this API which has some rather poor documentation in certain areas. 
+                As well as a lot of examples of out of date API versions, which were great fun to 
+                work around.
+            </problems>
+            <solutions> 
+                The first issue was simple enough to solve in the end, as the PHP data structures are
+                dynamic, simply using json_encode allowed us to get arrays out of the main code with
+                ease. I will talk more about the map itself in more detail below.
+            </solutions>
+            <hours_effort>20</hours_effort>
+        </component>
+        <component type="Map">
+            <contributor id="17012546"/>
+            <description>
+                We looked at what was available for open source maps which could be implemented for free
+                online and we quickly found that OpenLayers was one of the recommended API's which were
+                commonly used on a lot of sites. The map on the main page displayed Europe with Hull and 
+                Rotterdam displayed on it. As for the subpages, Hull and Rotterdam were zoomed in on, with
+                their POI's highlighted with red dots to be hovered over to gain information.
+            </description>
+            <problems>
+                When implementing this map, the OpenLayers documentation was a little lacking, causing
+                a slow done in this process as adding points to the map and then the correct popups 
+                was quite a task overall. Furthermore, we had issues with wanting pictures to appear
+                on clicks only so that the popup remains visible too.
+            </problems>
+            <solutions>
+                Firstly, in order to implement this, a bit of trial and error was required in order to
+                add points to the map, then the issue of being able to find which was which point on the 
+                map was sorted with an in built function in the end. In order to solve the picture issue,
+                we simply implemented a simple flag to see if the mouse has been clicked or not.
+            </solutions>
+            <hours_effort>20</hours_effort>
         </component>
         <component type="CSS Design">
             <contributor id="17012546"/>
             <contributor id="17006647"/>
-            <description> Sed eu nunc ipsum, nec suscipit lectus. Quisque quis nibh at sem dictum
-                pretium. Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor
-                felis. .... </description>
-            <problems> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis
-                lacinia porttitor. Pellentesque augue mauris, lobortis vel elementum quis, consequat
-                tempor felis.... </problems>
-            <solutions> Integer dictum diam id ligula aliquet sed dapibus nibh elementum.
-                Pellentesque augue mauris, lobortis vel elementum quis, consequat tempor felis..... </solutions>
+            <description> 
+                The CSS of the page is simply the styling and font of most things. The CSS hold the fonts
+                for each page, the positions of each item on these pages, as well as any formatting for the
+                map.
+            </description>
+            <problems> 
+                One of the issues we came across was that we needed to decided on a simple pallet of colours
+                which wasn't too blaringly bright or dull for all to see. We also had to fully format the
+                pictures being implemented in the popups due to their very variable sizes.
+            </problems>
+            <solutions> 
+                In order to solve our issue, we used an online colour selector to see what clashed and what
+                did not. Then google has provided our lovely font as well. As for the photos, we ended up making
+                a popupphotos css class in order to correctly format their display.
+            </solutions>
             <hours_effort>6</hours_effort>
-        </component>
-        <component type="Map">
-            <contributor id="17012546"/>
-            <description></description>
-            <problems></problems>
-            <solutions></solutions>
-            <hours_effort>20</hours_effort>
         </component>
         <component type="RSS Feed">
             <contributor id="17006647"/>
@@ -145,8 +213,6 @@
             <solutions></solutions>
             <hours_effort>8</hours_effort>
         </component>
-
-
     </group>
 
     <application>
