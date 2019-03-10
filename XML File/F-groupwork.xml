@@ -145,12 +145,12 @@
             <solutions></solutions>
             <hours_effort>8</hours_effort>
         </component>
-        
-        
+
+
     </group>
 
     <application>
-        <!-- Make sure the base_url for the main application is reachable as 
+        <!-- Make sure the base_url for the main application is reachable as
             http://www.cems.uwe.ac.uk/~a-student/dsa/assignment/ -->
         <base_url>http://www.cems.uwe.ac.uk/~hj2-bennion/index.php</base_url>
         <technologies>
@@ -191,7 +191,7 @@
                 <name>index.php</name>
                 <purpose>The Hull main page</purpose>
                 <source_url>http://www.cems.uwe.ac.uk/~hj2-bennion/hull/index.php</source_url>
-            </file>    
+            </file>
             <file>
                 <name>hullstyle.css</name>
                 <purpose>The style page of the Hull page</purpose>
