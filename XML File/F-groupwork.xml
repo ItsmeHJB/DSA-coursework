@@ -41,10 +41,10 @@
                 key for each of the cities and their places of interest.
             </problems>
             <solutions>
-                By the end of our design process, we had devided that quite simple having 3 tables was
+                By the end of our design process, we had divided that quite simple having 3 tables was
                 our solution to the issues. One dedicated to the city information, another to the places of
                 interest (POI) and another to the photos associated with each POI. In order to solve the primary
-                key issue, we simply used the 'Wear On Earth ID' (WOEID) number to identify places as this was
+                key issue, we simply used the 'Where On Earth ID' (WOEID) number to identify places as this was
                 a natural solution to our issue.
             </solutions>
             <hours_effort>2</hours_effort>
@@ -55,9 +55,9 @@
             <contributor id="17009191"/>
             <contributor id="17022080"/>
             <description>
-                When we came round to implemnting our database, we used phpmyadmin and a privately
-                owned server to host the database on. We created our 3 seperate tables as manetioned in the
-                implementation area above. As we populated the database, we researched both Hull and Rotterdam
+                When we came round to implementing our database, we used phpMyAdmin and a privately
+                owned server to host the database on. We created our 3 separate tables as mentioned in the
+                design area above. As we populated the database, we researched both Hull and Rotterdam
                 and what is available to do in each of these locations.
             </description>
             <problems>
@@ -79,18 +79,18 @@
             <description>
                 First off, we identified that we were going to have 3 pages. The main page which
                 displayed the weather and location of each city with the weather at the top and the map at
-                the bottom. Then for each of the subpages decicated to each city, we were going to use
+                the bottom. Then for each of the sub-pages dedicated to each city, we were going to use
                 the same format of having the map on the left with all of the POI's displayed on it
                 followed by the weather on the left. When creating the site, we made sure to close
                 all of our tags in order to be proper HTML5.
             </description>
             <problems> Some of the main issues we had with the HTML was deciding what was the best
-                layout we required, and what parts would be necessary to get a simple but customisbale
-                webpage
+                layout we required, and what parts would be necessary to get a simple but customisable
+                web page
             </problems>
             <solutions>
                 One of the easier ways of doing this was to use simple div's which can each be designated
-                classes and names in order to specialise each piece of the webpage using the CSS as
+                classes and names in order to specialise each piece of the web page using the CSS as
                 discussed later on in this file.
             </solutions>
             <hours_effort>6</hours_effort>
@@ -118,7 +118,7 @@
                 when we need to use variables around the code, translating them was very often not
                 required except in the JavaScript as some float point numbers were being stored as
                 strings instead. As for the PHP -> JS interaction, we found that JSON was a great
-                help with the use of JSON_encode and decode to help translate most things we needed.
+                help with the use of json_encode() and json_decode() to help translate most things we needed.
             </solutions>
             <hours_effort>20</hours_effort>
         </component>
@@ -128,7 +128,7 @@
             <description>
                 The JavaScript within the web application is entirely based around the map implementation.
                 This was an ideal use, as it allowed for an active item to be added to the page, without
-                requiring too much extra input as the API handelled most of the requests for displaying
+                requiring too much extra input as the API handled most of the requests for displaying
                 items on it.
             </description>
             <problems>
@@ -140,7 +140,7 @@
             </problems>
             <solutions>
                 The first issue was simple enough to solve in the end, as the PHP data structures are
-                dynamic, simply using json_encode allowed us to get arrays out of the main code with
+                dynamic, simply using json_encode() allowed us to get arrays out of the main code with
                 ease. I will talk more about the map itself in more detail below.
             </solutions>
             <hours_effort>20</hours_effort>
@@ -149,14 +149,14 @@
             <contributor id="17012546"/>
             <description>
                 We looked at what was available for open source maps which could be implemented for free
-                online and we quickly found that OpenLayers was one of the recommended API's which were
+                online and we quickly found that OpenLayers was one of the recommended APIs which were
                 commonly used on a lot of sites. The map on the main page displayed Europe with Hull and
-                Rotterdam displayed on it. As for the subpages, Hull and Rotterdam were zoomed in on, with
+                Rotterdam displayed on it. As for the sub pages, Hull and Rotterdam were zoomed in on, with
                 their POI's highlighted with red dots to be hovered over to gain information.
             </description>
             <problems>
                 When implementing this map, the OpenLayers documentation was a little lacking, causing
-                a slow done in this process as adding points to the map and then the correct popups
+                a slow down in this process as adding points to the map and then the correct popups
                 was quite a task overall. Furthermore, we had issues with wanting pictures to appear
                 on clicks only so that the popup remains visible too.
             </problems>
@@ -178,13 +178,15 @@
             </description>
             <problems>
                 One of the issues we came across was that we needed to decided on a simple pallet of colours
-                which wasn't too blaringly bright or dull for all to see. We also had to fully format the
+                which wasn't too bright or dull for all to see. We also had to fully format the
                 pictures being implemented in the popups due to their very variable sizes.
             </problems>
             <solutions>
                 In order to solve our issue, we used an online colour selector to see what clashed and what
                 did not. Then google has provided our lovely font as well. As for the photos, we ended up making
-                a popupphotos css class in order to correctly format their display.
+                a popupphotos css class in order to correctly format their display. This class ensures that only two
+                photos can appear in a row by keeping their widths fixed, but allowing their height to vary, which
+                provides a nice grid, pinterest-like effect.
             </solutions>
             <hours_effort>6</hours_effort>
         </component>
@@ -195,26 +197,64 @@
               Generates the RSS feed of all items (cities, points of interest, photos) in the database.
               Displays each item and its attributes as XML. Lists each entry in each table. 
             </description>
-            <problems></problems>
-            <solutions></solutions>
+            <problems>
+                We struggled a lot when we began working on the RSS feed, as we could get the first iteration to display
+                data, but any subsequent loops were not displaying at all. We experimented with several different
+                methods of generating and displaying the RSS with no avail.
+            </problems>
+            <solutions>
+                Eventually, through about an hours research, we found an example of exactly what we wanted, and with
+                some minor adaptation and a lot of elaboration, we had the RSS feed being dynamically generated based
+                on what is stored in the database.
+            </solutions>
             <hours_effort>6</hours_effort>
         </component>
         <component type="Weather">
             <contributor id="17006647"/>
-            <description></description>
-            <problems></problems>
-            <solutions></solutions>
-            <hours_effort></hours_effort>
+            <description>
+                The weather section displays today's weather data (temperature, windspeed and a graphic interpretation
+                of the current weather) as well as a 3 day weather forecast.
+            </description>
+            <problems>
+                The majority of the code for this section went rather smoothly, due to the fact that the current data
+                can be retrieved, extracted and displayed in a few lines of code. However we did encounter problems when
+                retrieving the future data for the forecast. This was due to the fact that we initially wanted to use
+                the same weather station information to obtain the forecast, but the clientraw.txt parser simply
+                described a data field as hour1-20. This was ambiguous and we were unsure whether this was the previous
+                20 hours, or the following.
+            </problems>
+            <solutions>
+                In order to get around this conundrum, we resulted in adopting the DarkSky weather API. This gave us
+                very clear and useful documentation and allowed us to retrieve data about future weather with absolute
+                certainty.
+            </solutions>
+            <problems>
+                Another problem we encountered was that one day during development, the clientraw.txt for Hull went
+                offline for around 12 hours. This was a big issue as it meant that we were displaying no data whatsoever
+                for the city of Hull.
+            </problems>
+            <solutions>
+                As a hot-fix, we found the closest weather station that used the same clientraw.txt format. This
+                happened to be 75 miles South of where we needed it, so it quickly became apparent this would not be a
+                long term fix, but we had no other option. Luckily, 12 hours later, the weather station cam back online
+                and we re-instantiated it as our data source. We also downloaded local copies of the data to be used if
+                the data we retrieve is non-existent.
+            </solutions>
+            <hours_effort>5</hours_effort>
         </component>
         <component type="XML Configuration File &amp; Schema ">
             <contributor id="17012546"/>
             <contributor id="17006647"/>
             <contributor id="17009191"/>
             <contributor id="17022080"/>
-            <description></description>
-            <problems></problems>
+            <description>
+                A simple XML document designed to keep sensitive data away from the main script.
+            </description>
+            <problems>
+
+            </problems>
             <solutions></solutions>
-            <hours_effort>8</hours_effort>
+            <hours_effort>3</hours_effort>
         </component>
     </group>
 
