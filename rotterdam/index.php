@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION['db-port'])) {
-    $config = simplexml_load_file("config.xml");
+    $config = simplexml_load_file("../config.xml");
     $_SESSION['db-hostname'] = $config->dbhostname->__toString();
     $_SESSION['db-port'] = $config->dbport->__toString();
     $_SESSION['db-username'] = $config->dbusername->__toString();

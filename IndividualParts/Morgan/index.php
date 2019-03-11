@@ -1,50 +1,101 @@
-<!DOCTYPE html>
+<?php
+
+session_start();
+if(!isset($_SESSION['db-port'])) {
+    $config = simplexml_load_file("config.xml");
+    $_SESSION['db-hostname'] = $config->dbhostname->__toString();
+    $_SESSION['db-port'] = $config->dbport->__toString();
+    $_SESSION['db-username'] = $config->dbusername->__toString();
+    $_SESSION['db-password'] = $config->dbpassword->__toString();
+    $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+    $_SESSION['font'] = $config->apilist->font->__toString();
+    $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
+    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
+    $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
+    $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
+    $_SESSION['darksky'] = $config->apilist->darksky->__toString();
+}
+?>
+
 <html>
 <meta charset="UTF-8">
     <head>
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
-        <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
-        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+        <link rel="stylesheet" href="<?php echo $_SESSION['openlayersstyle'];?>" type="text/css">
+        <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
+        <script src="<?php echo $_SESSION['openlayers'];?>"></script>
     </head>
     <body>
         <div class = "navbar">
           <a href = "">Home</a>
           <a href = "hull/">Hull</a>
           <a href = "rotterdam/">Rotterdam</a>
+          <a href = "rss_generation.php/">RSS</a>
         </div>
         <?php
 
-        $hull_info_string = file_get_contents("http://www.theoldschool.info/clientraw.txt");
+        /// holds the content of the hull weather (from clientraw.txt) as a string.
+        $hull_info_string = file_get_contents("{$_SESSION['hullweather']}");
+        echo $_SESSION['hullweather'];
+
+        if($hull_info_string == ""){
+            $hull_info_string = file_get_contents("StaticData/hull.txt");
+        }
+
+        /// holds the hull weather in an array, each index has unique info.
         $hull_info_array = explode(" ", $hull_info_string);
 
-        $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
+        ///  holds the content of the rotterdam weather (from clientraw.txt) as a string.
+        $rotterdam_info_string = file_get_contents("{$_SESSION['rotterdamweather']}");
+
+        if($rotterdam_info_string == ""){
+            $rotterdam_info_string = file_get_contents("StaticData/rotterdam.txt");
+        }
+
+        /// holds the rotterdam weather in an array, each index has unique info.
         $rotterdam_info_array = explode(" ", $rotterdam_info_string);
 
+        /// current temperature in hull.
         $hull_temp = $hull_info_array[4];
+        /// current windspeed in hull.
         $hull_windspeed = $hull_info_array[1] * 1.151;
+        /// current weather type as an icon in hull.
         $hull_icon = $hull_info_array[48];
-        $hull_temp = $hull_info_array[4];
-        $hull_windspeed = $hull_info_array[1] * 1.151;
 
+        /// current temperature in rotterdam.
         $rotterdam_temp = $rotterdam_info_array[4];
+        /// current windspeed in rotterdam.
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
+        /// current weather type as an icon in rotterdam.
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
-            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            /// PDO object of the database.
+            $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+            /// query of the database, selects all cities where name is hull.
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+            /// holds the current row.
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            /// woeid of hull.
             $hull_woeid = $row['woeid_city'];
+            /// name of hull.
             $hull_name = $row['name'];
+            /// latitude of hull.
             $hull_lat = $row['latitude'];
+            /// longitude of hull.
             $hull_long = $row['longitude'];
+            /// country of hull.
             $hull_country = $row['country'];
+            /// population of hull.
             $hull_pop = $row['population'];
+            /// currency of hull.
             $hull_curr = $row['currency'];
+            /// province of hull.
             $hull_prov = $row['province'];
+            /// area of hull.
             $hull_area = $row['area'];
+            /// website of hull.
             $hull_web = $row['website'];
 
             $db = null;
@@ -56,18 +107,28 @@
         }
 
         try{
-            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            /// woeid of rotterdam.
             $rotterdam_woeid = $row['woeid_city'];
+            /// name of rotterdaml.
             $rotterdam_name = $row['name'];
+            /// latitude of rotterdam.
             $rotterdam_lat = $row['latitude'];
+            /// longitude of rotterdam.
             $rotterdam_long = $row['longitude'];
+            /// country of rotterdam.
             $rotterdam_country = $row['country'];
+            /// population of rotterdam.
             $rotterdam_pop = $row['population'];
+            /// currency of rotterdam.
             $rotterdam_curr = $row['currency'];
+            /// province of rotterdam.
             $rotterdam_prov = $row['province'];
+            /// area of rotterdam.
             $rotterdam_area = $row['area'];
+            /// website of rotterdam.
             $rotterdam_web = $row['website'];
 
           $db = null;
@@ -78,17 +139,15 @@
             die();
         }
 
-        $dark_sky_api_key = 'f5d3e696f6c590a25f1de6811d30d390';
+        /// url for darksky forecast of hull.
+        $hull_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
+        /// url for darksky forecast of rotterdamn.
+        $rotterdam_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
 
-        $hull_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$hull_lat.','.$hull_long;
-        $rotterdam_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$rotterdam_lat.','.$rotterdam_long;
-
+        /// holds the JSON response from darksky for hull.
         $hull_response = json_decode(file_get_contents($hull_url));
+        /// holds the JSON response from darksky for hull.
         $rotterdam_response = json_decode(file_get_contents($rotterdam_url));
-
-        // for($i = 0; $i < 5; $i++){
-        //   echo $hull_response->daily->data[$i]->temperature . "<br/>";
-        // }
     ?>
     <div class = "city">
         <span class = "cityname">Kingston-Upon Hull</span>
@@ -97,10 +156,9 @@
         <br/>
         <span class = "temp">
           <?php
-          for($i = 0; $i < 5; $i++){
+          for($i = 0; $i < 4; $i++){
             switch($i){
               case 0:
-                continue;
                 break;
               case 1:
                 echo "Tomorrow: Hi: " . (string)substr(((($hull_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
@@ -229,18 +287,17 @@
         <br/>
         <span class = "temp">
           <?php
-          for($i = 0; $i < 5; $i++){
-            switch($i){
-              case 0:
-                continue;
-                break;
-              case 1:
-                echo "Tomorrow: Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
-                break;
-              default:
-                echo date('D', $rotterdam_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
-                break;
-            }
+          for($i = 0; $i < 4; $i++){
+              switch($i){
+                  case 0:
+                      break;
+                  case 1:
+                      echo "Tomorrow: Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                      break;
+                  default:
+                      echo date('D', $rotterdam_response->daily->data[$i]->time) . ": Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
+                      break;
+              }
           }
           ?></span>
           <br/>
@@ -353,10 +410,6 @@
         <br/>
         <span class = "link"><a href = "rotterdam/">More Info</a></span>
         </div>
-        <?php
-        $rotterdam_temp = $rotterdam_info_array[4];
-        $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
-        ?>
         <br/>
 
         <div id="map" class="map"></div>
@@ -529,7 +582,6 @@
                     overlay.setPosition(featureCoords);
                 }
             });
-
         </script>
     </body>
 </html>
