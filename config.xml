@@ -1,7 +1,8 @@
-<xml-config>
-    <db-hostname>51.75.162.4</db-hostname>
-    <db-port>8090</db-port>
-    <db-username>username</db-username>
-    <db-password>password</db-password>
-    <dark-sky-api-key>f5d3e696f6c590a25f1de6811d30d390</dark-sky-api-key>
-</xml-config>
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <dbhostname>51.75.162.4</dbhostname>
+    <dbport>3306</dbport>
+    <dbusername>username</dbusername>
+    <dbpassword>password</dbpassword>
+    <darkskyapikey>f5d3e696f6c590a25f1de6811d30d390</darkskyapikey>
+</config>

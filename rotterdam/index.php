@@ -1,12 +1,13 @@
 <?php
 
 session_start();
-$config = simplexml_load_file("config.xml");
-$_SESSION['db-hostname'] = $config->{'db-hostname'};
-$_SESSION['db-port'] = $config->{'db-port'};
-$_SESSION['db-username'] = $config->{'db-username'};
-$_SESSION['db-password'] = $config->{'db-password'};
-$_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
+$config = simplexml_load_file("../config.xml");
+$_SESSION['db-hostname'] = $config->dbhostname->__toString();
+$_SESSION['db-port'] = $config->dbport->__toString();
+$_SESSION['db-username'] = $config->dbusername->__toString();
+$_SESSION['db-password'] = $config->dbpassword->__toString();
+$_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+
 
 ?>
 <html>
