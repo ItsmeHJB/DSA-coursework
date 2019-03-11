@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+$config = simplexml_load_file("config.xml");
+$_SESSION['db-hostname'] = $config->{'db-hostname'};
+$_SESSION['db-port'] = $config->{'db-port'};
+$_SESSION['db-username'] = $config->{'db-username'};
+$_SESSION['db-password'] = $config->{'db-password'};
+$_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
+
+?>
 <html>
 <meta charset="UTF-8">
     <head>
@@ -42,7 +53,7 @@
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
-            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
             $hull_woeid = $row['woeid_city'];
@@ -65,7 +76,7 @@
         }
 
         try{
-            $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+            $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
             $rotterdam_woeid = $row['woeid_city'];
@@ -87,10 +98,8 @@
             die();
         }
 
-        $dark_sky_api_key = 'f5d3e696f6c590a25f1de6811d30d390';
-
-        $hull_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$hull_lat.','.$hull_long;
-        $rotterdam_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$rotterdam_lat.','.$rotterdam_long;
+        $hull_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
+        $rotterdam_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
 
         $hull_response = json_decode(file_get_contents($hull_url));
         $rotterdam_response = json_decode(file_get_contents($rotterdam_url));

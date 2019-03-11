@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+$config = simplexml_load_file("config.xml");
+$_SESSION['db-hostname'] = $config->{'db-hostname'};
+$_SESSION['db-port'] = $config->{'db-port'};
+$_SESSION['db-username'] = $config->{'db-username'};
+$_SESSION['db-password'] = $config->{'db-password'};
+$_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
+
+?>
 <html>
 <meta charset="UTF-8">
 <head>
@@ -13,7 +24,7 @@
       <a href = "../rotterdam/">Rotterdam</a>
     </div>
     <?php try{
-      $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
+        $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
       $woeid_city = $row['woeid_city'];
