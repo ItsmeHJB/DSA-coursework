@@ -1,13 +1,20 @@
 <?php
 
 session_start();
-$config = simplexml_load_file("config.xml");
-$_SESSION['db-hostname'] = $config->dbhostname->__toString();
-$_SESSION['db-port'] = $config->dbport->__toString();
-$_SESSION['db-username'] = $config->dbusername->__toString();
-$_SESSION['db-password'] = $config->dbpassword->__toString();
-$_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
-
+if(!isset($_SESSION['db-port'])) {
+    $config = simplexml_load_file("config.xml");
+    $_SESSION['db-hostname'] = $config->dbhostname->__toString();
+    $_SESSION['db-port'] = $config->dbport->__toString();
+    $_SESSION['db-username'] = $config->dbusername->__toString();
+    $_SESSION['db-password'] = $config->dbpassword->__toString();
+    $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+    $_SESSION['font'] = $config->apilist->font->__toString();
+    $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
+    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
+    $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
+    $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
+    $_SESSION['darksky'] = $config->apilist->darksky->__toString();
+}
 ?>
 
 <html>
@@ -15,9 +22,9 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
     <head>
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
-        <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
-        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+        <link rel="stylesheet" href="<?php echo $_SESSION['openlayersstyle'];?>" type="text/css">
+        <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
+        <script src="<?php echo $_SESSION['openlayers'];?>"></script>
     </head>
     <body>
         <div class = "navbar">
@@ -29,7 +36,8 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
         <?php
 
         /// holds the content of the hull weather (from clientraw.txt) as a string.
-        $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
+        $hull_info_string = file_get_contents("{$_SESSION['hullweather']}");
+        echo $_SESSION['hullweather'];
 
         if($hull_info_string == ""){
             $hull_info_string = file_get_contents("StaticData/hull.txt");
@@ -39,7 +47,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
         $hull_info_array = explode(" ", $hull_info_string);
 
         ///  holds the content of the rotterdam weather (from clientraw.txt) as a string.
-        $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
+        $rotterdam_info_string = file_get_contents("{$_SESSION['rotterdamweather']}");
 
         if($rotterdam_info_string == ""){
             $rotterdam_info_string = file_get_contents("StaticData/rotterdam.txt");
@@ -132,9 +140,9 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
         }
 
         /// url for darksky forecast of hull.
-        $hull_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
+        $hull_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
         /// url for darksky forecast of rotterdamn.
-        $rotterdam_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
+        $rotterdam_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
 
         /// holds the JSON response from darksky for hull.
         $hull_response = json_decode(file_get_contents($hull_url));
@@ -151,7 +159,6 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
           for($i = 0; $i < 4; $i++){
             switch($i){
               case 0:
-                continue;
                 break;
               case 1:
                 echo "Tomorrow: Hi: " . (string)substr(((($hull_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";
@@ -283,7 +290,6 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
           for($i = 0; $i < 4; $i++){
               switch($i){
                   case 0:
-                      continue;
                       break;
                   case 1:
                       echo "Tomorrow: Hi: " . (string)substr(((($rotterdam_response->daily->data[$i]->temperatureHigh) - 32) / 1.8), 0, 4) . "°C Low: " . (string)substr(((($hull_response->daily->data[$i]->temperatureMin) - 32) / 1.8), 0, 4) . "°C <br/>";

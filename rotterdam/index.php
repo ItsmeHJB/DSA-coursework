@@ -1,22 +1,28 @@
 <?php
 
 session_start();
-$config = simplexml_load_file("../config.xml");
-$_SESSION['db-hostname'] = $config->dbhostname->__toString();
-$_SESSION['db-port'] = $config->dbport->__toString();
-$_SESSION['db-username'] = $config->dbusername->__toString();
-$_SESSION['db-password'] = $config->dbpassword->__toString();
-$_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
-
-
+if(!isset($_SESSION['db-port'])) {
+    $config = simplexml_load_file("config.xml");
+    $_SESSION['db-hostname'] = $config->dbhostname->__toString();
+    $_SESSION['db-port'] = $config->dbport->__toString();
+    $_SESSION['db-username'] = $config->dbusername->__toString();
+    $_SESSION['db-password'] = $config->dbpassword->__toString();
+    $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+    $_SESSION['font'] = $config->apilist->font->__toString();
+    $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
+    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
+    $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
+    $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
+    $_SESSION['darksky'] = $config->apilist->darksky->__toString();
+}
 ?>
 <html>
 <meta charset="UTF-8">
 <head>
     <title>Rotterdam</title>
     <link rel = "stylesheet" href = "rotterdamstyle.css?v1.2"/>
-    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
+    <script src="<?php echo $_SESSION['openlayers'];?>"></script>
 </head>
 <body>
     <div class = "navbar">
@@ -91,7 +97,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
       die();
     }
 
-    $weather_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
+    $weather_info_string = file_get_contents("{$_SESSION['rotterdamweather']}");
 
     if($weather_info_string == ""){
         $weather_info_string = file_get_contents("StaticData/rotterdam.txt");
