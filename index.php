@@ -26,28 +26,38 @@ $_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
         </div>
         <?php
 
+        /// holds the content of the hull weather (from clientraw.txt) as a string.
         $hull_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
 
         if($hull_info_string == ""){
             $hull_info_string = file_get_contents("StaticData/hull.txt");
         }
 
+        /// holds the hull weather in an array, each index has unique info.
         $hull_info_array = explode(" ", $hull_info_string);
 
+        ///  holds the content of the rotterdam weather (from clientraw.txt) as a string.
         $rotterdam_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
 
         if($rotterdam_info_string == ""){
             $rotterdam_info_string = file_get_contents("StaticData/rotterdam.txt");
         }
 
+        /// holds the rotterdam weather in an array, each index has unique info.
         $rotterdam_info_array = explode(" ", $rotterdam_info_string);
 
+        /// current temperature in hull.
         $hull_temp = $hull_info_array[4];
+        /// current windspeed in hull.
         $hull_windspeed = $hull_info_array[1] * 1.151;
+        /// current weather type as an icon in hull.
         $hull_icon = $hull_info_array[48];
 
+        /// current temperature in rotterdam.
         $rotterdam_temp = $rotterdam_info_array[4];
+        /// current windspeed in rotterdam.
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
+        /// current weather type as an icon in rotterdam.
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
