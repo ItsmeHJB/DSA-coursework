@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="98629119-5780-4e82-bbb3-7d60ddfbe47e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hull/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/hull/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rotterdam/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/rotterdam/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rotterdam/rotterdamstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/rotterdam/rotterdamstyle.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,65 +41,83 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1819513001">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="4" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="2" />
+          <entry key="php" value="6" />
+          <entry key="sql" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="2" />
+          <entry key="PHP" value="6" />
+          <entry key="SQL" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="php" value="7" />
+          <entry key="txt" value="53" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PHP" value="7" />
+          <entry key="PLAIN_TEXT" value="53" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/hull/hullstyle.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/hull/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="398">
-                  <caret line="335" column="83" selection-start-line="335" selection-start-column="83" selection-end-line="335" selection-end-column="83" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rotterdam/rotterdamstyle.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="772">
-                  <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/rotterdam/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="313">
-                  <caret line="318" column="58" lean-forward="true" selection-start-line="318" selection-start-column="58" selection-end-line="318" selection-end-column="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hull/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2669">
+              <caret line="157" column="11" selection-start-line="157" selection-start-column="11" selection-end-line="157" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Database/db_twincities.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="854">
+              <caret line="129" column="31" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Harrison Bennion &lt;harrison.be@hotmail.co.uk&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$USER_HOME$/php/pear/Archive/Tar.php" />
-        <option value="$PROJECT_DIR$/hull/index.php" />
-        <option value="$PROJECT_DIR$/rotterdam/index.php" />
         <option value="$PROJECT_DIR$/rotterdam/rotterdamstyle.css" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/rotterdam/index.php" />
+        <option value="$PROJECT_DIR$/hull/index.php" />
       </list>
     </option>
   </component>
@@ -116,38 +131,33 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1702" />
-    <option name="height" value="1103" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="DSA-coursework1.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSA-coursework1.5" type="462c0819:PsiDirectoryNode" />
+              <item name="DSA-coursework1.6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSA-coursework1.6" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="DSA-coursework1.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSA-coursework1.5" type="462c0819:PsiDirectoryNode" />
-              <item name="hull" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DSA-coursework1.5" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DSA-coursework1.5" type="462c0819:PsiDirectoryNode" />
+              <item name="DSA-coursework1.6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DSA-coursework1.6" type="462c0819:PsiDirectoryNode" />
               <item name="rotterdam" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -178,17 +188,31 @@
       <updated>1551699699464</updated>
       <workItem from="1551699704589" duration="565000" />
       <workItem from="1551961728499" duration="1555000" />
+      <workItem from="1552152309239" duration="763000" />
+      <workItem from="1552156561040" duration="803000" />
+      <workItem from="1552169065062" duration="372000" />
+      <workItem from="1552237334443" duration="18000" />
+      <workItem from="1552239687781" duration="67000" />
+      <workItem from="1552239834071" duration="55000" />
+      <workItem from="1552239915436" duration="9000" />
     </task>
+    <task id="LOCAL-00001" summary="cleaned up code">
+      <created>1552169433520</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552169433521</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2120000" />
+    <option name="totallyTimeSpent" value="4207000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16257995" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3129103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -215,40 +239,52 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="cleaned up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/php/pear/Archive/Tar.php" />
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/hull/hullstyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="1887">
+          <caret line="111" column="20" lean-forward="true" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rotterdam/rotterdamstyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="772">
-          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+        <state relative-caret-position="-15">
+          <caret line="75" column="1" lean-forward="true" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="529" column="15" selection-start-line="529" selection-start-column="15" selection-end-line="529" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rotterdam/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="318" column="58" lean-forward="true" selection-start-line="318" selection-start-column="58" selection-end-line="318" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hull/hullstyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="88" column="14" lean-forward="true" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+        <state relative-caret-position="-646">
+          <caret line="91" column="39" lean-forward="true" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hull/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="335" column="83" selection-start-line="335" selection-start-column="83" selection-end-line="335" selection-end-column="83" />
+        <state relative-caret-position="2669">
+          <caret line="157" column="11" selection-start-line="157" selection-start-column="11" selection-end-line="157" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/db_twincities.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="854">
+          <caret line="129" column="31" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
         </state>
       </provider>
     </entry>

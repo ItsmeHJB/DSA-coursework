@@ -23,6 +23,7 @@ $_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
       <a href = "../hull/">Hull</a>
       <a href = "">Rotterdam</a>
     </div>
+
     <?php
     try{
       $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
@@ -48,8 +49,7 @@ $_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
 
       for ($i = 0; $i < $poiCount; $i++) {
           $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
-
-            $tempPoi = array(
+          $tempPoi = array(
                 $pois['longitude'],
                 $pois['latitude'],
                 $pois['name'],
@@ -60,7 +60,7 @@ $_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
                 $pois['opening_time'],
                 $pois['closing_time'],
                 $pois['woeid_city']
-            );
+          );
 
           $poisArray[] = $tempPoi;
           $poi_woeid = $pois['woeid_poi'];
@@ -68,30 +68,21 @@ $_SESSION['dark-sky-api-key'] = $config->{'dark-sky-api-key'};
           $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
           $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
 
-
           for ($c = 0; $c < $photosCount; $c++) {
               $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
               $tempPhoto = null;
-
               $tempPhoto = array(
                   $photos['photo_id'],
                   $photos['name'],
                   $photos['link']
-
               );
               $photosArray[] = $tempPhoto;
           }
           array_push($bigPhotoArray, $photosArray);
           $photosArray = array();
       }
-
       $db = null;
       $dbq = null;
-
-      /*echo "This is the city of {$name} ({$lat}, {$long}). ";
-      echo "It is in {$province} ({$country}). There is a ";
-      echo "population of {$population}. It has an area of {$area}km2.";*/
-
     }
     catch (PDOException $e){
       echo "Error!: " . $e->getMessage() . "<br/>";
