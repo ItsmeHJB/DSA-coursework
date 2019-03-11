@@ -1,28 +1,22 @@
 <?php
 
 session_start();
-if(!isset($_SESSION['db-port'])) {
-    $config = simplexml_load_file("../config.xml");
-    $_SESSION['db-hostname'] = $config->dbhostname->__toString();
-    $_SESSION['db-port'] = $config->dbport->__toString();
-    $_SESSION['db-username'] = $config->dbusername->__toString();
-    $_SESSION['db-password'] = $config->dbpassword->__toString();
-    $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
-    $_SESSION['font'] = $config->apilist->font->__toString();
-    $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
-    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
-    $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
-    $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
-    $_SESSION['darksky'] = $config->apilist->darksky->__toString();
-}
+$config = simplexml_load_file("../config.xml");
+$_SESSION['db-hostname'] = $config->dbhostname->__toString();
+$_SESSION['db-port'] = $config->dbport->__toString();
+$_SESSION['db-username'] = $config->dbusername->__toString();
+$_SESSION['db-password'] = $config->dbpassword->__toString();
+$_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+
+
 ?>
 <html>
 <meta charset="UTF-8">
 <head>
     <title>Rotterdam</title>
     <link rel = "stylesheet" href = "rotterdamstyle.css?v1.2"/>
-    <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
-    <script src="<?php echo $_SESSION['openlayers'];?>"></script>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 </head>
 <body>
     <div class = "navbar">
@@ -34,29 +28,47 @@ if(!isset($_SESSION['db-port'])) {
 
     <?php
     try{
+      /// PDO object of the database.
       $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+      /// query of the database, selects cities where name is rotterdam.
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
+      /// holds the current row.
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
+      /// woeid of rotterdam.
       $woeid_city = $row['woeid_city'];
+      /// name of rotterdam.
       $name = $row['name'];
+      /// latitude of rotterdam.
       $lat = $row['latitude'];
+      /// longitude of rotterdam.
       $long = $row['longitude'];
+      /// country of rotterdam.
       $country = $row['country'];
+      /// population of rotterdam.
       $population = $row['population'];
+      /// currency of rotterdam.
       $currency = $row['currency'];
+      /// province of rotterdam.
       $province = $row['province'];
+      /// area of rotterdam.
       $area = $row['area'];
-      $time_zone = $row['time_zone'];
+      /// website of rotterdam.
       $website = $row['website'];
 
+      /// amount of POIs.
       $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
+      /// query of the dataabse, all POIs for $woeid_city.
       $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
 
+      /// array of points of interest.
       $poisArray = array();
+      /// array of photos.
       $bigPhotoArray = array();
 
       for ($i = 0; $i < $poiCount; $i++) {
+          /// PDO object for POIs.
           $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
+          /// array holding POI details.
           $tempPoi = array(
                 $pois['longitude'],
                 $pois['latitude'],
@@ -71,19 +83,25 @@ if(!isset($_SESSION['db-port'])) {
           );
 
           $poisArray[] = $tempPoi;
+          /// woeid for the POI.
           $poi_woeid = $pois['woeid_poi'];
 
+          /// amount of photos.
           $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
+          /// query for photos, all photos for the POI location.
           $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
 
           for ($c = 0; $c < $photosCount; $c++) {
+              /// PDO object for photos.
               $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
+              /// array for photo details.
               $tempPhoto = null;
               $tempPhoto = array(
                   $photos['photo_id'],
                   $photos['name'],
                   $photos['link']
               );
+              /// holds the photos.
               $photosArray[] = $tempPhoto;
           }
           array_push($bigPhotoArray, $photosArray);
@@ -97,17 +115,23 @@ if(!isset($_SESSION['db-port'])) {
       die();
     }
 
-    $weather_info_string = file_get_contents("{$_SESSION['rotterdamweather']}");
+    /// string of weather info.
+    $weather_info_string = file_get_contents("http://www.erkamp.eu/wdl/clientraw.txt");
 
     if($weather_info_string == ""){
         $weather_info_string = file_get_contents("StaticData/rotterdam.txt");
     }
 
+    /// weather info in an array.
     $weather_info_array = explode(" ", $weather_info_string);
     $temp = $weather_info_array[4];
+    /// holds rain amount.
     $rain_amount = $weather_info_array[7];
+    /// holds windspeed.
     $windspeed = $weather_info_array[1] * 1.151;
+    /// holds wind direction.
     $wind_direction = $weather_info_array[3];
+    /// holds humidity.
     $humidity = $weather_info_array[5];
     ?>
     <div class = "title">

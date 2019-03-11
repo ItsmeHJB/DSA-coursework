@@ -32,19 +32,33 @@ if(!isset($_SESSION['db-port'])) {
       <a href = "../rss_generation.php/">RSS</a>
     </div>
     <?php try{
-        $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+      /// PDO object of the database.
+      $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+      /// query of the database, selects cities where name is rotterdam.
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+      /// holds the current row.
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
+      /// woeid of rotterdam.
       $woeid_city = $row['woeid_city'];
+      /// name of rotterdam.
       $name = $row['name'];
+      /// latitude of rotterdam.
       $lat = $row['latitude'];
+      /// longitude of rotterdam.
       $long = $row['longitude'];
+      /// country of rotterdam.
       $country = $row['country'];
+      /// population of rotterdam.
       $population = $row['population'];
+      /// currency of rotterdam.
       $currency = $row['currency'];
+      /// province of rotterdam.
       $province = $row['province'];
+      /// area of rotterdam.
       $area = $row['area'];
+
       $time_zone = $row['time_zone'];
+      /// website of rotterdam.
       $website = $row['website'];
 
       $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
