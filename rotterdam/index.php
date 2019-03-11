@@ -34,25 +34,27 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
       /// holds the current row.
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
-      /// woeid of rotterdam.
+      /// woeid.
       $woeid_city = $row['woeid_city'];
-      /// name of rotterdam.
+      /// name.
       $name = $row['name'];
-      /// latitude of rotterdam.
+      /// latitude.
       $lat = $row['latitude'];
-      /// longitude of rotterdam.
+      /// longitude.
       $long = $row['longitude'];
-      /// country of rotterdam.
+      /// country.
       $country = $row['country'];
-      /// population of rotterdam.
+      /// population.
       $population = $row['population'];
-      /// currency of rotterdam.
+      /// currency.
       $currency = $row['currency'];
-      /// province of rotterdam.
+      /// province.
       $province = $row['province'];
-      /// area of rotterdam.
+      /// area.
       $area = $row['area'];
-      /// website of rotterdam.
+      /// timezone.
+      $time_zone = $row['time_zone'];
+      /// website.
       $website = $row['website'];
 
       /// amount of POIs.

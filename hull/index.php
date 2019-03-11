@@ -34,42 +34,47 @@ if(!isset($_SESSION['db-port'])) {
     <?php try{
       /// PDO object of the database.
       $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
-      /// query of the database, selects cities where name is rotterdam.
+      /// query of the database, selects cities where name is kingston upon hull.
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
       /// holds the current row.
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
-      /// woeid of rotterdam.
+      /// woeid.
       $woeid_city = $row['woeid_city'];
-      /// name of rotterdam.
+      /// name.
       $name = $row['name'];
-      /// latitude of rotterdam.
+      /// latitude.
       $lat = $row['latitude'];
-      /// longitude of rotterdam.
+      /// longitude.
       $long = $row['longitude'];
-      /// country of rotterdam.
+      /// country.
       $country = $row['country'];
-      /// population of rotterdam.
+      /// population.
       $population = $row['population'];
-      /// currency of rotterdam.
+      /// currency.
       $currency = $row['currency'];
-      /// province of rotterdam.
+      /// province.
       $province = $row['province'];
-      /// area of rotterdam.
+      /// area.
       $area = $row['area'];
-
+      /// timezone.
       $time_zone = $row['time_zone'];
-      /// website of rotterdam.
+      /// website.
       $website = $row['website'];
 
+      /// amount of POIs.
       $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
+      /// query of the dataabse, all POIs for $woeid_city.
       $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
 
+      /// array of points of interest.
       $poisArray = array();
+      /// array of photos.
       $bigPhotoArray = array();
 
       for ($i = 0; $i < $poiCount; $i++) {
+        /// PDO object for POIs.
           $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
-
+          /// array holding POI details.
           $tempPoi = array(
               $pois['longitude'],
               $pois['latitude'],
@@ -83,21 +88,27 @@ if(!isset($_SESSION['db-port'])) {
               $pois['woeid_city']
           );
 
+
           $poisArray[] = $tempPoi;
+          /// woeid for the POI.
           $poi_woeid = $pois['woeid_poi'];
 
+          /// amount of photos.
           $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
+          /// query for photos, all photos for the POI location.
           $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
 
           for ($c = 0; $c < $photosCount; $c++) {
+              /// PDO object for photos.
               $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
-
+              /// array for photo details.
               $tempPhoto = null;
               $tempPhoto = array(
                   $photos['photo_id'],
                   $photos['name'],
                   $photos['link']
               );
+              /// holds the photos.
               $photosArray[] = $tempPhoto;
           }
           array_push($bigPhotoArray, $photosArray);
@@ -118,17 +129,23 @@ if(!isset($_SESSION['db-port'])) {
     <div class = "content">
 
         <?php
+        /// string of weather info.
         $weather_info_string = file_get_contents("{$_SESSION['hullweather']}");
 
         if($weather_info_string == ""){
             $weather_info_string = file_get_contents("StaticData/hull.txt");
         }
 
+        /// weather info in an array.
         $weather_info_array = explode( " ", $weather_info_string);
         $temp = $weather_info_array[4];
+        /// holds rain amount.
         $rain_amount = $weather_info_array[7];
+        /// holds windspeed.
         $windspeed = $weather_info_array[1] * 1.151;
+        /// holds wind direction.
         $wind_direction = $weather_info_array[3];
+        /// holds humidity.
         $humidity = $weather_info_array[5];
         ?>
 
