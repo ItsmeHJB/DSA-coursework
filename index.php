@@ -65,7 +65,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
         try{
             /// PDO object of the database.
             $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
-            /// query of the database.
+            /// query of the database, selects all cities where name is hull.
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
             /// holds the current row.
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
@@ -77,11 +77,17 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
             $hull_lat = $row['latitude'];
             /// longitude of hull.
             $hull_long = $row['longitude'];
+            /// country of hull.
             $hull_country = $row['country'];
+            /// population of hull.
             $hull_pop = $row['population'];
+            /// currency of hull.
             $hull_curr = $row['currency'];
+            /// province of hull.
             $hull_prov = $row['province'];
+            /// area of hull.
             $hull_area = $row['area'];
+            /// website of hull.
             $hull_web = $row['website'];
 
             $db = null;
@@ -96,15 +102,25 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
             $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            /// woeid of rotterdam.
             $rotterdam_woeid = $row['woeid_city'];
+            /// name of rotterdaml.
             $rotterdam_name = $row['name'];
+            /// latitude of rotterdam.
             $rotterdam_lat = $row['latitude'];
+            /// longitude of rotterdam.
             $rotterdam_long = $row['longitude'];
+            /// country of rotterdam.
             $rotterdam_country = $row['country'];
+            /// population of rotterdam.
             $rotterdam_pop = $row['population'];
+            /// currency of rotterdam.
             $rotterdam_curr = $row['currency'];
+            /// province of rotterdam.
             $rotterdam_prov = $row['province'];
+            /// area of rotterdam.
             $rotterdam_area = $row['area'];
+            /// website of rotterdam.
             $rotterdam_web = $row['website'];
 
           $db = null;
@@ -115,10 +131,14 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
             die();
         }
 
+        /// url for darksky forecast of hull.
         $hull_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
+        /// url for darksky forecast of rotterdamn.
         $rotterdam_url = 'https://api.darksky.net/forecast/'.$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
 
+        /// holds the JSON response from darksky for hull.
         $hull_response = json_decode(file_get_contents($hull_url));
+        /// holds the JSON response from darksky for hull.
         $rotterdam_response = json_decode(file_get_contents($rotterdam_url));
     ?>
     <div class = "city">
