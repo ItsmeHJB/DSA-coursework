@@ -24,6 +24,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
           <a href = "">Home</a>
           <a href = "hull/">Hull</a>
           <a href = "rotterdam/">Rotterdam</a>
+          <a href = "rss_generation.php/">RSS</a>
         </div>
         <?php
 
@@ -62,12 +63,19 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
+            /// PDO object of the database.
             $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+            /// query of the database.
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+            /// holds the current row.
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            /// woeid of hull.
             $hull_woeid = $row['woeid_city'];
+            /// name of hull.
             $hull_name = $row['name'];
+            /// latitude of hull.
             $hull_lat = $row['latitude'];
+            /// longitude of hull.
             $hull_long = $row['longitude'];
             $hull_country = $row['country'];
             $hull_pop = $row['population'];

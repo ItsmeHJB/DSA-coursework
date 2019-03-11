@@ -23,6 +23,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
       <a href = "../">Home</a>
       <a href = "../hull/">Hull</a>
       <a href = "">Rotterdam</a>
+      <a href = "../rss_generation.php/">RSS</a>
     </div>
 
     <?php

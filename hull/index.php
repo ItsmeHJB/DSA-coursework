@@ -22,6 +22,7 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
       <a href = "../">Home</a>
       <a href = "">Hull</a>
       <a href = "../rotterdam/">Rotterdam</a>
+      <a href = "../rss_generation.php/">RSS</a>
     </div>
     <?php try{
         $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
