@@ -71,22 +71,24 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a35ce57643e0a8f4a8bb0c194778fb4e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a35ce57643e0a8f4a8bb0c194778fb4e9">$hull_info_string</a> = file_get_contents(&quot;http://www.ewwa.net/wx/clientraw.txt&quot;)</td></tr>
+<tr class="memitem:ae74920025a5793b6cc131192b92d8066"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ae74920025a5793b6cc131192b92d8066">if</a> (!isset( $_SESSION[ 'db-port'])) = $db-&gt;prepare(&quot;SELECT * FROM `tb_pois`&quot;)</td></tr>
+<tr class="separator:ae74920025a5793b6cc131192b92d8066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ce57643e0a8f4a8bb0c194778fb4e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a35ce57643e0a8f4a8bb0c194778fb4e9">$hull_info_string</a> = file_get_contents(&quot;{$_SESSION['hullweather']}&quot;)</td></tr>
 <tr class="separator:a35ce57643e0a8f4a8bb0c194778fb4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22d0d905fd4a2f3daae7d36a5527a775"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a22d0d905fd4a2f3daae7d36a5527a775">$hull_info_array</a> = explode(&quot; &quot;, $hull_info_string)</td></tr>
-<tr class="separator:a22d0d905fd4a2f3daae7d36a5527a775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e2cf8e37214ce4445068e865eaf9bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ab3e2cf8e37214ce4445068e865eaf9bd">$rotterdam_info_string</a> = file_get_contents(&quot;http://www.erkamp.eu/wdl/clientraw.txt&quot;)</td></tr>
+<tr class="memitem:a24a4e2c16fb7ceee7c12646ce56597e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a>($hull_info_string==&quot;&quot;)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a24a4e2c16fb7ceee7c12646ce56597e4">$hull_info_array</a> = explode(&quot; &quot;, $hull_info_string)</td></tr>
+<tr class="separator:a24a4e2c16fb7ceee7c12646ce56597e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3e2cf8e37214ce4445068e865eaf9bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ab3e2cf8e37214ce4445068e865eaf9bd">$rotterdam_info_string</a> = file_get_contents(&quot;{$_SESSION['rotterdamweather']}&quot;)</td></tr>
 <tr class="separator:ab3e2cf8e37214ce4445068e865eaf9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8473f658dba1c3a098692c77a1d5d8b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a8473f658dba1c3a098692c77a1d5d8b4">$rotterdam_info_array</a> = explode(&quot; &quot;, $rotterdam_info_string)</td></tr>
-<tr class="separator:a8473f658dba1c3a098692c77a1d5d8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fad30a9e50ca634f5d9da231e879994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a>($rotterdam_info_string==&quot;&quot;)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a3fad30a9e50ca634f5d9da231e879994">$rotterdam_info_array</a> = explode(&quot; &quot;, $rotterdam_info_string)</td></tr>
+<tr class="separator:a3fad30a9e50ca634f5d9da231e879994"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e5fa38b5556b79fc1dedc0611a0ac43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a0e5fa38b5556b79fc1dedc0611a0ac43">$hull_temp</a> = $hull_info_array[4]</td></tr>
 <tr class="separator:a0e5fa38b5556b79fc1dedc0611a0ac43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a157ea9ca0609284bf0acb10039e57ece"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a157ea9ca0609284bf0acb10039e57ece">$hull_windspeed</a> = $hull_info_array[1] * 1.151</td></tr>
 <tr class="separator:a157ea9ca0609284bf0acb10039e57ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21259db6d85456f627a1b906d8def681"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a21259db6d85456f627a1b906d8def681">$hull_icon</a> = $hull_info_array[48]</td></tr>
 <tr class="separator:a21259db6d85456f627a1b906d8def681"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69306471bd59260ad04b5df5ba77803b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a69306471bd59260ad04b5df5ba77803b">$rotterdam_temp</a> = $rotterdam_info_array[4]</td></tr>
-<tr class="separator:a69306471bd59260ad04b5df5ba77803b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d5783f258dc82ac9156c855be8f2d9a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a7d5783f258dc82ac9156c855be8f2d9a">$rotterdam_temp</a> = $rotterdam_info_array[4]</td></tr>
+<tr class="separator:a7d5783f258dc82ac9156c855be8f2d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1bd1fab9ba49731a47922e12661ef5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a9e1bd1fab9ba49731a47922e12661ef5">$rotterdam_windspeed</a> = $rotterdam_info_array[1] * 1.151</td></tr>
 <tr class="separator:a9e1bd1fab9ba49731a47922e12661ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a917dfb18ffe5dce2f66b78a2ab25bb2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a917dfb18ffe5dce2f66b78a2ab25bb2e">$rotterdam_icon</a> = $rotterdam_info_array[48]</td></tr>
@@ -139,20 +141,18 @@ Variables</h2></td></tr>
 <tr class="separator:a9322b687154ace187cdafd89421852c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1590932cbcc34b305f9b67f5cf5fce87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a1590932cbcc34b305f9b67f5cf5fce87">$rotterdam_web</a> = $row['<a class="el" href="index_8php.html#a8c56014cff17c1ced653aa98455da680">website</a>']</td></tr>
 <tr class="separator:a1590932cbcc34b305f9b67f5cf5fce87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1a70a25b2c9bf4be490a80f1ca5f50"><td class="memItemLeft" align="right" valign="top">catch(PDOException $e)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ada1a70a25b2c9bf4be490a80f1ca5f50">$dark_sky_api_key</a> = 'f5d3e696f6c590a25f1de6811d30d390'</td></tr>
-<tr class="separator:ada1a70a25b2c9bf4be490a80f1ca5f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ed7f50cb33c512a645e5a337f2b8ffb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a0ed7f50cb33c512a645e5a337f2b8ffb">$hull_url</a> = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$hull_lat.','.$hull_long</td></tr>
-<tr class="separator:a0ed7f50cb33c512a645e5a337f2b8ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adeffa649498546844bc0e7421bd4b140"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#adeffa649498546844bc0e7421bd4b140">$rotterdam_url</a> = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$rotterdam_lat.','.$rotterdam_long</td></tr>
+<tr class="memitem:a58f6123edc9a89eb61455c98ec3bb15d"><td class="memItemLeft" align="right" valign="top">catch(PDOException $e)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a58f6123edc9a89eb61455c98ec3bb15d">$hull_url</a> = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long</td></tr>
+<tr class="separator:a58f6123edc9a89eb61455c98ec3bb15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeffa649498546844bc0e7421bd4b140"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#adeffa649498546844bc0e7421bd4b140">$rotterdam_url</a> = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long</td></tr>
 <tr class="separator:adeffa649498546844bc0e7421bd4b140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c4e9907a22b4c6da1c5a7837a4d539e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a1c4e9907a22b4c6da1c5a7837a4d539e">$hull_response</a> = json_decode(file_get_contents($hull_url))</td></tr>
 <tr class="separator:a1c4e9907a22b4c6da1c5a7837a4d539e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3257c196b67efb81ddcc803e2cac7ed2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a3257c196b67efb81ddcc803e2cac7ed2">$rotterdam_response</a> = json_decode(file_get_contents($rotterdam_url))</td></tr>
 <tr class="separator:a3257c196b67efb81ddcc803e2cac7ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e79af1ba492bd2cbbaafa83f16262da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a2e79af1ba492bd2cbbaafa83f16262da">for</a> ( $i=0;$i&lt; 5;$i++)</td></tr>
-<tr class="separator:a2e79af1ba492bd2cbbaafa83f16262da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ecbe44a6e1f2b1430c183427ca99513"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a8ecbe44a6e1f2b1430c183427ca99513">switch</a> ( $hull_icon) = $rotterdam_info_array[4]</td></tr>
-<tr class="separator:a8ecbe44a6e1f2b1430c183427ca99513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11bce3c9d33806cade344b0536e0508"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#aa11bce3c9d33806cade344b0536e0508">for</a> ( $i=0;$i&lt; 4;$i++)</td></tr>
+<tr class="separator:aa11bce3c9d33806cade344b0536e0508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2faa0eadeef0c97994ef3b2d91b08ea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#ad2faa0eadeef0c97994ef3b2d91b08ea">switch</a> ( $hull_icon)</td></tr>
+<tr class="separator:ad2faa0eadeef0c97994ef3b2d91b08ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36342860613418f919ffbf3aa4246442"><td class="memItemLeft" align="right" valign="top">name&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a36342860613418f919ffbf3aa4246442">__pad0__</a></td></tr>
 <tr class="separator:a36342860613418f919ffbf3aa4246442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a351cdce8b3559e1c850fe0223c244ef7"><td class="memItemLeft" align="right" valign="top">name&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="index_8php.html#a351cdce8b3559e1c850fe0223c244ef7">woeid</a></td></tr>
@@ -171,20 +171,6 @@ Variables</h2></td></tr>
 <tr class="separator:a8c56014cff17c1ced653aa98455da680"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ada1a70a25b2c9bf4be490a80f1ca5f50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada1a70a25b2c9bf4be490a80f1ca5f50">&#9670;&nbsp;</a></span>$dark_sky_api_key</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">catch (PDOException $e) $dark_sky_api_key = 'f5d3e696f6c590a25f1de6811d30d390'</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a1fa3127fc82f96b1436d871ef02be319"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1fa3127fc82f96b1436d871ef02be319">&#9670;&nbsp;</a></span>$db</h2>
 
@@ -210,6 +196,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>query of the database, selects all cities where name is hull. </p>
 
 </div>
 </div>
@@ -224,6 +211,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>area of hull. </p>
 
 </div>
 </div>
@@ -238,6 +226,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>country of hull. </p>
 
 </div>
 </div>
@@ -252,6 +241,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>currency of hull. </p>
 
 </div>
 </div>
@@ -266,20 +256,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current weather type as an icon in hull. </p>
 
 </div>
 </div>
-<a id="a22d0d905fd4a2f3daae7d36a5527a775"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22d0d905fd4a2f3daae7d36a5527a775">&#9670;&nbsp;</a></span>$hull_info_array</h2>
+<a id="a24a4e2c16fb7ceee7c12646ce56597e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a4e2c16fb7ceee7c12646ce56597e4">&#9670;&nbsp;</a></span>$hull_info_array</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$hull_info_array = explode(&quot; &quot;, $hull_info_string)</td>
+          <td class="memname"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a> ( $hull_info_string==&quot;&quot;) $hull_info_array = explode(&quot; &quot;, $hull_info_string)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the hull weather in an array, each index has unique info. </p>
 
 </div>
 </div>
@@ -290,10 +282,11 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$hull_info_string = file_get_contents(&quot;http://www.ewwa.net/wx/clientraw.txt&quot;)</td>
+          <td class="memname">$hull_info_string = file_get_contents(&quot;{$_SESSION['hullweather']}&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the content of the hull weather (from clientraw.txt) as a string. </p>
 
 </div>
 </div>
@@ -308,6 +301,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>latitude of hull. </p>
 
 </div>
 </div>
@@ -322,6 +316,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>longitude of hull. </p>
 
 </div>
 </div>
@@ -336,6 +331,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>name of hull. </p>
 
 </div>
 </div>
@@ -350,6 +346,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>population of hull. </p>
 
 </div>
 </div>
@@ -364,6 +361,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>province of hull. </p>
 
 </div>
 </div>
@@ -378,6 +376,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the JSON response from darksky for hull. </p>
 
 </div>
 </div>
@@ -392,20 +391,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current temperature in hull. </p>
 
 </div>
 </div>
-<a id="a0ed7f50cb33c512a645e5a337f2b8ffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ed7f50cb33c512a645e5a337f2b8ffb">&#9670;&nbsp;</a></span>$hull_url</h2>
+<a id="a58f6123edc9a89eb61455c98ec3bb15d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f6123edc9a89eb61455c98ec3bb15d">&#9670;&nbsp;</a></span>$hull_url</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$hull_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$hull_lat.','.$hull_long</td>
+          <td class="memname">catch (PDOException $e) $hull_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>url for darksky forecast of hull. </p>
 
 </div>
 </div>
@@ -420,6 +421,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>website of hull. </p>
 
 </div>
 </div>
@@ -434,6 +436,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current windspeed in hull. </p>
 
 </div>
 </div>
@@ -448,6 +451,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>woeid of hull. </p>
 
 </div>
 </div>
@@ -462,6 +466,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>area of rotterdam. </p>
 
 </div>
 </div>
@@ -476,6 +481,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>country of rotterdam. </p>
 
 </div>
 </div>
@@ -490,6 +496,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>currency of rotterdam. </p>
 
 </div>
 </div>
@@ -504,20 +511,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current weather type as an icon in rotterdam. </p>
 
 </div>
 </div>
-<a id="a8473f658dba1c3a098692c77a1d5d8b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8473f658dba1c3a098692c77a1d5d8b4">&#9670;&nbsp;</a></span>$rotterdam_info_array</h2>
+<a id="a3fad30a9e50ca634f5d9da231e879994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fad30a9e50ca634f5d9da231e879994">&#9670;&nbsp;</a></span>$rotterdam_info_array</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$rotterdam_info_array = explode(&quot; &quot;, $rotterdam_info_string)</td>
+          <td class="memname"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a> ( $rotterdam_info_string==&quot;&quot;) $rotterdam_info_array = explode(&quot; &quot;, $rotterdam_info_string)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the rotterdam weather in an array, each index has unique info. </p>
 
 </div>
 </div>
@@ -528,10 +537,11 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$rotterdam_info_string = file_get_contents(&quot;http://www.erkamp.eu/wdl/clientraw.txt&quot;)</td>
+          <td class="memname">$rotterdam_info_string = file_get_contents(&quot;{$_SESSION['rotterdamweather']}&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the content of the rotterdam weather (from clientraw.txt) as a string. </p>
 
 </div>
 </div>
@@ -546,6 +556,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>latitude of rotterdam. </p>
 
 </div>
 </div>
@@ -560,6 +571,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>longitude of rotterdam. </p>
 
 </div>
 </div>
@@ -574,6 +586,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>name of rotterdam. </p>
 
 </div>
 </div>
@@ -588,6 +601,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>population of rotterdam. </p>
 
 </div>
 </div>
@@ -602,6 +616,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>province of rotterdam. </p>
 
 </div>
 </div>
@@ -616,20 +631,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the JSON response from darksky for hull. </p>
 
 </div>
 </div>
-<a id="a69306471bd59260ad04b5df5ba77803b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69306471bd59260ad04b5df5ba77803b">&#9670;&nbsp;</a></span>$rotterdam_temp</h2>
+<a id="a7d5783f258dc82ac9156c855be8f2d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d5783f258dc82ac9156c855be8f2d9a">&#9670;&nbsp;</a></span>$rotterdam_temp</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="index_8php.html#a8ecbe44a6e1f2b1430c183427ca99513">switch</a> ( $rotterdam_icon) $rotterdam_temp = $rotterdam_info_array[4]</td>
+          <td class="memname">$rotterdam_temp = $rotterdam_info_array[4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current temperature in rotterdam. </p>
 
 </div>
 </div>
@@ -640,10 +657,11 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">$rotterdam_url = 'https://api.darksky.net/forecast/'.$dark_sky_api_key.'/'.$rotterdam_lat.','.$rotterdam_long</td>
+          <td class="memname">$rotterdam_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>url for darksky forecast of rotterdamn. </p>
 
 </div>
 </div>
@@ -658,6 +676,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>website of rotterdam. </p>
 
 </div>
 </div>
@@ -672,6 +691,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>current windspeed in rotterdam. </p>
 
 </div>
 </div>
@@ -686,6 +706,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>woeid of rotterdam. </p>
 
 </div>
 </div>
@@ -700,6 +721,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the current row. </p>
 
 </div>
 </div>
@@ -759,14 +781,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2e79af1ba492bd2cbbaafa83f16262da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e79af1ba492bd2cbbaafa83f16262da">&#9670;&nbsp;</a></span>for</h2>
+<a id="aa11bce3c9d33806cade344b0536e0508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11bce3c9d33806cade344b0536e0508">&#9670;&nbsp;</a></span>for</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">for($i=0; $i&lt; 5; $i++)</td>
+          <td class="memname">for($i=0; $i&lt; 4; $i++)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae74920025a5793b6cc131192b92d8066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74920025a5793b6cc131192b92d8066">&#9670;&nbsp;</a></span>if</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">if = $db-&gt;prepare(&quot;SELECT * FROM `tb_pois`&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -801,14 +837,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8ecbe44a6e1f2b1430c183427ca99513"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ecbe44a6e1f2b1430c183427ca99513">&#9670;&nbsp;</a></span>switch</h2>
+<a id="ad2faa0eadeef0c97994ef3b2d91b08ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2faa0eadeef0c97994ef3b2d91b08ea">&#9670;&nbsp;</a></span>switch</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">switch = $rotterdam_info_array[4]</td>
+          <td class="memname">switch($rotterdam_icon)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -826,7 +862,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line">            <a class="code" href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&#39;mysql:host=51.75.162.4;port=3306;dbname=db_twincities&#39;</span>, <span class="stringliteral">&quot;username&quot;</span>, <span class="stringliteral">&quot;password&quot;</span>)</div><div class="ttc" id="index_8php_html_a1fa3127fc82f96b1436d871ef02be319"><div class="ttname"><a href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a></div><div class="ttdeci">$db</div><div class="ttdef"><b>Definition:</b> index.php:50</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line">            </div><div class="line">            <a class="code" href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&#39;mysql:host=&#39;</span>.<a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-hostname&#39;</span>].<span class="stringliteral">&#39;;port=&#39;</span>.<a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-port&#39;</span>].<span class="stringliteral">&#39;;dbname=db_twincities&#39;</span>, <a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-username&#39;</span>], <a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-password&#39;</span>])</div><div class="ttc" id="rotterdam_2index_8php_html_a2204e38201e377d62677f13b1a9fbd97"><div class="ttname"><a href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a></div><div class="ttdeci">$_SESSION['db-hostname']</div><div class="ttdef"><b>Definition:</b> index.php:5</div></div>
+<div class="ttc" id="index_8php_html_a1fa3127fc82f96b1436d871ef02be319"><div class="ttname"><a href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a></div><div class="ttdeci">$db</div><div class="ttdef"><b>Definition:</b> index.php:147</div></div>
 </div><!-- fragment -->
 </div>
 </div>
