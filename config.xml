@@ -7,7 +7,6 @@
     <darkskyapikey>f5d3e696f6c590a25f1de6811d30d390</darkskyapikey>
     <apilist>
         <openlayers>https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js</openlayers>
-        <openlayersstyle>https://openlayers.org/en/v5.3.0/css/ol.css</openlayersstyle>
         <hullweather>http://www.ewwa.net/wx/clientraw.txt</hullweather>
         <rotterdamweather>http://www.erkamp.eu/wdl/clientraw.txt</rotterdamweather>
         <darksky>https://api.darksky.net/forecast/</darksky>

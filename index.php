@@ -10,7 +10,6 @@ if(!isset($_SESSION['db-port'])) {
     $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
     $_SESSION['font'] = $config->apilist->font->__toString();
     $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
-    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
     $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
     $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
     $_SESSION['darksky'] = $config->apilist->darksky->__toString();
@@ -22,7 +21,6 @@ if(!isset($_SESSION['db-port'])) {
     <head>
         <title>Hull - Rotterdam Information</title>
         <link rel = "stylesheet" href = "mainstyle.css?v1.3"/>
-        <link rel="stylesheet" href="<?php echo $_SESSION['openlayersstyle'];?>" type="text/css">
         <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
         <script src="<?php echo $_SESSION['openlayers'];?>"></script>
     </head>

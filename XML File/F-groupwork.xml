@@ -277,7 +277,7 @@
         </technologies>
         <config_file>http://www.cems.uwe.ac.uk/~m3-welch/config.xml</config_file>
         <!-- URL of the Data Model - could be a HTML page with an image file or a gif/png file-->
-        <dm_source>http://www.cems.uwe.ac.uk/~b-wayne/dsa/assignment/model.gif</dm_source>
+        <dm_source>http://www.cems.uwe.ac.uk/~m3-welch/diagrams/diagrams.png</dm_source>
         <source_files>
             <file>
                 <name>index.php</name>
