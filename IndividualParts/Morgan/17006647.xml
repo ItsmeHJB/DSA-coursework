@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<individual_metafile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://www.cems.uwe.ac.uk/~p-chatterjee/2018-19/modules/dsa/assignment/individual_handin_schema.xsd">
+    <!-- This file is an example of a valid individual metadata file. 
+    Use this example file as a template and fill with your own data 
+    validating as you go along using Oxygen or some other schema aware editor -->    
+    <group id="F"/>
+    <student id="17006647"/>
+    <!--- List of one or more group components that you contributed to -->
+    <component type="Photo Widget">
+        <description>
+          I Created a photo widget that drew photos from Flickr based on the woeid of the city being viewed
+        </description>
+        <problems>
+          The actual widget pulling from Flickr and displaying the photos was very simple. I managed to do it in about 3 hours. But then when I started to look at caching,
+          I started having the issue of too many data entries in localStorage (as I was storing 50 dataImageURLs for each city, as well as a timestamp (day and month) 
+          for each photo. 
+        </problems>
+        <solutions>
+          To counteract this, I made sure that only one date would be stored for each city in order to see whether or not to load the cached files or save
+          new ones.
+        </solutions>
+        <problems>
+          But even after doing this, sometimes it works flawlessly, but sometimes it will store all of one city perfectly, but if you try and go onto the second city
+          only the first few will cache and the rest will not. I have spent probably close to 15 hours in total trying to get the caching to work, but this is the best I can do. 
+        </problems>
+        <hours_effort>18</hours_effort>
+        <!-- This should be an URL to the working component - maybe part of the base page -->
+        <base_url>http://www.cems.uwe.ac.uk/~an-other/dsa/assignment/index.php</base_url>
+        <technologies>
+            <tech>php</tech>
+            <tech>javascript</tech>
+            <tech>html5</tech>
+            <tech>CSS</tech>
+        </technologies>
+        <source_files>
+            <file>
+                <name>flickr.php</name>
+                <purpose>to fetch flickr photos</purpose>
+                <source_url>http://www.cems.uwe.ac.uk/~an-other/php/dsa/flickr.phps</source_url>
+            </file>
+            <file>
+                <name>index.html</name>
+                <purpose>main page with embedded photos</purpose>
+                <source_url>http://www.cems.uwe.ac.uk/~an-other/php/dsa/index.html</source_url>
+            </file>
+        </source_files>
+    </component>
+    <individual_comment>
+      I really learnt a lot while doing this individual part. I learnt how to build up a URL that I could then call back to get JSON from in order to utilise the Flickr API.
+      I also learnt a lot about caching and the difference between session storage and local storage. I also learnt about CSS as I had to style the images in a way that looked
+      nice and didn't leave empty gaps everywhere where the image sizes were different.
+    </individual_comment>
+</individual_metafile>
+<!-- DSA Individual Metadata File Example, 2018-19 -->
+<!-- author: prakash.chatterjee@uwe.ac.uk -->
