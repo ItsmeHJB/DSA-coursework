@@ -1,53 +1,80 @@
 <?php
 
 session_start();
-$config = simplexml_load_file("../config.xml");
-$_SESSION['db-hostname'] = $config->dbhostname->__toString();
-$_SESSION['db-port'] = $config->dbport->__toString();
-$_SESSION['db-username'] = $config->dbusername->__toString();
-$_SESSION['db-password'] = $config->dbpassword->__toString();
-$_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
-
+if(!isset($_SESSION['db-port'])) {
+    $config = simplexml_load_file("../config.xml");
+    $_SESSION['db-hostname'] = $config->dbhostname->__toString();
+    $_SESSION['db-port'] = $config->dbport->__toString();
+    $_SESSION['db-username'] = $config->dbusername->__toString();
+    $_SESSION['db-password'] = $config->dbpassword->__toString();
+    $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
+    $_SESSION['font'] = $config->apilist->font->__toString();
+    $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
+    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
+    $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
+    $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
+    $_SESSION['darksky'] = $config->apilist->darksky->__toString();
+}
 ?>
 <html>
 <meta charset="UTF-8">
 <head>
     <title>Kingston-Upon Hull Information</title>
     <link rel = "stylesheet" href = "hullstyle.css?v1.2"/>
-    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet'>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <link href='<?php echo $_SESSION['font'];?>' rel='stylesheet'>
+    <script src="<?php echo $_SESSION['openlayers'];?>"></script>
 </head>
 <body>
     <div class = "navbar">
       <a href = "../">Home</a>
       <a href = "">Hull</a>
       <a href = "../rotterdam/">Rotterdam</a>
+      <a href = "../rss_generation.php/">RSS</a>
     </div>
     <?php try{
-        $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+      /// PDO object of the database.
+      $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+      /// query of the database, selects cities where name is kingston upon hull.
       $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+      /// holds the current row.
       $row = $dbq->fetch(PDO::FETCH_ASSOC);
+      /// woeid.
       $woeid_city = $row['woeid_city'];
+      /// name.
       $name = $row['name'];
+      /// latitude.
       $lat = $row['latitude'];
+      /// longitude.
       $long = $row['longitude'];
+      /// country.
       $country = $row['country'];
+      /// population.
       $population = $row['population'];
+      /// currency.
       $currency = $row['currency'];
+      /// province.
       $province = $row['province'];
+      /// area.
       $area = $row['area'];
+      /// timezone.
       $time_zone = $row['time_zone'];
+      /// website.
       $website = $row['website'];
 
+      /// amount of POIs.
       $poiCount= $db->query("SELECT COUNT(woeid_city) FROM tb_pois WHERE woeid_city = $woeid_city")->fetchColumn();
+      /// query of the dataabse, all POIs for $woeid_city.
       $poiQuery = $db->query("SELECT * FROM `tb_pois` WHERE woeid_city = $woeid_city");
 
+      /// array of points of interest.
       $poisArray = array();
+      /// array of photos.
       $bigPhotoArray = array();
 
       for ($i = 0; $i < $poiCount; $i++) {
+        /// PDO object for POIs.
           $pois = $poiQuery->fetch(PDO::FETCH_ASSOC);
-
+          /// array holding POI details.
           $tempPoi = array(
               $pois['longitude'],
               $pois['latitude'],
@@ -61,21 +88,27 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
               $pois['woeid_city']
           );
 
+
           $poisArray[] = $tempPoi;
+          /// woeid for the POI.
           $poi_woeid = $pois['woeid_poi'];
 
+          /// amount of photos.
           $photosCount= $db->query("SELECT COUNT(woeid_poi) FROM tb_photos WHERE woeid_poi = $poi_woeid")->fetchColumn();
+          /// query for photos, all photos for the POI location.
           $photosQuery = $db->query("SELECT * FROM `tb_photos` WHERE woeid_poi = $poi_woeid");
 
           for ($c = 0; $c < $photosCount; $c++) {
+              /// PDO object for photos.
               $photos = $photosQuery->fetch(PDO::FETCH_ASSOC);
-
+              /// array for photo details.
               $tempPhoto = null;
               $tempPhoto = array(
                   $photos['photo_id'],
                   $photos['name'],
                   $photos['link']
               );
+              /// holds the photos.
               $photosArray[] = $tempPhoto;
           }
           array_push($bigPhotoArray, $photosArray);
@@ -96,17 +129,23 @@ $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
     <div class = "content">
 
         <?php
-        $weather_info_string = file_get_contents("http://www.ewwa.net/wx/clientraw.txt");
+        /// string of weather info.
+        $weather_info_string = file_get_contents("{$_SESSION['hullweather']}");
 
         if($weather_info_string == ""){
             $weather_info_string = file_get_contents("StaticData/hull.txt");
         }
 
+        /// weather info in an array.
         $weather_info_array = explode( " ", $weather_info_string);
         $temp = $weather_info_array[4];
+        /// holds rain amount.
         $rain_amount = $weather_info_array[7];
+        /// holds windspeed.
         $windspeed = $weather_info_array[1] * 1.151;
+        /// holds wind direction.
         $wind_direction = $weather_info_array[3];
+        /// holds humidity.
         $humidity = $weather_info_array[5];
         ?>
 
