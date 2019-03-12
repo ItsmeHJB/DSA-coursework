@@ -1,1 +1,0 @@
-Harrison's individual task with PHPUnit
