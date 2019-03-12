@@ -195,7 +195,7 @@
             <contributor id="17009191"/>
             <description>
               Generates the RSS feed of all items (cities, points of interest, photos) in the database.
-              Displays each item and its attributes as XML. Lists each entry in each table. 
+              Displays each item and its attributes as XML. Lists each entry in each table.
             </description>
             <problems>
                 We struggled a lot when we began working on the RSS feed, as we could get the first iteration to display
@@ -249,6 +249,7 @@
             <contributor id="17022080"/>
             <description>
                 A simple XML document designed to keep sensitive data away from the main script.
+                This hodls all the API links and keys, and database confiuration information.
             </description>
             <problems>
 

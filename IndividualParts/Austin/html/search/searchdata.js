@@ -1,24 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "$_acefilprstw",
+  0: "$_acefiprstw",
   1: "ir",
-  2: "l",
-  3: "$_acefpstw"
+  2: "$_acefipstw"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "files",
-  2: "functions",
-  3: "variables"
+  2: "variables"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Files",
-  2: "Functions",
-  3: "Variables"
+  2: "Variables"
 };
 

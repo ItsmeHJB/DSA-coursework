@@ -3,6 +3,18 @@
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{rotterdam_2index_8php_a49c7011be9c979d9174c52a8b83e5d8e}{\$config}} = simplexml\+\_\+load\+\_\+file(\char`\"{}../config.\+xml\char`\"{})
+\item 
+\mbox{\hyperlink{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}{\$\+\_\+\+S\+E\+S\+S\+I\+ON}} \mbox{[}\textquotesingle{}db-\/hostname\textquotesingle{}\mbox{]} = \$config-\/$>$dbhostname-\/$>$\+\_\+\+\_\+to\+String()
+\item 
+\mbox{\hyperlink{rotterdam_2index_8php_a9c0a33c1d865bc2705937df84d037856}{\$\+\_\+\+S\+E\+S\+S\+I\+ON}} \mbox{[}\textquotesingle{}db-\/port\textquotesingle{}\mbox{]} = \$config-\/$>$dbport-\/$>$\+\_\+\+\_\+to\+String()
+\item 
+\mbox{\hyperlink{rotterdam_2index_8php_a22b01b4f5ad2c75f89289926c55b8eb7}{\$\+\_\+\+S\+E\+S\+S\+I\+ON}} \mbox{[}\textquotesingle{}db-\/username\textquotesingle{}\mbox{]} = \$config-\/$>$dbusername-\/$>$\+\_\+\+\_\+to\+String()
+\item 
+\mbox{\hyperlink{rotterdam_2index_8php_a0b6acdb2eec8adedd51284ac5a5a9748}{\$\+\_\+\+S\+E\+S\+S\+I\+ON}} \mbox{[}\textquotesingle{}db-\/password\textquotesingle{}\mbox{]} = \$config-\/$>$dbpassword-\/$>$\+\_\+\+\_\+to\+String()
+\item 
+\mbox{\hyperlink{rotterdam_2index_8php_a6ec14c128bfe7633c023f7e99db766a2}{\$\+\_\+\+S\+E\+S\+S\+I\+ON}} \mbox{[}\textquotesingle{}dark-\/sky-\/api-\/key\textquotesingle{}\mbox{]} = \$config-\/$>$darkskyapikey-\/$>$\+\_\+\+\_\+to\+String()
+\item 
 \mbox{\hyperlink{rotterdam_2index_8php_abe4cc9788f52e49485473dc699537388}{try}}
 \item 
 \mbox{\hyperlink{rotterdam_2index_8php_ab76933014035168a37e7e525ca8fbabe}{\$dbq}} = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT $\ast$ F\+R\+OM \`{}tb\+\_\+cities\`{} W\+H\+E\+RE \`{}name\`{} = \textquotesingle{}Rotterdam\textquotesingle{}\char`\"{})
@@ -37,9 +49,13 @@
 \item 
 \mbox{\hyperlink{rotterdam_2index_8php_aba22eb823924400ba310cca9821c67b3}{\$pois\+Array}} = array()
 \item 
-\mbox{\hyperlink{index_8php_a2e79af1ba492bd2cbbaafa83f16262da}{for}}(\$i=0; \$i$<$ \$poi\+Count; \$i++) \mbox{\hyperlink{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}{\$db}} = null
+\mbox{\hyperlink{rotterdam_2index_8php_aab544b20d0152a1bf9eeb8db3e9f0577}{\$big\+Photo\+Array}} = array()
 \item 
-catch(P\+D\+O\+Exception \$e) \mbox{\hyperlink{rotterdam_2index_8php_af16b636c83a2e1d4b020917a4fc5858b}{\$weather\+\_\+info\+\_\+array}} = explode(\char`\"{} \char`\"{}, file\+\_\+get\+\_\+contents(\char`\"{}http\+://www.\+erkamp.\+eu/wdl/clientraw.\+txt\char`\"{}))
+\mbox{\hyperlink{index_8php_aa11bce3c9d33806cade344b0536e0508}{for}}(\$i=0; \$i$<$ \$poi\+Count; \$i++) \mbox{\hyperlink{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}{\$db}} = null
+\item 
+catch(P\+D\+O\+Exception \$e) \mbox{\hyperlink{rotterdam_2index_8php_aa85edc6c515eee98e2848667893e007d}{\$weather\+\_\+info\+\_\+string}} = file\+\_\+get\+\_\+contents(\char`\"{}http\+://www.\+erkamp.\+eu/wdl/clientraw.\+txt\char`\"{})
+\item 
+\mbox{\hyperlink{hull_2index_8php_a8f0d8893361d6307986497540738a8bf}{if}}(\$weather\+\_\+info\+\_\+string==\char`\"{}\char`\"{}) \mbox{\hyperlink{rotterdam_2index_8php_a16271cc4158d1822fa59adaf196eb3d4}{\$weather\+\_\+info\+\_\+array}} = explode(\char`\"{} \char`\"{}, \$weather\+\_\+info\+\_\+string)
 \item 
 \mbox{\hyperlink{rotterdam_2index_8php_a0d57fb0317e19ec798aa625381ebf342}{\$temp}} = \$weather\+\_\+info\+\_\+array\mbox{[}4\mbox{]}
 \item 
@@ -51,7 +67,7 @@ catch(P\+D\+O\+Exception \$e) \mbox{\hyperlink{rotterdam_2index_8php_af16b636c83
 \item 
 \mbox{\hyperlink{rotterdam_2index_8php_aff5636a5f8216e0c22399f0c2d78a80d}{\$humidity}} = \$weather\+\_\+info\+\_\+array\mbox{[}5\mbox{]}
 \item 
-if(\$wind\+\_\+direction $>$=337.\+5$\vert$$\vert$ \$wind\+\_\+direction$<$ 22.\+5) elseif(\$wind\+\_\+direction $>$=22.\+5 \&\& \$wind\+\_\+direction$<$ 67.\+5) elseif(\$wind\+\_\+direction $>$=67.\+5 \&\& \$wind\+\_\+direction$<$ 112.\+5) elseif(\$wind\+\_\+direction $>$=112.\+5 \&\& \$wind\+\_\+direction$<$ 157.\+5) elseif(\$wind\+\_\+direction $>$=157.\+5 \&\& \$wind\+\_\+direction$<$ 202.\+5) elseif(\$wind\+\_\+direction $>$=202.\+5 \&\& \$wind\+\_\+direction$<$ 247.\+5) elseif(\$wind\+\_\+direction $>$=247.\+5 \&\& \$wind\+\_\+direction$<$ 292.\+5) \mbox{\hyperlink{rotterdam_2index_8php_aa8f062d2792cb6f2003b5743776f492a}{elseif}} ( \$wind\+\_\+direction $>$=292.\+5 \&\&\$wind\+\_\+direction$<$ 337.\+5)
+\mbox{\hyperlink{hull_2index_8php_a8f0d8893361d6307986497540738a8bf}{if}}(\$wind\+\_\+direction $>$=337.\+5$\vert$$\vert$ \$wind\+\_\+direction$<$ 22.\+5) elseif(\$wind\+\_\+direction $>$=22.\+5 \&\& \$wind\+\_\+direction$<$ 67.\+5) elseif(\$wind\+\_\+direction $>$=67.\+5 \&\& \$wind\+\_\+direction$<$ 112.\+5) elseif(\$wind\+\_\+direction $>$=112.\+5 \&\& \$wind\+\_\+direction$<$ 157.\+5) elseif(\$wind\+\_\+direction $>$=157.\+5 \&\& \$wind\+\_\+direction$<$ 202.\+5) elseif(\$wind\+\_\+direction $>$=202.\+5 \&\& \$wind\+\_\+direction$<$ 247.\+5) elseif(\$wind\+\_\+direction $>$=247.\+5 \&\& \$wind\+\_\+direction$<$ 292.\+5) \mbox{\hyperlink{rotterdam_2index_8php_aa8f062d2792cb6f2003b5743776f492a}{elseif}} ( \$wind\+\_\+direction $>$=292.\+5 \&\&\$wind\+\_\+direction$<$ 337.\+5)
 \item 
 zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\+\_\+\+\_\+pad2\+\_\+\+\_\+}}
 \item 
@@ -60,11 +76,53 @@ zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\
 
 
 \subsection{Variable Documentation}
+\mbox{\Hypertarget{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}\label{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}} 
+\index{index.php@{index.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \$\+\_\+\+S\+E\+S\+S\+I\+ON\mbox{[} \textquotesingle{}db-\/hostname\textquotesingle{}\mbox{]} = \$config-\/$>$dbhostname-\/$>$\+\_\+\+\_\+to\+String()}
+
+\mbox{\Hypertarget{rotterdam_2index_8php_a9c0a33c1d865bc2705937df84d037856}\label{rotterdam_2index_8php_a9c0a33c1d865bc2705937df84d037856}} 
+\index{index.php@{index.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \$\+\_\+\+S\+E\+S\+S\+I\+ON\mbox{[} \textquotesingle{}db-\/port\textquotesingle{}\mbox{]} = \$config-\/$>$dbport-\/$>$\+\_\+\+\_\+to\+String()}
+
+\mbox{\Hypertarget{rotterdam_2index_8php_a22b01b4f5ad2c75f89289926c55b8eb7}\label{rotterdam_2index_8php_a22b01b4f5ad2c75f89289926c55b8eb7}} 
+\index{index.php@{index.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \$\+\_\+\+S\+E\+S\+S\+I\+ON\mbox{[} \textquotesingle{}db-\/username\textquotesingle{}\mbox{]} = \$config-\/$>$dbusername-\/$>$\+\_\+\+\_\+to\+String()}
+
+\mbox{\Hypertarget{rotterdam_2index_8php_a0b6acdb2eec8adedd51284ac5a5a9748}\label{rotterdam_2index_8php_a0b6acdb2eec8adedd51284ac5a5a9748}} 
+\index{index.php@{index.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \$\+\_\+\+S\+E\+S\+S\+I\+ON\mbox{[} \textquotesingle{}db-\/password\textquotesingle{}\mbox{]} = \$config-\/$>$dbpassword-\/$>$\+\_\+\+\_\+to\+String()}
+
+\mbox{\Hypertarget{rotterdam_2index_8php_a6ec14c128bfe7633c023f7e99db766a2}\label{rotterdam_2index_8php_a6ec14c128bfe7633c023f7e99db766a2}} 
+\index{index.php@{index.php}!\$\_SESSION@{\$\_SESSION}}
+\index{\$\_SESSION@{\$\_SESSION}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$\_SESSION}{$\_SESSION}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \$\+\_\+\+S\+E\+S\+S\+I\+ON\mbox{[} \textquotesingle{}dark-\/sky-\/api-\/key\textquotesingle{}\mbox{]} = \$config-\/$>$darkskyapikey-\/$>$\+\_\+\+\_\+to\+String()}
+
 \mbox{\Hypertarget{rotterdam_2index_8php_a460a08379d150f8c151a07ad9a3251cd}\label{rotterdam_2index_8php_a460a08379d150f8c151a07ad9a3251cd}} 
 \index{index.php@{index.php}!\$area@{\$area}}
 \index{\$area@{\$area}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$area}{$area}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a5198216176428aa2303311f956213f33}{area}}\textquotesingle{}\mbox{]}}
+
+area. \mbox{\Hypertarget{rotterdam_2index_8php_aab544b20d0152a1bf9eeb8db3e9f0577}\label{rotterdam_2index_8php_aab544b20d0152a1bf9eeb8db3e9f0577}} 
+\index{index.php@{index.php}!\$bigPhotoArray@{\$bigPhotoArray}}
+\index{\$bigPhotoArray@{\$bigPhotoArray}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$bigPhotoArray}{$bigPhotoArray}}
+{\footnotesize\ttfamily \$big\+Photo\+Array = array()}
+
+array of photos. \mbox{\Hypertarget{rotterdam_2index_8php_a49c7011be9c979d9174c52a8b83e5d8e}\label{rotterdam_2index_8php_a49c7011be9c979d9174c52a8b83e5d8e}} 
+\index{index.php@{index.php}!\$config@{\$config}}
+\index{\$config@{\$config}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$config}{$config}}
+{\footnotesize\ttfamily \$config = simplexml\+\_\+load\+\_\+file(\char`\"{}../config.\+xml\char`\"{})}
 
 \mbox{\Hypertarget{rotterdam_2index_8php_a1437a5f6eb157f0eb267a26e0ad4f1ba}\label{rotterdam_2index_8php_a1437a5f6eb157f0eb267a26e0ad4f1ba}} 
 \index{index.php@{index.php}!\$country@{\$country}}
@@ -72,91 +130,105 @@ zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\
 \subsubsection{\texorpdfstring{\$country}{$country}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a0f0752705301c982dc8994ebc993e6e9}{country}}\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a37d22fd3b896e9d5488f3479a4d8f451}\label{rotterdam_2index_8php_a37d22fd3b896e9d5488f3479a4d8f451}} 
+country. \mbox{\Hypertarget{rotterdam_2index_8php_a37d22fd3b896e9d5488f3479a4d8f451}\label{rotterdam_2index_8php_a37d22fd3b896e9d5488f3479a4d8f451}} 
 \index{index.php@{index.php}!\$currency@{\$currency}}
 \index{\$currency@{\$currency}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$currency}{$currency}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_abd84e0698c321abdbf211d5b8425d0b5}{currency}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_abd84e0698c321abdbf211d5b8425d0b5}{currency}}\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}\label{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}} 
+currency. \mbox{\Hypertarget{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}\label{rotterdam_2index_8php_ae26e87d17180fc87313d19b439092f0f}} 
 \index{index.php@{index.php}!\$db@{\$db}}
 \index{\$db@{\$db}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$db}{$db}}
-{\footnotesize\ttfamily \mbox{\hyperlink{index_8php_a2e79af1ba492bd2cbbaafa83f16262da}{for}} ( \$i=0;\$i$<$ \$poi\+Count;\$i++) \$db = null}
+{\footnotesize\ttfamily \mbox{\hyperlink{index_8php_aa11bce3c9d33806cade344b0536e0508}{for}} ( \$i=0;\$i$<$ \$poi\+Count;\$i++) \$db = null}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_ab76933014035168a37e7e525ca8fbabe}\label{rotterdam_2index_8php_ab76933014035168a37e7e525ca8fbabe}} 
+P\+DO object for P\+O\+Is.
+
+array holding P\+OI details.
+
+woeid for the P\+OI.
+
+amount of photos.
+
+query for photos, all photos for the P\+OI location.
+
+P\+DO object for photos.
+
+array for photo details.
+
+holds the photos.\mbox{\Hypertarget{rotterdam_2index_8php_ab76933014035168a37e7e525ca8fbabe}\label{rotterdam_2index_8php_ab76933014035168a37e7e525ca8fbabe}} 
 \index{index.php@{index.php}!\$dbq@{\$dbq}}
 \index{\$dbq@{\$dbq}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$dbq}{$dbq}}
 {\footnotesize\ttfamily \$dbq = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT $\ast$ F\+R\+OM \`{}tb\+\_\+cities\`{} W\+H\+E\+RE \`{}name\`{} = \textquotesingle{}Rotterdam\textquotesingle{}\char`\"{})}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_aff5636a5f8216e0c22399f0c2d78a80d}\label{rotterdam_2index_8php_aff5636a5f8216e0c22399f0c2d78a80d}} 
+query of the database, selects cities where name is rotterdam. \mbox{\Hypertarget{rotterdam_2index_8php_aff5636a5f8216e0c22399f0c2d78a80d}\label{rotterdam_2index_8php_aff5636a5f8216e0c22399f0c2d78a80d}} 
 \index{index.php@{index.php}!\$humidity@{\$humidity}}
 \index{\$humidity@{\$humidity}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$humidity}{$humidity}}
 {\footnotesize\ttfamily \$humidity = \$weather\+\_\+info\+\_\+array\mbox{[}5\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_af498b42b83afed4dfe0af05fd802776c}\label{rotterdam_2index_8php_af498b42b83afed4dfe0af05fd802776c}} 
+holds humidity. \mbox{\Hypertarget{rotterdam_2index_8php_af498b42b83afed4dfe0af05fd802776c}\label{rotterdam_2index_8php_af498b42b83afed4dfe0af05fd802776c}} 
 \index{index.php@{index.php}!\$lat@{\$lat}}
 \index{\$lat@{\$lat}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$lat}{$lat}}
 {\footnotesize\ttfamily \$lat = \$row\mbox{[}\textquotesingle{}latitude\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a30223182013e2964ccbd7c134b3c52c1}\label{rotterdam_2index_8php_a30223182013e2964ccbd7c134b3c52c1}} 
+latitude. \mbox{\Hypertarget{rotterdam_2index_8php_a30223182013e2964ccbd7c134b3c52c1}\label{rotterdam_2index_8php_a30223182013e2964ccbd7c134b3c52c1}} 
 \index{index.php@{index.php}!\$long@{\$long}}
 \index{\$long@{\$long}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$long}{$long}}
 {\footnotesize\ttfamily \$long = \$row\mbox{[}\textquotesingle{}longitude\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}\label{rotterdam_2index_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}} 
+longitude. \mbox{\Hypertarget{rotterdam_2index_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}\label{rotterdam_2index_8php_ab2fc40d43824ea3e1ce5d86dee0d763b}} 
 \index{index.php@{index.php}!\$name@{\$name}}
 \index{\$name@{\$name}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$name}{$name}}
 {\footnotesize\ttfamily \$name = \$row\mbox{[}\textquotesingle{}name\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a8fb5f82500861c51c8fcfd700321e59e}\label{rotterdam_2index_8php_a8fb5f82500861c51c8fcfd700321e59e}} 
+name. \mbox{\Hypertarget{rotterdam_2index_8php_a8fb5f82500861c51c8fcfd700321e59e}\label{rotterdam_2index_8php_a8fb5f82500861c51c8fcfd700321e59e}} 
 \index{index.php@{index.php}!\$poiCount@{\$poiCount}}
 \index{\$poiCount@{\$poiCount}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$poiCount}{$poiCount}}
 {\footnotesize\ttfamily \$poi\+Count = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT C\+O\+U\+NT(woeid\+\_\+city) F\+R\+OM tb\+\_\+pois W\+H\+E\+RE woeid\+\_\+city = \$woeid\+\_\+city\char`\"{})-\/$>$fetch\+Column()}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a735d09bd88bab2d39b5d123b6a1ac7e9}\label{rotterdam_2index_8php_a735d09bd88bab2d39b5d123b6a1ac7e9}} 
+amount of P\+O\+Is. \mbox{\Hypertarget{rotterdam_2index_8php_a735d09bd88bab2d39b5d123b6a1ac7e9}\label{rotterdam_2index_8php_a735d09bd88bab2d39b5d123b6a1ac7e9}} 
 \index{index.php@{index.php}!\$poiQuery@{\$poiQuery}}
 \index{\$poiQuery@{\$poiQuery}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$poiQuery}{$poiQuery}}
 {\footnotesize\ttfamily \$poi\+Query = \$db-\/$>$query(\char`\"{}S\+E\+L\+E\+CT $\ast$ F\+R\+OM \`{}tb\+\_\+pois\`{} W\+H\+E\+RE woeid\+\_\+city = \$woeid\+\_\+city\char`\"{})}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_aba22eb823924400ba310cca9821c67b3}\label{rotterdam_2index_8php_aba22eb823924400ba310cca9821c67b3}} 
+query of the dataabse, all P\+O\+Is for \$woeid\+\_\+city. \mbox{\Hypertarget{rotterdam_2index_8php_aba22eb823924400ba310cca9821c67b3}\label{rotterdam_2index_8php_aba22eb823924400ba310cca9821c67b3}} 
 \index{index.php@{index.php}!\$poisArray@{\$poisArray}}
 \index{\$poisArray@{\$poisArray}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$poisArray}{$poisArray}}
 {\footnotesize\ttfamily \$pois\+Array = array()}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_afc1939ed7d0e8629546e2bc27b02dbc1}\label{rotterdam_2index_8php_afc1939ed7d0e8629546e2bc27b02dbc1}} 
+array of points of interest. \mbox{\Hypertarget{rotterdam_2index_8php_afc1939ed7d0e8629546e2bc27b02dbc1}\label{rotterdam_2index_8php_afc1939ed7d0e8629546e2bc27b02dbc1}} 
 \index{index.php@{index.php}!\$population@{\$population}}
 \index{\$population@{\$population}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$population}{$population}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_aa78fa356925cd3f67d485c4d6846202b}{population}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_aa78fa356925cd3f67d485c4d6846202b}{population}}\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a0bdd006d1becad76055fe31c887fdfaf}\label{rotterdam_2index_8php_a0bdd006d1becad76055fe31c887fdfaf}} 
+population. \mbox{\Hypertarget{rotterdam_2index_8php_a0bdd006d1becad76055fe31c887fdfaf}\label{rotterdam_2index_8php_a0bdd006d1becad76055fe31c887fdfaf}} 
 \index{index.php@{index.php}!\$province@{\$province}}
 \index{\$province@{\$province}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$province}{$province}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a38d70414c65575df5643ad4296c9db2e}{province}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a38d70414c65575df5643ad4296c9db2e}{province}}\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a2aa7fd45b683a3c60b6f5e5d11a027b3}\label{rotterdam_2index_8php_a2aa7fd45b683a3c60b6f5e5d11a027b3}} 
+province. \mbox{\Hypertarget{rotterdam_2index_8php_a2aa7fd45b683a3c60b6f5e5d11a027b3}\label{rotterdam_2index_8php_a2aa7fd45b683a3c60b6f5e5d11a027b3}} 
 \index{index.php@{index.php}!\$rain\_amount@{\$rain\_amount}}
 \index{\$rain\_amount@{\$rain\_amount}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$rain\_amount}{$rain\_amount}}
 {\footnotesize\ttfamily \$rain\+\_\+amount = \$weather\+\_\+info\+\_\+array\mbox{[}7\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_aa1d731aa570613e5bcff831bb10e9b87}\label{rotterdam_2index_8php_aa1d731aa570613e5bcff831bb10e9b87}} 
+holds rain amount. \mbox{\Hypertarget{rotterdam_2index_8php_aa1d731aa570613e5bcff831bb10e9b87}\label{rotterdam_2index_8php_aa1d731aa570613e5bcff831bb10e9b87}} 
 \index{index.php@{index.php}!\$row@{\$row}}
 \index{\$row@{\$row}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$row}{$row}}
 {\footnotesize\ttfamily \$row = \$dbq-\/$>$fetch(P\+D\+O\+::\+F\+E\+T\+C\+H\+\_\+\+A\+S\+S\+OC)}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a0d57fb0317e19ec798aa625381ebf342}\label{rotterdam_2index_8php_a0d57fb0317e19ec798aa625381ebf342}} 
+holds the current row. \mbox{\Hypertarget{rotterdam_2index_8php_a0d57fb0317e19ec798aa625381ebf342}\label{rotterdam_2index_8php_a0d57fb0317e19ec798aa625381ebf342}} 
 \index{index.php@{index.php}!\$temp@{\$temp}}
 \index{\$temp@{\$temp}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$temp}{$temp}}
@@ -168,37 +240,43 @@ zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\
 \subsubsection{\texorpdfstring{\$time\_zone}{$time\_zone}}
 {\footnotesize\ttfamily \$time\+\_\+zone = \$row\mbox{[}\textquotesingle{}time\+\_\+zone\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_af16b636c83a2e1d4b020917a4fc5858b}\label{rotterdam_2index_8php_af16b636c83a2e1d4b020917a4fc5858b}} 
+timezone. \mbox{\Hypertarget{rotterdam_2index_8php_a16271cc4158d1822fa59adaf196eb3d4}\label{rotterdam_2index_8php_a16271cc4158d1822fa59adaf196eb3d4}} 
 \index{index.php@{index.php}!\$weather\_info\_array@{\$weather\_info\_array}}
 \index{\$weather\_info\_array@{\$weather\_info\_array}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$weather\_info\_array}{$weather\_info\_array}}
-{\footnotesize\ttfamily catch (P\+D\+O\+Exception \$e) \$weather\+\_\+info\+\_\+array = explode(\char`\"{} \char`\"{}, file\+\_\+get\+\_\+contents(\char`\"{}http\+://www.\+erkamp.\+eu/wdl/clientraw.\+txt\char`\"{}))}
+{\footnotesize\ttfamily \mbox{\hyperlink{hull_2index_8php_a8f0d8893361d6307986497540738a8bf}{if}} ( \$weather\+\_\+info\+\_\+string==\char`\"{}\char`\"{}) \$weather\+\_\+info\+\_\+array = explode(\char`\"{} \char`\"{}, \$weather\+\_\+info\+\_\+string)}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a2887d41d3bb2498db735eeb87efa2d73}\label{rotterdam_2index_8php_a2887d41d3bb2498db735eeb87efa2d73}} 
+weather info in an array. \mbox{\Hypertarget{rotterdam_2index_8php_aa85edc6c515eee98e2848667893e007d}\label{rotterdam_2index_8php_aa85edc6c515eee98e2848667893e007d}} 
+\index{index.php@{index.php}!\$weather\_info\_string@{\$weather\_info\_string}}
+\index{\$weather\_info\_string@{\$weather\_info\_string}!index.php@{index.php}}
+\subsubsection{\texorpdfstring{\$weather\_info\_string}{$weather\_info\_string}}
+{\footnotesize\ttfamily catch (P\+D\+O\+Exception \$e) \$weather\+\_\+info\+\_\+string = file\+\_\+get\+\_\+contents(\char`\"{}http\+://www.\+erkamp.\+eu/wdl/clientraw.\+txt\char`\"{})}
+
+string of weather info. \mbox{\Hypertarget{rotterdam_2index_8php_a2887d41d3bb2498db735eeb87efa2d73}\label{rotterdam_2index_8php_a2887d41d3bb2498db735eeb87efa2d73}} 
 \index{index.php@{index.php}!\$website@{\$website}}
 \index{\$website@{\$website}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$website}{$website}}
 {\footnotesize\ttfamily \$\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}} = \$row\mbox{[}\textquotesingle{}\mbox{\hyperlink{index_8php_a8c56014cff17c1ced653aa98455da680}{website}}\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_acae9d7e1905e3a01e07d87856885aa2c}\label{rotterdam_2index_8php_acae9d7e1905e3a01e07d87856885aa2c}} 
+website. \mbox{\Hypertarget{rotterdam_2index_8php_acae9d7e1905e3a01e07d87856885aa2c}\label{rotterdam_2index_8php_acae9d7e1905e3a01e07d87856885aa2c}} 
 \index{index.php@{index.php}!\$wind\_direction@{\$wind\_direction}}
 \index{\$wind\_direction@{\$wind\_direction}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$wind\_direction}{$wind\_direction}}
 {\footnotesize\ttfamily \$wind\+\_\+direction = \$weather\+\_\+info\+\_\+array\mbox{[}3\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a98bffc039f434ba80b316614e0fc94db}\label{rotterdam_2index_8php_a98bffc039f434ba80b316614e0fc94db}} 
+holds wind direction. \mbox{\Hypertarget{rotterdam_2index_8php_a98bffc039f434ba80b316614e0fc94db}\label{rotterdam_2index_8php_a98bffc039f434ba80b316614e0fc94db}} 
 \index{index.php@{index.php}!\$windspeed@{\$windspeed}}
 \index{\$windspeed@{\$windspeed}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$windspeed}{$windspeed}}
 {\footnotesize\ttfamily \$windspeed = \$weather\+\_\+info\+\_\+array\mbox{[}1\mbox{]} $\ast$ 1.\+151}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_a34dc977e0c4838f8c2d423849ad9ff02}\label{rotterdam_2index_8php_a34dc977e0c4838f8c2d423849ad9ff02}} 
+holds windspeed. \mbox{\Hypertarget{rotterdam_2index_8php_a34dc977e0c4838f8c2d423849ad9ff02}\label{rotterdam_2index_8php_a34dc977e0c4838f8c2d423849ad9ff02}} 
 \index{index.php@{index.php}!\$woeid\_city@{\$woeid\_city}}
 \index{\$woeid\_city@{\$woeid\_city}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\$woeid\_city}{$woeid\_city}}
 {\footnotesize\ttfamily \$woeid\+\_\+city = \$row\mbox{[}\textquotesingle{}woeid\+\_\+city\textquotesingle{}\mbox{]}}
 
-\mbox{\Hypertarget{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}\label{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}} 
+woeid. \mbox{\Hypertarget{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}\label{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}} 
 \index{index.php@{index.php}!\_\_pad2\_\_@{\_\_pad2\_\_}}
 \index{\_\_pad2\_\_@{\_\_pad2\_\_}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{\_\_pad2\_\_}{\_\_pad2\_\_}}
@@ -208,7 +286,7 @@ zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\
 \index{index.php@{index.php}!elseif@{elseif}}
 \index{elseif@{elseif}!index.php@{index.php}}
 \subsubsection{\texorpdfstring{elseif}{elseif}}
-{\footnotesize\ttfamily if ( \$wind\+\_\+direction $>$=337.\+5$\vert$$\vert$\$wind\+\_\+direction$<$ 22.\+5) elseif ( \$wind\+\_\+direction $>$=22.\+5 \&\&\$wind\+\_\+direction$<$ 67.\+5) elseif ( \$wind\+\_\+direction $>$=67.\+5 \&\&\$wind\+\_\+direction$<$ 112.\+5) elseif ( \$wind\+\_\+direction $>$=112.\+5 \&\&\$wind\+\_\+direction$<$ 157.\+5) elseif ( \$wind\+\_\+direction $>$=157.\+5 \&\&\$wind\+\_\+direction$<$ 202.\+5) elseif ( \$wind\+\_\+direction $>$=202.\+5 \&\&\$wind\+\_\+direction$<$ 247.\+5) elseif ( \$wind\+\_\+direction $>$=247.\+5 \&\&\$wind\+\_\+direction$<$ 292.\+5) elseif(\$wind\+\_\+direction $>$=292.\+5 \&\& \$wind\+\_\+direction$<$ 337.\+5)}
+{\footnotesize\ttfamily \mbox{\hyperlink{hull_2index_8php_a8f0d8893361d6307986497540738a8bf}{if}} ( \$wind\+\_\+direction $>$=337.\+5$\vert$$\vert$\$wind\+\_\+direction$<$ 22.\+5) elseif ( \$wind\+\_\+direction $>$=22.\+5 \&\&\$wind\+\_\+direction$<$ 67.\+5) elseif ( \$wind\+\_\+direction $>$=67.\+5 \&\&\$wind\+\_\+direction$<$ 112.\+5) elseif ( \$wind\+\_\+direction $>$=112.\+5 \&\&\$wind\+\_\+direction$<$ 157.\+5) elseif ( \$wind\+\_\+direction $>$=157.\+5 \&\&\$wind\+\_\+direction$<$ 202.\+5) elseif ( \$wind\+\_\+direction $>$=202.\+5 \&\&\$wind\+\_\+direction$<$ 247.\+5) elseif ( \$wind\+\_\+direction $>$=247.\+5 \&\&\$wind\+\_\+direction$<$ 292.\+5) elseif(\$wind\+\_\+direction $>$=292.\+5 \&\& \$wind\+\_\+direction$<$ 337.\+5)}
 
 \mbox{\Hypertarget{rotterdam_2index_8php_a6a514fba2a6c59dcbdb65a73e7c76f73}\label{rotterdam_2index_8php_a6a514fba2a6c59dcbdb65a73e7c76f73}} 
 \index{index.php@{index.php}!pois@{pois}}
@@ -225,6 +303,7 @@ zoom \mbox{\hyperlink{rotterdam_2index_8php_ac05a3bcb1c5d5d278658456630cbb6e7}{\
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\{}
-\DoxyCodeLine{      \mbox{\hyperlink{index_8php_a1fa3127fc82f96b1436d871ef02be319}{\$db}} = \textcolor{keyword}{new} PDO(\textcolor{stringliteral}{'mysql:host=51.75.162.4;port=3306;dbname=db\_twincities'}, \textcolor{stringliteral}{"username"}, \textcolor{stringliteral}{"password"})}
+\DoxyCodeLine{      }
+\DoxyCodeLine{      \mbox{\hyperlink{index_8php_a1fa3127fc82f96b1436d871ef02be319}{\$db}} = \textcolor{keyword}{new} PDO(\textcolor{stringliteral}{'mysql:host='}.\mbox{\hyperlink{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}{\$\_SESSION}}[\textcolor{stringliteral}{'db-hostname'}].\textcolor{stringliteral}{';port='}.\mbox{\hyperlink{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}{\$\_SESSION}}[\textcolor{stringliteral}{'db-port'}].\textcolor{stringliteral}{';dbname=db\_twincities'}, \mbox{\hyperlink{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}{\$\_SESSION}}[\textcolor{stringliteral}{'db-username'}], \mbox{\hyperlink{rotterdam_2index_8php_a2204e38201e377d62677f13b1a9fbd97}{\$\_SESSION}}[\textcolor{stringliteral}{'db-password'}])}
 
 \end{DoxyCode}

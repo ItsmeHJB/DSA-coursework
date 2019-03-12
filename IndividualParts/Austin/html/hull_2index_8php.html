@@ -75,6 +75,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a8f0d8893361d6307986497540738a8bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a> (!isset( $_SESSION[ 'db-port']))</td></tr>
+<tr class="separator:a8f0d8893361d6307986497540738a8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe4cc9788f52e49485473dc699537388"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#abe4cc9788f52e49485473dc699537388">try</a></td></tr>
 <tr class="separator:abe4cc9788f52e49485473dc699537388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab76933014035168a37e7e525ca8fbabe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#ab76933014035168a37e7e525ca8fbabe">$dbq</a> = $db-&gt;query(&quot;SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'&quot;)</td></tr>
@@ -109,10 +111,14 @@ Variables</h2></td></tr>
 <tr class="separator:a735d09bd88bab2d39b5d123b6a1ac7e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba22eb823924400ba310cca9821c67b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aba22eb823924400ba310cca9821c67b3">$poisArray</a> = array()</td></tr>
 <tr class="separator:aba22eb823924400ba310cca9821c67b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae26e87d17180fc87313d19b439092f0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="index_8php.html#a2e79af1ba492bd2cbbaafa83f16262da">for</a>($i=0; $i&lt; $poiCount; $i++)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#ae26e87d17180fc87313d19b439092f0f">$db</a> = null</td></tr>
+<tr class="memitem:aab544b20d0152a1bf9eeb8db3e9f0577"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aab544b20d0152a1bf9eeb8db3e9f0577">$bigPhotoArray</a> = array()</td></tr>
+<tr class="separator:aab544b20d0152a1bf9eeb8db3e9f0577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26e87d17180fc87313d19b439092f0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="index_8php.html#aa11bce3c9d33806cade344b0536e0508">for</a>($i=0; $i&lt; $poiCount; $i++)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#ae26e87d17180fc87313d19b439092f0f">$db</a> = null</td></tr>
 <tr class="separator:ae26e87d17180fc87313d19b439092f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af16b636c83a2e1d4b020917a4fc5858b"><td class="memItemLeft" align="right" valign="top">catch(PDOException $e)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#af16b636c83a2e1d4b020917a4fc5858b">$weather_info_array</a> = explode( &quot; &quot;, file_get_contents(&quot;http://www.ewwa.net/wx/clientraw.txt&quot;))</td></tr>
-<tr class="separator:af16b636c83a2e1d4b020917a4fc5858b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85edc6c515eee98e2848667893e007d"><td class="memItemLeft" align="right" valign="top">catch(PDOException $e)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aa85edc6c515eee98e2848667893e007d">$weather_info_string</a> = file_get_contents(&quot;{$_SESSION['hullweather']}&quot;)</td></tr>
+<tr class="separator:aa85edc6c515eee98e2848667893e007d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16271cc4158d1822fa59adaf196eb3d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a>($weather_info_string==&quot;&quot;)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#a16271cc4158d1822fa59adaf196eb3d4">$weather_info_array</a> = explode( &quot; &quot;, $weather_info_string)</td></tr>
+<tr class="separator:a16271cc4158d1822fa59adaf196eb3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d57fb0317e19ec798aa625381ebf342"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#a0d57fb0317e19ec798aa625381ebf342">$temp</a> = $weather_info_array[4]</td></tr>
 <tr class="separator:a0d57fb0317e19ec798aa625381ebf342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2aa7fd45b683a3c60b6f5e5d11a027b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#a2aa7fd45b683a3c60b6f5e5d11a027b3">$rain_amount</a> = $weather_info_array[7]</td></tr>
@@ -123,7 +129,7 @@ Variables</h2></td></tr>
 <tr class="separator:acae9d7e1905e3a01e07d87856885aa2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff5636a5f8216e0c22399f0c2d78a80d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aff5636a5f8216e0c22399f0c2d78a80d">$humidity</a> = $weather_info_array[5]</td></tr>
 <tr class="separator:aff5636a5f8216e0c22399f0c2d78a80d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8f062d2792cb6f2003b5743776f492a"><td class="memItemLeft" align="right" valign="top">if($wind_direction &gt;=337.5|| $wind_direction&lt; 22.5) elseif($wind_direction &gt;=22.5 &amp;&amp; $wind_direction&lt; 67.5) elseif($wind_direction &gt;=67.5 &amp;&amp; $wind_direction&lt; 112.5) elseif($wind_direction &gt;=112.5 &amp;&amp; $wind_direction&lt; 157.5) elseif($wind_direction &gt;=157.5 &amp;&amp; $wind_direction&lt; 202.5) elseif($wind_direction &gt;=202.5 &amp;&amp; $wind_direction&lt; 247.5) elseif($wind_direction &gt;=247.5 &amp;&amp; $wind_direction&lt; 292.5)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aa8f062d2792cb6f2003b5743776f492a">elseif</a> ( $wind_direction &gt;=292.5 &amp;&amp;$wind_direction&lt; 337.5)</td></tr>
+<tr class="memitem:aa8f062d2792cb6f2003b5743776f492a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a>($wind_direction &gt;=337.5|| $wind_direction&lt; 22.5) elseif($wind_direction &gt;=22.5 &amp;&amp; $wind_direction&lt; 67.5) elseif($wind_direction &gt;=67.5 &amp;&amp; $wind_direction&lt; 112.5) elseif($wind_direction &gt;=112.5 &amp;&amp; $wind_direction&lt; 157.5) elseif($wind_direction &gt;=157.5 &amp;&amp; $wind_direction&lt; 202.5) elseif($wind_direction &gt;=202.5 &amp;&amp; $wind_direction&lt; 247.5) elseif($wind_direction &gt;=247.5 &amp;&amp; $wind_direction&lt; 292.5)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#aa8f062d2792cb6f2003b5743776f492a">elseif</a> ( $wind_direction &gt;=292.5 &amp;&amp;$wind_direction&lt; 337.5)</td></tr>
 <tr class="separator:aa8f062d2792cb6f2003b5743776f492a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a6b44b803abb014544190586597431f"><td class="memItemLeft" align="right" valign="top">zoom&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hull_2index_8php.html#a6a6b44b803abb014544190586597431f">__pad1__</a></td></tr>
 <tr class="separator:a6a6b44b803abb014544190586597431f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +148,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>area. </p>
+
+</div>
+</div>
+<a id="aab544b20d0152a1bf9eeb8db3e9f0577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab544b20d0152a1bf9eeb8db3e9f0577">&#9670;&nbsp;</a></span>$bigPhotoArray</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">$bigPhotoArray = array()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>array of photos. </p>
 
 </div>
 </div>
@@ -156,6 +178,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>country. </p>
 
 </div>
 </div>
@@ -170,6 +193,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>currency. </p>
 
 </div>
 </div>
@@ -180,10 +204,18 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="index_8php.html#a2e79af1ba492bd2cbbaafa83f16262da">for</a> ( $i=0;$i&lt; $poiCount;$i++) $db = null</td>
+          <td class="memname"><a class="el" href="index_8php.html#aa11bce3c9d33806cade344b0536e0508">for</a> ( $i=0;$i&lt; $poiCount;$i++) $db = null</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>PDO object for POIs.</p>
+<p>array holding POI details.</p>
+<p>woeid for the POI.</p>
+<p>amount of photos.</p>
+<p>query for photos, all photos for the POI location.</p>
+<p>PDO object for photos.</p>
+<p>array for photo details.</p>
+<p>holds the photos.</p>
 
 </div>
 </div>
@@ -198,6 +230,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>query of the database, selects cities where name is kingston upon hull. </p>
 
 </div>
 </div>
@@ -212,6 +245,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds humidity. </p>
 
 </div>
 </div>
@@ -226,6 +260,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>latitude. </p>
 
 </div>
 </div>
@@ -240,6 +275,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>longitude. </p>
 
 </div>
 </div>
@@ -254,6 +290,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>name. </p>
 
 </div>
 </div>
@@ -268,6 +305,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>amount of POIs. </p>
 
 </div>
 </div>
@@ -282,6 +320,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>query of the dataabse, all POIs for $woeid_city. </p>
 
 </div>
 </div>
@@ -296,6 +335,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>array of points of interest. </p>
 
 </div>
 </div>
@@ -310,6 +350,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>population. </p>
 
 </div>
 </div>
@@ -324,6 +365,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>province. </p>
 
 </div>
 </div>
@@ -338,6 +380,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds rain amount. </p>
 
 </div>
 </div>
@@ -352,6 +395,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds the current row. </p>
 
 </div>
 </div>
@@ -380,20 +424,37 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>timezone. </p>
 
 </div>
 </div>
-<a id="af16b636c83a2e1d4b020917a4fc5858b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af16b636c83a2e1d4b020917a4fc5858b">&#9670;&nbsp;</a></span>$weather_info_array</h2>
+<a id="a16271cc4158d1822fa59adaf196eb3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16271cc4158d1822fa59adaf196eb3d4">&#9670;&nbsp;</a></span>$weather_info_array</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">catch (PDOException $e) $weather_info_array = explode( &quot; &quot;, file_get_contents(&quot;http://www.ewwa.net/wx/clientraw.txt&quot;))</td>
+          <td class="memname"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a> ( $weather_info_string==&quot;&quot;) $weather_info_array = explode( &quot; &quot;, $weather_info_string)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>weather info in an array. </p>
+
+</div>
+</div>
+<a id="aa85edc6c515eee98e2848667893e007d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85edc6c515eee98e2848667893e007d">&#9670;&nbsp;</a></span>$weather_info_string</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">catch (PDOException $e) $weather_info_string = file_get_contents(&quot;{$_SESSION['hullweather']}&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>string of weather info. </p>
 
 </div>
 </div>
@@ -408,6 +469,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>website. </p>
 
 </div>
 </div>
@@ -422,6 +484,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds wind direction. </p>
 
 </div>
 </div>
@@ -436,6 +499,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>holds windspeed. </p>
 
 </div>
 </div>
@@ -450,6 +514,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>woeid. </p>
 
 </div>
 </div>
@@ -474,7 +539,21 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">if ( $wind_direction &gt;=337.5||$wind_direction&lt; 22.5) elseif ( $wind_direction &gt;=22.5 &amp;&amp;$wind_direction&lt; 67.5) elseif ( $wind_direction &gt;=67.5 &amp;&amp;$wind_direction&lt; 112.5) elseif ( $wind_direction &gt;=112.5 &amp;&amp;$wind_direction&lt; 157.5) elseif ( $wind_direction &gt;=157.5 &amp;&amp;$wind_direction&lt; 202.5) elseif ( $wind_direction &gt;=202.5 &amp;&amp;$wind_direction&lt; 247.5) elseif ( $wind_direction &gt;=247.5 &amp;&amp;$wind_direction&lt; 292.5) elseif($wind_direction &gt;=292.5 &amp;&amp; $wind_direction&lt; 337.5)</td>
+          <td class="memname"><a class="el" href="hull_2index_8php.html#a8f0d8893361d6307986497540738a8bf">if</a> ( $wind_direction &gt;=337.5||$wind_direction&lt; 22.5) elseif ( $wind_direction &gt;=22.5 &amp;&amp;$wind_direction&lt; 67.5) elseif ( $wind_direction &gt;=67.5 &amp;&amp;$wind_direction&lt; 112.5) elseif ( $wind_direction &gt;=112.5 &amp;&amp;$wind_direction&lt; 157.5) elseif ( $wind_direction &gt;=157.5 &amp;&amp;$wind_direction&lt; 202.5) elseif ( $wind_direction &gt;=202.5 &amp;&amp;$wind_direction&lt; 247.5) elseif ( $wind_direction &gt;=247.5 &amp;&amp;$wind_direction&lt; 292.5) elseif($wind_direction &gt;=292.5 &amp;&amp; $wind_direction&lt; 337.5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f0d8893361d6307986497540738a8bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f0d8893361d6307986497540738a8bf">&#9670;&nbsp;</a></span>if</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">if(!isset($_SESSION['db-port']))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -506,7 +585,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line">      <a class="code" href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&#39;mysql:host=51.75.162.4;port=3306;dbname=db_twincities&#39;</span>, <span class="stringliteral">&quot;username&quot;</span>, <span class="stringliteral">&quot;password&quot;</span>)</div><div class="ttc" id="index_8php_html_a1fa3127fc82f96b1436d871ef02be319"><div class="ttname"><a href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a></div><div class="ttdeci">$db</div><div class="ttdef"><b>Definition:</b> index.php:50</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div><div class="line">      </div><div class="line">      <a class="code" href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a> = <span class="keyword">new</span> PDO(<span class="stringliteral">&#39;mysql:host=&#39;</span>.<a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-hostname&#39;</span>].<span class="stringliteral">&#39;;port=&#39;</span>.<a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-port&#39;</span>].<span class="stringliteral">&#39;;dbname=db_twincities&#39;</span>, <a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-username&#39;</span>], <a class="code" href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a>[<span class="stringliteral">&#39;db-password&#39;</span>])</div><div class="ttc" id="rotterdam_2index_8php_html_a2204e38201e377d62677f13b1a9fbd97"><div class="ttname"><a href="rotterdam_2index_8php.html#a2204e38201e377d62677f13b1a9fbd97">$_SESSION</a></div><div class="ttdeci">$_SESSION['db-hostname']</div><div class="ttdef"><b>Definition:</b> index.php:5</div></div>
+<div class="ttc" id="index_8php_html_a1fa3127fc82f96b1436d871ef02be319"><div class="ttname"><a href="index_8php.html#a1fa3127fc82f96b1436d871ef02be319">$db</a></div><div class="ttdeci">$db</div><div class="ttdef"><b>Definition:</b> index.php:147</div></div>
 </div><!-- fragment -->
 </div>
 </div>
