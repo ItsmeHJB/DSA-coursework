@@ -3,12 +3,18 @@
 header("Content-Type: application/xml; charset=utf-8");
 
 try{
+    ///
+    /// PDO object for databse.
+    ///
     $db = new PDO('mysql:host=51.75.162.4;port=3306;dbname=db_twincities', "username", "password");
 }
 catch(PDOException $e){
     echo $e->getMessage();
 }
 
+///
+/// holds all the xml for the rss feed.
+///
 $rssfeed = '<?xml version="1.0" encoding="ISO-8859-1"?>
 <rss version="2.0">
 	<channel>
@@ -16,6 +22,9 @@ $rssfeed = '<?xml version="1.0" encoding="ISO-8859-1"?>
 		<description>RSS detailing the information for Hull and Rotterdam</description>
 		<language>en-gb</language>';
 
+///
+/// holds the query.
+///
 $statement = $db->prepare("SELECT * FROM `tb_cities`");
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_ASSOC);

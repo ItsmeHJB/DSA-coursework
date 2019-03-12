@@ -35,7 +35,9 @@ if(!isset($_SESSION['db-port'])) {
         </div>
         <?php
 
+        ///
         /// holds the content of the hull weather (from clientraw.txt) as a string.
+        ///
         $hull_info_string = file_get_contents("{$_SESSION['hullweather']}");
         echo $_SESSION['hullweather'];
 
@@ -43,59 +45,103 @@ if(!isset($_SESSION['db-port'])) {
             $hull_info_string = file_get_contents("StaticData/hull.txt");
         }
 
+        ///
         /// holds the hull weather in an array, each index has unique info.
+        ///
         $hull_info_array = explode(" ", $hull_info_string);
 
+        ///
         ///  holds the content of the rotterdam weather (from clientraw.txt) as a string.
+        ///
         $rotterdam_info_string = file_get_contents("{$_SESSION['rotterdamweather']}");
 
         if($rotterdam_info_string == ""){
             $rotterdam_info_string = file_get_contents("StaticData/rotterdam.txt");
         }
 
+        ///
         /// holds the rotterdam weather in an array, each index has unique info.
+        ///
         $rotterdam_info_array = explode(" ", $rotterdam_info_string);
 
+        ///
         /// current temperature in hull.
+        ///
         $hull_temp = $hull_info_array[4];
+        ///
         /// current windspeed in hull.
+        ///
         $hull_windspeed = $hull_info_array[1] * 1.151;
+        ///
         /// current weather type as an icon in hull.
+        ///
         $hull_icon = $hull_info_array[48];
 
+        ///
         /// current temperature in rotterdam.
+        ///
         $rotterdam_temp = $rotterdam_info_array[4];
+        ///
         /// current windspeed in rotterdam.
+        ///
         $rotterdam_windspeed = $rotterdam_info_array[1] * 1.151;
+        ///
         /// current weather type as an icon in rotterdam.
+        ///
         $rotterdam_icon = $rotterdam_info_array[48];
 
         try{
+            ///
             /// PDO object of the database.
+            ///
             $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
+            ///
             /// query of the database, selects all cities where name is hull.
+            ///
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Kingston-Upon Hull'");
+            ///
             /// holds the current row.
+            ///
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            ///
             /// woeid of hull.
+            ///
             $hull_woeid = $row['woeid_city'];
+            ///
             /// name of hull.
+            ///
             $hull_name = $row['name'];
+            ///
             /// latitude of hull.
+            ///
             $hull_lat = $row['latitude'];
+            ///
             /// longitude of hull.
+            ///
             $hull_long = $row['longitude'];
+            ///
             /// country of hull.
+            ///
             $hull_country = $row['country'];
+            ///
             /// population of hull.
+            ///
             $hull_pop = $row['population'];
+            ///
             /// currency of hull.
+            ///
             $hull_curr = $row['currency'];
+            ///
             /// province of hull.
+            ///
             $hull_prov = $row['province'];
+            ///
             /// area of hull.
+            ///
             $hull_area = $row['area'];
+            ///
             /// website of hull.
+            ///
             $hull_web = $row['website'];
 
             $db = null;
@@ -110,25 +156,45 @@ if(!isset($_SESSION['db-port'])) {
             $db = new PDO('mysql:host='.$_SESSION['db-hostname'].';port='.$_SESSION['db-port'].';dbname=db_twincities', $_SESSION['db-username'], $_SESSION['db-password']);
             $dbq = $db->query("SELECT * FROM `tb_cities` WHERE `name` = 'Rotterdam'");
             $row = $dbq->fetch(PDO::FETCH_ASSOC);
+            ///
             /// woeid of rotterdam.
+            ///
             $rotterdam_woeid = $row['woeid_city'];
-            /// name of rotterdaml.
+            ///
+            /// name of rotterdam.
+            ///
             $rotterdam_name = $row['name'];
+            ///
             /// latitude of rotterdam.
+            ///
             $rotterdam_lat = $row['latitude'];
+            ///
             /// longitude of rotterdam.
+            ///
             $rotterdam_long = $row['longitude'];
+            ///
             /// country of rotterdam.
+            ///
             $rotterdam_country = $row['country'];
+            ///
             /// population of rotterdam.
+            ///
             $rotterdam_pop = $row['population'];
+            ///
             /// currency of rotterdam.
+            ///
             $rotterdam_curr = $row['currency'];
+            ///
             /// province of rotterdam.
+            ///
             $rotterdam_prov = $row['province'];
+            ///
             /// area of rotterdam.
+            ///
             $rotterdam_area = $row['area'];
+            ///
             /// website of rotterdam.
+            ///
             $rotterdam_web = $row['website'];
 
           $db = null;
@@ -139,14 +205,22 @@ if(!isset($_SESSION['db-port'])) {
             die();
         }
 
+        ///
         /// url for darksky forecast of hull.
+        ///
         $hull_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$hull_lat.','.$hull_long;
+        ///
         /// url for darksky forecast of rotterdamn.
+        ///
         $rotterdam_url = $_SESSION['darksky'].$_SESSION['dark-sky-api-key'].'/'.$rotterdam_lat.','.$rotterdam_long;
 
+        ///
         /// holds the JSON response from darksky for hull.
+        ///
         $hull_response = json_decode(file_get_contents($hull_url));
+        ///
         /// holds the JSON response from darksky for hull.
+        ///
         $rotterdam_response = json_decode(file_get_contents($rotterdam_url));
     ?>
     <div class = "city">
