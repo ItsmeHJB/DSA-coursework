@@ -249,7 +249,7 @@
             <contributor id="17022080"/>
             <description>
                 A simple XML document designed to keep sensitive data away from the main script.
-                This hodls all the API links and keys, and database confiuration information.
+                This holds all the API links and keys, and database configuration information.
             </description>
             <problems>
 
