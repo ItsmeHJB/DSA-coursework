@@ -10,7 +10,6 @@ if(!isset($_SESSION['db-port'])) {
     $_SESSION['dark-sky-api-key'] = $config->darkskyapikey->__toString();
     $_SESSION['font'] = $config->apilist->font->__toString();
     $_SESSION['openlayers'] = $config->apilist->openlayers->__toString();
-    $_SESSION['openlayersstyle'] = $config->apilist->openlayersstyle->__toString();
     $_SESSION['hullweather'] = $config->apilist->hullweather->__toString();
     $_SESSION['rotterdamweather'] = $config->apilist->rotterdamweather->__toString();
     $_SESSION['darksky'] = $config->apilist->darksky->__toString();
@@ -324,16 +323,16 @@ if(!isset($_SESSION['db-port'])) {
                 photo1link: photos[x][0][2],
                 photo2id: photos[x][1][0],
                 photo2name: photos[x][1][1],
-                photo2link: photos[x][0][2],
+                photo2link: photos[x][1][2],
                 photo3id: photos[x][2][0],
                 photo3name: photos[x][2][1],
-                photo3link: photos[x][0][2],
+                photo3link: photos[x][2][2],
                 photo4id: photos[x][3][0],
                 photo4name: photos[x][3][1],
-                photo4link: photos[x][0][2],
+                photo4link: photos[x][3][2],
                 photo5id: photos[x][4][0],
                 photo5name: photos[x][4][1],
-                photo5link: photos[x][0][2]
+                photo5link: photos[x][4][2]
             });
 
             feature.setStyle(new ol.style.Style({
